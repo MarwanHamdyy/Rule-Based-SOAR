@@ -1,0 +1,60 @@
+{
+    "port_scan": {
+        "ref": "NIST SP 800-94 - Guide to Intrusion Detection and Prevention Systems",
+        "controls": [
+            "SI-3",
+            "SI-4"
+        ]
+    },
+    "ssh_bruteforce": {
+        "ref": "NIST SP 800-63B - Digital Identity Guidelines: Authentication",
+        "controls": [
+            "IA-5",
+            "AC-7"
+        ]
+    },
+    "web_attack": {
+        "ref": "NIST SP 800-44 - Guidelines on Securing Public Web Servers",
+        "controls": [
+            "SI-10",
+            "SC-5"
+        ]
+    },
+    "malware_or_c2": {
+        "ref": "NIST SP 800-61 Rev 2 - Computer Security Incident Handling Guide: Section 3.3 Containment",
+        "controls": [
+            "IR-4",
+            "SI-3",
+            "SC-7"
+        ]
+    },
+    "dns_suspicious": {
+        "ref": "NIST SP 800-81-2 - Secure Domain Name System Deployment Guide",
+        "controls": [
+            "SC-20",
+            "SC-21"
+        ]
+    },
+    "dos_or_flood": {
+        "ref": "NIST SP 800-61 Rev 2 - DoS Incident Handling / SP 800-189",
+        "controls": [
+            "SC-5",
+            "IR-4"
+        ]
+    },
+    "lateral_movement_suspicion": {
+        "ref": "NIST SP 800-207 - Zero Trust Architecture",
+        "controls": [
+            "AC-4",
+            "SC-7",
+            "SI-4"
+        ]
+    },
+    "generic_high_risk_alert": {
+        "ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls",
+        "controls": [
+            "IR-4",
+            "SI-4"
+        ]
+    }
+}

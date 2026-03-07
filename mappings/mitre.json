@@ -1,0 +1,50 @@
+{
+    "port_scan": {
+        "tactic": "Discovery",
+        "technique": "T1046 - Network Service Scanning",
+        "tactic_id": "TA0007",
+        "technique_id": "T1046"
+    },
+    "ssh_bruteforce": {
+        "tactic": "Credential Access",
+        "technique": "T1110 - Brute Force",
+        "tactic_id": "TA0006",
+        "technique_id": "T1110"
+    },
+    "web_attack": {
+        "tactic": "Initial Access",
+        "technique": "T1190 - Exploit Public-Facing Application",
+        "tactic_id": "TA0001",
+        "technique_id": "T1190"
+    },
+    "malware_or_c2": {
+        "tactic": "Command and Control",
+        "technique": "T1071 - Application Layer Protocol",
+        "tactic_id": "TA0011",
+        "technique_id": "T1071"
+    },
+    "dns_suspicious": {
+        "tactic": "Exfiltration",
+        "technique": "T1048.003 - Exfiltration Over Alternative Protocol: Exfiltration Over Unencrypted Non-C2 Protocol",
+        "tactic_id": "TA0010",
+        "technique_id": "T1048.003"
+    },
+    "dos_or_flood": {
+        "tactic": "Impact",
+        "technique": "T1498 - Network Denial of Service",
+        "tactic_id": "TA0040",
+        "technique_id": "T1498"
+    },
+    "lateral_movement_suspicion": {
+        "tactic": "Lateral Movement",
+        "technique": "T1021 - Remote Services",
+        "tactic_id": "TA0008",
+        "technique_id": "T1021"
+    },
+    "generic_high_risk_alert": {
+        "tactic": "Multiple",
+        "technique": "Multiple",
+        "tactic_id": "",
+        "technique_id": ""
+    }
+}

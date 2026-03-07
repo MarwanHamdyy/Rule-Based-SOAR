@@ -1,0 +1,99 @@
+# ============================================================
+# SOAR Engine - Correlation & Rule Thresholds
+# Configure detection sensitivity per rule category
+# ============================================================
+
+correlation:
+  windows:
+    short: 30        # seconds
+    medium: 60       # seconds
+    long: 300        # seconds (5 minutes)
+    extended: 900    # seconds (15 minutes)
+  max_events_per_ip: 10000   # safety cap on in-memory events per IP
+
+rules:
+  port_scan:
+    unique_dst_ports_threshold: 15      # unique destination ports in window
+    event_count_threshold: 20           # total alerts from same source
+    window_seconds: 60
+    confidence: 0.85
+    priority: "HIGH"
+
+  ssh_bruteforce:
+    event_count_threshold: 8           # SSH alert repetitions
+    window_seconds: 30
+    signatures_keywords:               # partial match on signature text
+      - "ssh"
+      - "brute"
+      - "authentication"
+    confidence: 0.90
+    priority: "HIGH"
+
+  web_attack:
+    event_count_threshold: 5
+    window_seconds: 60
+    category_keywords:
+      - "web"
+      - "http"
+      - "sql"
+      - "xss"
+      - "injection"
+      - "traversal"
+      - "scanner"
+    confidence: 0.80
+    priority: "MEDIUM"
+
+  malware_or_c2:
+    event_count_threshold: 2
+    window_seconds: 300
+    category_keywords:
+      - "malware"
+      - "trojan"
+      - "c2"
+      - "command"
+      - "botnet"
+      - "beacon"
+      - "rat"
+    confidence: 0.88
+    priority: "CRITICAL"
+
+  dns_suspicious:
+    event_count_threshold: 3
+    window_seconds: 60
+    category_keywords:
+      - "dns"
+      - "domain"
+      - "tunnel"
+      - "exfil"
+    confidence: 0.75
+    priority: "MEDIUM"
+
+  dos_or_flood:
+    event_count_threshold: 50
+    window_seconds: 30
+    category_keywords:
+      - "dos"
+      - "flood"
+      - "ddos"
+      - "amplification"
+      - "syn"
+    confidence: 0.85
+    priority: "HIGH"
+
+  lateral_movement_suspicion:
+    unique_dst_hosts_threshold: 5       # unique destination IPs from single source
+    window_seconds: 300
+    category_keywords:
+      - "lateral"
+      - "smb"
+      - "rdp"
+      - "pass-the"
+      - "mimikatz"
+    confidence: 0.78
+    priority: "HIGH"
+
+  generic_high_risk_alert:
+    min_risk_score: 70                  # risk_score field threshold
+    severity_threshold: 2              # Suricata severity <= this value is high-risk
+    confidence: 0.70
+    priority: "MEDIUM"

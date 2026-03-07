@@ -1,0 +1,36 @@
+# ============================================================
+# SOAR Engine - Main Settings
+# ============================================================
+
+elasticsearch:
+  host: "${ES_HOST:https://localhost:9200}"
+  username: "${ES_USERNAME:elastic}"
+  password: "${ES_PASSWORD:changeme}"
+  # api_key: "${ES_API_KEY:}"       # Uncomment to use API key auth
+  verify_certs: false               # Set true in production with valid certs
+  timeout: 30                       # Request timeout in seconds
+
+indices:
+  source: "${ES_SOURCE_INDEX:filebeat-*}"
+  target_prefix: "${ES_TARGET_INDEX_PREFIX:soar-actions}"
+
+engine:
+  mode: "${ENGINE_MODE:live}"       # "live" or "replay"
+  poll_interval: 10                 # seconds between ES polls
+  checkpoint_file: "./data/checkpoint.json"
+  replay_from: "${REPLAY_FROM:2024-01-01T00:00:00Z}"
+  max_events_per_poll: 500          # max docs fetched per poll cycle
+  dedup_window_seconds: 60          # within this window, identical actions are deduplicated
+
+enrichment:
+  virustotal:
+    enabled: "${VT_ENABLED:false}"
+    api_key: "${VT_API_KEY:}"
+    cache_ttl: 3600                 # seconds
+    timeout: 10                     # HTTP timeout in seconds
+
+logging:
+  level: "${LOG_LEVEL:INFO}"
+  file: "./logs/soar.log"
+  max_bytes: 10485760               # 10 MB log rotation
+  backup_count: 5

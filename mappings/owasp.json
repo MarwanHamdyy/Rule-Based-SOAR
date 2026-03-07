@@ -1,0 +1,32 @@
+{
+    "web_attack": {
+        "ref": "OWASP-A03:2021 Injection / OWASP-A01:2021 Broken Access Control / OWASP-A05:2021 Security Misconfiguration",
+        "categories": [
+            "A03:2021",
+            "A01:2021",
+            "A05:2021"
+        ]
+    },
+    "ssh_bruteforce": {
+        "ref": "OWASP-A07:2021 Identification and Authentication Failures",
+        "categories": [
+            "A07:2021"
+        ]
+    },
+    "malware_or_c2": {
+        "ref": "OWASP-A08:2021 Software and Data Integrity Failures",
+        "categories": [
+            "A08:2021"
+        ]
+    },
+    "dns_suspicious": {
+        "ref": "OWASP-A09:2021 Security Logging and Monitoring Failures",
+        "categories": [
+            "A09:2021"
+        ]
+    },
+    "generic_high_risk_alert": {
+        "ref": "OWASP Top 10 - Multiple Categories",
+        "categories": []
+    }
+}

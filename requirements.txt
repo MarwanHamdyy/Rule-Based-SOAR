@@ -1,0 +1,26 @@
+# Rule-Based SOAR Engine - Dependencies
+# Python 3.11+
+
+# Elasticsearch client
+elasticsearch>=8.0.0,<9.0.0
+
+# Configuration & environment
+python-dotenv>=1.0.0
+pyyaml>=6.0.1
+
+# HTTP client (for VirusTotal enrichment)
+requests>=2.31.0
+
+# Date/time utilities
+python-dateutil>=2.8.2
+
+# Logging
+colorlog>=6.7.0
+
+# Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+freezegun>=1.2.2
+
+# Type checking support (optional)
+typing-extensions>=4.8.0
