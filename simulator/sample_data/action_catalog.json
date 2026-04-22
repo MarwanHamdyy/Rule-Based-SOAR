@@ -1,0 +1,179 @@
+{
+    "action_catalog": [
+        {
+            "action_id": "ACT-001",
+            "action_name": "Block Source IP Address",
+            "action_class": "network_containment"
+        },
+        {
+            "action_id": "ACT-002",
+            "action_name": "Rate-Limit Source IP Traffic",
+            "action_class": "network_mitigation"
+        },
+        {
+            "action_id": "ACT-003",
+            "action_name": "Block Source MAC Address",
+            "action_class": "network_containment"
+        },
+        {
+            "action_id": "ACT-004",
+            "action_name": "Shutdown Switch Port",
+            "action_class": "network_containment"
+        },
+        {
+            "action_id": "ACT-005",
+            "action_name": "Add WAF Block Rule",
+            "action_class": "network_mitigation"
+        },
+        {
+            "action_id": "ACT-006",
+            "action_name": "Enable SYN Cookies on Server",
+            "action_class": "network_mitigation"
+        },
+        {
+            "action_id": "ACT-007",
+            "action_name": "Block DNS Domain via Sinkhole",
+            "action_class": "network_containment"
+        },
+        {
+            "action_id": "ACT-008",
+            "action_name": "Block C2 Destination IP",
+            "action_class": "network_containment"
+        },
+        {
+            "action_id": "ACT-009",
+            "action_name": "Block DMZ-to-Internal Connection",
+            "action_class": "network_containment"
+        },
+        {
+            "action_id": "ACT-010",
+            "action_name": "Flush Rogue DHCP Leases",
+            "action_class": "network_mitigation"
+        },
+        {
+            "action_id": "ACT-011",
+            "action_name": "Clear Switch MAC Table",
+            "action_class": "network_mitigation"
+        },
+        {
+            "action_id": "ACT-012",
+            "action_name": "Restore ARP Table Entries",
+            "action_class": "network_mitigation"
+        },
+        {
+            "action_id": "ACT-013",
+            "action_name": "Block DNS Egress from Host",
+            "action_class": "network_containment"
+        },
+        {
+            "action_id": "ACT-014",
+            "action_name": "Isolate Host from Network",
+            "action_class": "endpoint_containment"
+        },
+        {
+            "action_id": "ACT-015",
+            "action_name": "Enforce Full Quarantine Isolation",
+            "action_class": "endpoint_containment"
+        },
+        {
+            "action_id": "ACT-016",
+            "action_name": "Capture Forensic Memory Dump",
+            "action_class": "forensics"
+        },
+        {
+            "action_id": "ACT-017",
+            "action_name": "Collect Endpoint Logs for Analysis",
+            "action_class": "forensics"
+        },
+        {
+            "action_id": "ACT-018",
+            "action_name": "Snapshot Disk Image for Forensics",
+            "action_class": "forensics"
+        },
+        {
+            "action_id": "ACT-019",
+            "action_name": "Capture Network PCAP from Host",
+            "action_class": "forensics"
+        },
+        {
+            "action_id": "ACT-020",
+            "action_name": "Disable User Account",
+            "action_class": "identity_response"
+        },
+        {
+            "action_id": "ACT-021",
+            "action_name": "Lock User Account After Brute Force",
+            "action_class": "identity_response"
+        },
+        {
+            "action_id": "ACT-022",
+            "action_name": "Force Password Reset",
+            "action_class": "identity_response"
+        },
+        {
+            "action_id": "ACT-023",
+            "action_name": "Revoke Active Sessions for User",
+            "action_class": "identity_response"
+        },
+        {
+            "action_id": "ACT-024",
+            "action_name": "Reset Compromised Credentials",
+            "action_class": "identity_response"
+        },
+        {
+            "action_id": "ACT-025",
+            "action_name": "Isolate IoT Device to Quarantine VLAN",
+            "action_class": "iot_containment"
+        },
+        {
+            "action_id": "ACT-026",
+            "action_name": "Revoke MQTT Client Credentials",
+            "action_class": "iot_containment"
+        },
+        {
+            "action_id": "ACT-027",
+            "action_name": "Block IoT Device Egress Traffic",
+            "action_class": "iot_containment"
+        },
+        {
+            "action_id": "ACT-028",
+            "action_name": "Restart IoT Device",
+            "action_class": "iot_response"
+        },
+        {
+            "action_id": "ACT-029",
+            "action_name": "Re-flash IoT Device Firmware",
+            "action_class": "iot_response"
+        },
+        {
+            "action_id": "ACT-030",
+            "action_name": "Revert IoT Actuator to Safe State",
+            "action_class": "iot_response"
+        },
+        {
+            "action_id": "ACT-031",
+            "action_name": "Isolate Rogue DHCP Server Port",
+            "action_class": "network_containment"
+        },
+        {
+            "action_id": "ACT-032",
+            "action_name": "Rate-Limit SIP INVITE Requests",
+            "action_class": "network_mitigation"
+        },
+        {
+            "action_id": "ACT-033",
+            "action_name": "Disable Anonymous FTP Access",
+            "action_class": "network_mitigation"
+        },
+        {
+            "action_id": "ACT-034",
+            "action_name": "Disable SNMP Write Access",
+            "action_class": "network_mitigation"
+        },
+        {
+            "action_id": "ACT-035",
+            "action_name": "Alert SOC Team",
+            "action_class": "forensics"
+        }
+    ]
+}

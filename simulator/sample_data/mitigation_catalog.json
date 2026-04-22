@@ -1,0 +1,6320 @@
+{
+  "mitigation_catalog": [
+    {
+      "attack_id": "ATK-001",
+      "attack_name": "Nmap SYN Stealth Scan",
+      "severity": "Medium",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "syn_stealth_scan_detected",
+        "threshold": {
+          "count": 50,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "geo_lookup",
+          "source": "maxmind_geoip"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip",
+            "description": "Block source IP performing SYN stealth scan",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Harden firewall rules to restrict unauthorized scanning",
+        "Deploy IDS/IPS with updated scan signatures"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Check if source IP belongs to authorized vulnerability scanner",
+          "Verify if scan is part of scheduled security audit"
+        ],
+        "post_action_validation": [
+          "Confirm no further SYN packets from blocked IP",
+          "Verify firewall rule is active"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-002",
+      "attack_name": "Nmap Version Detection",
+      "severity": "Medium",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "nmap_version_detection_probe",
+        "threshold": {
+          "count": 30,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip",
+            "description": "Block IP performing version detection probes",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Apply ingress filtering on border routers",
+        "Enable service version obfuscation on critical servers"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify source is not an authorized asset scanner",
+          "Check if target services are publicly advertised"
+        ],
+        "post_action_validation": [
+          "Confirm version probes stopped from source IP",
+          "Validate no new connections from blocked IP"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-003",
+      "attack_name": "Nmap OS Fingerprinting",
+      "severity": "Medium",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "nmap_os_fingerprint_detected",
+        "threshold": {
+          "count": 20,
+          "time_window": "120s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "geo_lookup",
+          "source": "maxmind_geoip"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip",
+            "description": "Block IP conducting OS fingerprinting",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Disable TCP/IP stack fingerprint-leaking features",
+        "Configure host-based firewalls to drop unusual probes"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Check if source is a known penetration testing IP",
+          "Verify scan is not part of internal security assessment"
+        ],
+        "post_action_validation": [
+          "Confirm no OS fingerprint probes from blocked IP",
+          "Validate firewall logs show drops"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-004",
+      "attack_name": "Nmap Scripting Engine (NSE) Scan",
+      "severity": "Medium",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "nmap_nse_scan_detected",
+        "threshold": {
+          "count": 15,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip",
+            "description": "Block IP running NSE scripts",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Restrict access to sensitive services via ACLs",
+        "Patch known vulnerabilities targeted by NSE scripts"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify source is not an authorized security tool",
+          "Check if NSE scripts target known test environments"
+        ],
+        "post_action_validation": [
+          "Confirm no further NSE traffic from source",
+          "Validate ACLs are updated"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-005",
+      "attack_name": "Nmap String in User-Agent",
+      "severity": "Low",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "nmap_user_agent_detected",
+        "threshold": {
+          "count": 10,
+          "time_window": "120s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip",
+            "description": "Block IP with Nmap user-agent string",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Configure WAF to block known scanner user-agents",
+        "Enable HTTP request logging and anomaly detection"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Check if user-agent is from legitimate security tool",
+          "Verify if request targets public-facing resources"
+        ],
+        "post_action_validation": [
+          "Confirm no HTTP requests with Nmap user-agent from IP",
+          "Validate WAF rule is active"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-006",
+      "attack_name": "Rapid Port Scan",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "rapid_port_scan_detected",
+        "threshold": {
+          "count": 100,
+          "time_window": "30s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "geo_lookup",
+          "source": "maxmind_geoip"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip",
+            "description": "Block IP performing rapid port scans",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Implement port scan detection at network perimeter",
+        "Rate-limit new connections per source IP"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Check if source IP is a known CDN or load balancer",
+          "Verify scan is not from authorized vulnerability scanner"
+        ],
+        "post_action_validation": [
+          "Confirm no new connection attempts from blocked IP",
+          "Verify IDS alerts ceased"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-007",
+      "attack_name": "SNMP Default Community Enumeration",
+      "severity": "Medium",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "snmp_default_community_enum",
+        "threshold": {
+          "count": 10,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip",
+            "description": "Block IP enumerating SNMP with default community",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Change all SNMP community strings from defaults",
+        "Restrict SNMP access to management VLAN only"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if source is an authorized NMS system",
+          "Check if SNMP queries are from monitoring tools"
+        ],
+        "post_action_validation": [
+          "Confirm no SNMP queries from blocked IP",
+          "Validate community strings have been changed"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-008",
+      "attack_name": "SNMP Bulk Walk Recon",
+      "severity": "Medium",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "snmp_bulk_walk_detected",
+        "threshold": {
+          "count": 15,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip",
+            "description": "Block IP performing SNMP bulk walk",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Migrate to SNMPv3 with authentication and encryption",
+        "Restrict SNMP OID trees accessible to queries"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if bulk walk is from authorized monitoring system",
+          "Check if target device is in maintenance window"
+        ],
+        "post_action_validation": [
+          "Confirm no further SNMP bulk requests from IP",
+          "Validate SNMPv3 migration status"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-009",
+      "attack_name": "SNMP Community String Brute Force",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "snmp_community_bruteforce",
+        "threshold": {
+          "count": 20,
+          "time_window": "30s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "geo_lookup",
+          "source": "maxmind_geoip"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip",
+            "description": "Block IP brute-forcing SNMP communities",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Implement SNMP access control lists",
+        "Deploy SNMPv3 and disable SNMPv1/v2c"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if source is an authorized network admin tool",
+          "Check if multiple community strings are intentional testing"
+        ],
+        "post_action_validation": [
+          "Confirm SNMP brute force attempts stopped",
+          "Validate SNMP ACLs are enforced"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-010",
+      "attack_name": "SNMP SET Privilege Escalation",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "snmp_set_privilege_escalation",
+        "threshold": {
+          "count": 3,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        },
+        {
+          "type": "user_lookup",
+          "source": "active_directory"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip",
+            "description": "Block IP attempting SNMP SET privilege escalation",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Disable SNMP write access on all devices",
+        "Implement strict ACLs for SNMP SET operations"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if SET request is from authorized network management",
+          "Check if target device configuration was actually modified"
+        ],
+        "post_action_validation": [
+          "Confirm no SNMP SET requests from blocked IP",
+          "Validate device configuration integrity"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}",
+          "Restore device configuration from backup if modified"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-011",
+      "attack_name": "SIP/VoIP User Enumeration",
+      "severity": "Medium",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "sip_user_enumeration_detected",
+        "threshold": {
+          "count": 30,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "geo_lookup",
+          "source": "maxmind_geoip"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip",
+            "description": "Block IP enumerating SIP users",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Disable SIP user enumeration responses",
+        "Implement SIP authentication rate limiting"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if source is a legitimate VoIP provider",
+          "Check if enumeration targets are test extensions"
+        ],
+        "post_action_validation": [
+          "Confirm no SIP INVITE probes from blocked IP",
+          "Validate SIP server hardening"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-012",
+      "attack_name": "SSH Failed Password Attempt",
+      "severity": "Medium",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "ssh_failed_password_attempt",
+        "threshold": {
+          "count": 5,
+          "time_window": "120s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "geo_lookup",
+          "source": "maxmind_geoip"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip",
+            "description": "Block IP with failed SSH password attempts",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Enforce SSH key-based authentication only",
+        "Implement fail2ban or equivalent on SSH servers"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Check if source IP belongs to authorized admin",
+          "Verify if failed attempt is from misconfigured automation"
+        ],
+        "post_action_validation": [
+          "Confirm no further SSH attempts from blocked IP",
+          "Validate SSH logs show no new failures"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-013",
+      "attack_name": "SSH Failed Password From External Source",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "ssh_failed_password_external",
+        "threshold": {
+          "count": 5,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "geo_lookup",
+          "source": "maxmind_geoip"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip",
+            "description": "Block external IP with SSH failed passwords",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Restrict SSH access to VPN-only connections",
+        "Deploy SSH honeypots for early detection"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify source is not a known partner IP",
+          "Check if SSH service should be externally exposed"
+        ],
+        "post_action_validation": [
+          "Confirm blocked IP cannot reach SSH service",
+          "Validate firewall rules updated"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-014",
+      "attack_name": "SSH Brute Force (Possible)",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "ssh_brute_force_possible",
+        "threshold": {
+          "count": 10,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "geo_lookup",
+          "source": "maxmind_geoip"
+        },
+        {
+          "type": "user_lookup",
+          "source": "active_directory"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip_and_lock_account",
+            "description": "Block source IP and lock targeted account",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "account": "{{target_username}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Enforce MFA on all SSH-accessible systems",
+        "Implement account lockout policies"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if user has legitimate access need",
+          "Check if brute force is from penetration test"
+        ],
+        "post_action_validation": [
+          "Confirm no SSH connections from blocked IP",
+          "Validate account lockout is active"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}",
+          "Unlock account {{target_username}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-015",
+      "attack_name": "SSH Password Guessing Attack",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "ssh_password_guessing_attack",
+        "threshold": {
+          "count": 15,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "geo_lookup",
+          "source": "maxmind_geoip"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip",
+            "description": "Block IP performing SSH password guessing",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Disable password authentication for SSH",
+        "Implement progressive delay on failed attempts"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if source is authorized admin with wrong credentials",
+          "Check authentication logs for successful logins between failures"
+        ],
+        "post_action_validation": [
+          "Confirm SSH password guessing stopped from IP",
+          "Validate SSH config changes applied"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-016",
+      "attack_name": "SSH Multiple Failed Passwords",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "ssh_multiple_failed_passwords",
+        "threshold": {
+          "count": 10,
+          "time_window": "120s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "user_lookup",
+          "source": "active_directory"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip_and_lock_account",
+            "description": "Block IP and lock accounts with multiple failures",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "account": "{{target_username}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Deploy centralized authentication with lockout policies",
+        "Implement SSH certificate-based authentication"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if multiple accounts targeted are service accounts",
+          "Check if failures correlate with password rotation schedule"
+        ],
+        "post_action_validation": [
+          "Confirm no further SSH failures from blocked IP",
+          "Validate account lockout policies enforced"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}",
+          "Unlock account {{target_username}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-017",
+      "attack_name": "SSH BruteForce Tool (Fake PUTTY)",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "ssh_bruteforce_fake_putty",
+        "threshold": {
+          "count": 5,
+          "time_window": "30s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "geo_lookup",
+          "source": "maxmind_geoip"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip",
+            "description": "Block IP using fake PUTTY brute force tool",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Block known brute force tool signatures at IDS",
+        "Deploy SSH tarpit to slow down attackers"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if PUTTY version string is from legitimate client",
+          "Check if source has any successful logins"
+        ],
+        "post_action_validation": [
+          "Confirm no traffic with fake PUTTY signature from IP",
+          "Validate IDS signature is active"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-018",
+      "attack_name": "SSH Scanner Detected",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "ssh_scanner_detected",
+        "threshold": {
+          "count": 10,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "geo_lookup",
+          "source": "maxmind_geoip"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip",
+            "description": "Block detected SSH scanner IP",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Restrict SSH to non-standard ports on edge systems",
+        "Implement connection rate limiting on SSH services"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Check if scanner is from authorized security assessment",
+          "Verify if SSH port is intentionally exposed"
+        ],
+        "post_action_validation": [
+          "Confirm no SSH scanning activity from blocked IP",
+          "Validate rate limiting is configured"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-019",
+      "attack_name": "SIP REGISTER Brute Force",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "sip_register_bruteforce",
+        "threshold": {
+          "count": 15,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "geo_lookup",
+          "source": "maxmind_geoip"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip",
+            "description": "Block IP brute-forcing SIP REGISTER",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Enforce strong SIP authentication credentials",
+        "Implement SIP registration rate limiting"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if source is a legitimate SIP trunk provider",
+          "Check if registration attempts target valid extensions"
+        ],
+        "post_action_validation": [
+          "Confirm no SIP REGISTER attempts from blocked IP",
+          "Validate SIP authentication hardening"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-020",
+      "attack_name": "SQL Injection (SELECT FROM)",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "sql_injection_select_from",
+        "threshold": {
+          "count": 3,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "geo_lookup",
+          "source": "maxmind_geoip"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip_and_waf_rule",
+            "description": "Block source IP and add WAF SQL injection rule",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "waf_rule": "sqli_block"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Implement parameterized queries in all web applications",
+        "Deploy WAF with SQL injection rule sets"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Check if SQL keywords are part of legitimate search query",
+          "Verify if application uses ORM preventing actual injection"
+        ],
+        "post_action_validation": [
+          "Confirm no SQL injection attempts from blocked IP",
+          "Validate WAF SQL injection rules active"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}",
+          "Remove temporary WAF rule if confirmed false positive"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-021",
+      "attack_name": "SQL Injection (UNION SELECT)",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "sql_injection_union_select",
+        "threshold": {
+          "count": 3,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "geo_lookup",
+          "source": "maxmind_geoip"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip_and_waf_rule",
+            "description": "Block source IP and add WAF UNION rule",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "waf_rule": "union_sqli_block"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Sanitize all user inputs in web applications",
+        "Implement least-privilege database access"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Check if UNION SELECT is from legitimate application query",
+          "Verify database logs for actual data exfiltration"
+        ],
+        "post_action_validation": [
+          "Confirm no UNION-based SQLi from blocked IP",
+          "Validate database access audit logs"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}",
+          "Remove temporary WAF rule"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-022",
+      "attack_name": "Cross-Site Scripting (XSS)",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "xss_attempt_detected",
+        "threshold": {
+          "count": 5,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip_and_waf_rule",
+            "description": "Block source IP and add WAF XSS rule",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "waf_rule": "xss_block"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Implement Content Security Policy headers",
+        "Enable output encoding in all web templates"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Check if XSS payload is from security scanner",
+          "Verify if reflected content is actually rendered"
+        ],
+        "post_action_validation": [
+          "Confirm no XSS payloads from blocked IP",
+          "Validate CSP headers deployed"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}",
+          "Remove temporary WAF rule"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-023",
+      "attack_name": "Remote File Inclusion (RFI)",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "rfi_attempt_detected",
+        "threshold": {
+          "count": 2,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "geo_lookup",
+          "source": "maxmind_geoip"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip",
+            "description": "Block IP attempting remote file inclusion",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Disable remote file inclusion in PHP configuration",
+        "Implement input validation and URL whitelisting"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Check if URL parameter is from legitimate redirect",
+          "Verify if PHP allow_url_include is already disabled"
+        ],
+        "post_action_validation": [
+          "Confirm no RFI attempts from blocked IP",
+          "Validate PHP configuration hardened"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-024",
+      "attack_name": "Directory Traversal",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "directory_traversal_detected",
+        "threshold": {
+          "count": 5,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip",
+            "description": "Block IP attempting directory traversal",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Implement path canonicalization in web applications",
+        "Configure chroot or sandboxed web server environments"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Check if path traversal is from automated crawler",
+          "Verify if accessed path contains sensitive files"
+        ],
+        "post_action_validation": [
+          "Confirm no directory traversal from blocked IP",
+          "Validate web server path restrictions"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-025",
+      "attack_name": "CGI Shellshock (CVE-2014-6271)",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "shellshock_cgi_detected",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "geo_lookup",
+          "source": "maxmind_geoip"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip_and_isolate",
+            "description": "Block source IP and isolate targeted server",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "server": "{{destination_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Patch bash to non-vulnerable version on all systems",
+        "Remove or restrict CGI-BIN access"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if bash version is actually vulnerable",
+          "Check if CGI endpoint exists and is accessible"
+        ],
+        "post_action_validation": [
+          "Confirm no Shellshock payloads from blocked IP",
+          "Validate bash patches applied"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}",
+          "Restore network access for {{destination_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-026",
+      "attack_name": "CGI /bin/bash Execution",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "cgi_bash_execution_detected",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip_and_isolate",
+            "description": "Block source IP and isolate targeted server",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "server": "{{destination_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Remove CGI scripts that invoke /bin/bash directly",
+        "Implement WAF rules for command injection patterns"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if CGI endpoint legitimately uses bash",
+          "Check if command was actually executed on server"
+        ],
+        "post_action_validation": [
+          "Confirm no /bin/bash execution attempts from IP",
+          "Validate CGI scripts audited"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}",
+          "Restore network access for {{destination_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-027",
+      "attack_name": "CGI PHP Remote Code Execution",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "cgi_php_rce_detected",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip_and_isolate",
+            "description": "Block source IP and isolate targeted server",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "server": "{{destination_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Patch PHP to latest version",
+        "Disable dangerous PHP functions in php.ini"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if PHP functions used are part of legitimate app",
+          "Check server logs for actual code execution evidence"
+        ],
+        "post_action_validation": [
+          "Confirm no PHP RCE attempts from blocked IP",
+          "Validate PHP configuration hardened"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}",
+          "Restore network access for {{destination_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-028",
+      "attack_name": "Apache Struts OGNL Injection (CVE-2017-5638)",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "apache_struts_ognl_injection",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip_and_isolate",
+            "description": "Block source IP and isolate targeted server",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "server": "{{destination_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Patch Apache Struts to non-vulnerable version",
+        "Implement WAF rules for OGNL injection patterns"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if Struts version is actually vulnerable",
+          "Check if OGNL expression was executed"
+        ],
+        "post_action_validation": [
+          "Confirm no OGNL injection attempts from blocked IP",
+          "Validate Struts patches applied"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}",
+          "Restore network access for {{destination_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-029",
+      "attack_name": "Log4j RCE (CVE-2021-44228)",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "log4j_rce_attempt",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        },
+        {
+          "type": "dns_lookup",
+          "source": "internal_dns"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip_and_isolate",
+            "description": "Block source IP and isolate targeted server",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "server": "{{destination_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Patch Log4j to version 2.17.1 or later",
+        "Remove JndiLookup class from classpath as interim fix"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if JNDI string is in legitimate application data",
+          "Check if outbound LDAP connection was actually made"
+        ],
+        "post_action_validation": [
+          "Confirm no Log4j exploit attempts from blocked IP",
+          "Validate Log4j patches deployed across all systems"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}",
+          "Restore network access for {{destination_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-030",
+      "attack_name": "ProxyShell SSRF (CVE-2021-34473)",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "proxyshell_ssrf_attempt",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip_and_isolate",
+            "description": "Block source IP and isolate Exchange server",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "server": "{{destination_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Apply Microsoft Exchange security updates",
+        "Restrict Exchange autodiscover endpoints"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if Exchange server is patched against CVE-2021-34473",
+          "Check if SSRF request reached internal resources"
+        ],
+        "post_action_validation": [
+          "Confirm no ProxyShell attempts from blocked IP",
+          "Validate Exchange patches applied"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}",
+          "Restore Exchange server network access"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-031",
+      "attack_name": "Spring4Shell RCE (CVE-2022-22965)",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "spring4shell_rce_attempt",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip_and_isolate",
+            "description": "Block source IP and isolate targeted server",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "server": "{{destination_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Upgrade Spring Framework to patched version",
+        "Downgrade to Java 8 as interim mitigation"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if Spring version is actually vulnerable",
+          "Check if class loader manipulation was successful"
+        ],
+        "post_action_validation": [
+          "Confirm no Spring4Shell attempts from blocked IP",
+          "Validate Spring Framework patches applied"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}",
+          "Restore network access for {{destination_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-032",
+      "attack_name": "Reverse Shell Payload Download",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "reverse_shell_download_detected",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "geo_lookup",
+          "source": "maxmind_geoip"
+        },
+        {
+          "type": "file_hash_lookup",
+          "source": "virustotal"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip_and_isolate",
+            "description": "Block source IP and isolate compromised host",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "server": "{{destination_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Implement application whitelisting on servers",
+        "Deploy EDR with real-time payload analysis"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if downloaded file is a legitimate binary",
+          "Check if file hash matches known malware signatures"
+        ],
+        "post_action_validation": [
+          "Confirm no payload downloads from blocked IP",
+          "Validate compromised host is fully isolated"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}",
+          "Restore network access for {{destination_ip}} after forensics"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-033",
+      "attack_name": "FTP Anonymous Login Attempt",
+      "severity": "Medium",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "ftp_anonymous_login_attempt",
+        "threshold": {
+          "count": 5,
+          "time_window": "120s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip",
+            "description": "Block IP attempting anonymous FTP login",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Disable anonymous FTP access on all servers",
+        "Migrate to SFTP with key-based authentication"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if anonymous access is intentionally configured",
+          "Check if FTP server is a public file repository"
+        ],
+        "post_action_validation": [
+          "Confirm no anonymous FTP attempts from blocked IP",
+          "Validate FTP anonymous access is disabled"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-034",
+      "attack_name": "FTP Anonymous Successful Login",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "ftp_anonymous_login_success",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip_and_disable_anon",
+            "description": "Block IP and disable anonymous FTP access",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "ftp_server": "{{destination_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Remove anonymous FTP configuration immediately",
+        "Audit files accessible via anonymous login"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if anonymous access is authorized for this server",
+          "Check what files were accessed during the session"
+        ],
+        "post_action_validation": [
+          "Confirm anonymous FTP access is disabled",
+          "Validate no data exfiltration occurred"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}",
+          "Re-enable anonymous access only if explicitly required"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-035",
+      "attack_name": "FTP Anonymous Data Transfer",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "ftp_anonymous_data_transfer",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        },
+        {
+          "type": "file_hash_lookup",
+          "source": "virustotal"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip_and_isolate",
+            "description": "Block IP and isolate FTP server for forensics",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "server": "{{destination_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Implement FTP data loss prevention policies",
+        "Deploy file integrity monitoring on FTP directories"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if data transfer is from authorized backup process",
+          "Check transferred file types and sizes for anomalies"
+        ],
+        "post_action_validation": [
+          "Confirm data transfer stopped from blocked IP",
+          "Validate file integrity on FTP server"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}",
+          "Restore FTP server after forensic review"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-036",
+      "attack_name": "FTP Brute Force After Anonymous",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "ftp_bruteforce_after_anonymous",
+        "threshold": {
+          "count": 10,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "user_lookup",
+          "source": "active_directory"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip",
+            "description": "Block IP brute-forcing FTP after anonymous access",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Implement FTP login rate limiting",
+        "Deploy fail2ban for FTP services"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if brute force targets service accounts",
+          "Check if anonymous login was a reconnaissance step"
+        ],
+        "post_action_validation": [
+          "Confirm no FTP login attempts from blocked IP",
+          "Validate FTP rate limiting active"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-037",
+      "attack_name": "IoT MQTT Unauthenticated Access",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "iot_mqtt_unauth_access",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "iot_inventory"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "isolate_iot_device",
+            "description": "Isolate IoT MQTT broker from network",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{destination_ip}}",
+              "vlan": "{{iot_vlan}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Enable MQTT authentication and TLS encryption",
+        "Segment IoT devices into isolated VLANs"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if MQTT broker intentionally allows anonymous access",
+          "Check if source is a legitimate IoT gateway"
+        ],
+        "post_action_validation": [
+          "Confirm MQTT broker no longer accepts unauthenticated connections",
+          "Validate VLAN segmentation enforced"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Restore MQTT broker network access",
+          "Re-enable original VLAN configuration"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-038",
+      "attack_name": "MQTT Wildcard Topic Subscribe",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "mqtt_wildcard_subscribe",
+        "threshold": {
+          "count": 3,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "iot_inventory"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip_and_revoke_mqtt",
+            "description": "Block IP and revoke MQTT client credentials",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "mqtt_client": "{{client_id}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Implement MQTT topic ACLs to restrict wildcard subscriptions",
+        "Enable per-client topic authorization"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if wildcard subscribe is from authorized monitoring tool",
+          "Check if MQTT ACLs already restrict topic access"
+        ],
+        "post_action_validation": [
+          "Confirm wildcard subscriptions revoked",
+          "Validate MQTT ACLs enforce topic restrictions"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}",
+          "Restore MQTT client credentials if legitimate"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-039",
+      "attack_name": "MQTT Malicious Publish to Actuator",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "mqtt_malicious_publish_actuator",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "iot_inventory"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "isolate_iot_device_and_block",
+            "description": "Isolate IoT actuator and block source IP",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "device": "{{destination_ip}}",
+              "topic": "{{mqtt_topic}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Implement MQTT publish ACLs for actuator topics",
+        "Deploy IoT device authentication and message signing"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if publish command is from authorized control system",
+          "Check actuator state for unauthorized changes"
+        ],
+        "post_action_validation": [
+          "Confirm no unauthorized publishes to actuator topics",
+          "Validate actuator is in safe state"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}",
+          "Restore IoT device network access",
+          "Revert actuator to safe state"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-040",
+      "attack_name": "Cobalt Strike Beacon",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "cobalt_strike_beacon_detected",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "geo_lookup",
+          "source": "maxmind_geoip"
+        },
+        {
+          "type": "dns_lookup",
+          "source": "internal_dns"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "isolate_host_and_block",
+            "description": "Isolate compromised host and block C2 IP",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "compromised_host": "{{destination_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Deploy EDR with Cobalt Strike detection capabilities",
+        "Implement SSL/TLS inspection at network perimeter"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if traffic matches legitimate HTTPS patterns",
+          "Check if destination IP is on known C2 infrastructure lists"
+        ],
+        "post_action_validation": [
+          "Confirm beaconing traffic stopped from isolated host",
+          "Validate C2 IP is blocked at all egress points"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Restore network access for {{destination_ip}} after forensics",
+          "Remove block rule for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-041",
+      "attack_name": "Metasploit Payload Detected",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "metasploit_payload_detected",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "file_hash_lookup",
+          "source": "virustotal"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "isolate_host_and_block",
+            "description": "Isolate compromised host and block attacker IP",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "compromised_host": "{{destination_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Deploy application whitelisting on endpoints",
+        "Implement network segmentation to limit payload reach"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if payload is from authorized penetration test",
+          "Check if endpoint AV quarantined the payload"
+        ],
+        "post_action_validation": [
+          "Confirm no Metasploit traffic from isolated host",
+          "Validate payload removed from compromised system"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Restore network access for {{destination_ip}}",
+          "Remove block rule for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-042",
+      "attack_name": "Emotet C2 Communication",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "emotet_c2_communication",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "dns_lookup",
+          "source": "internal_dns"
+        },
+        {
+          "type": "file_hash_lookup",
+          "source": "virustotal"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "isolate_host_and_block",
+            "description": "Isolate infected host and block Emotet C2",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{c2_ip}}",
+              "compromised_host": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Implement email filtering to block Emotet delivery vectors",
+        "Deploy EDR with behavioral malware detection"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if HTTP pattern matches Emotet C2 profile",
+          "Check if host has known Emotet IOCs on disk"
+        ],
+        "post_action_validation": [
+          "Confirm Emotet C2 callbacks stopped",
+          "Validate host is reimaged or cleaned"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Restore network access for {{source_ip}} after remediation",
+          "Remove C2 block for {{c2_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-043",
+      "attack_name": "APT RAT Checkin",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "apt_rat_checkin_detected",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "geo_lookup",
+          "source": "maxmind_geoip"
+        },
+        {
+          "type": "dns_lookup",
+          "source": "internal_dns"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "isolate_host_and_block",
+            "description": "Isolate infected host and block RAT C2 server",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{c2_ip}}",
+              "compromised_host": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Implement zero-trust network architecture",
+        "Deploy network traffic analysis for APT detection"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if communication matches known RAT protocols",
+          "Check if destination is a known APT infrastructure IP"
+        ],
+        "post_action_validation": [
+          "Confirm RAT checkin callbacks stopped",
+          "Validate forensic investigation initiated"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Restore network access after full forensic investigation",
+          "Remove C2 block after threat neutralization"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-044",
+      "attack_name": "Periodic C2 Beacon Callback",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "periodic_c2_beacon_callback",
+        "threshold": {
+          "count": 1,
+          "time_window": "300s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "dns_lookup",
+          "source": "internal_dns"
+        },
+        {
+          "type": "traffic_analysis",
+          "source": "netflow"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "isolate_host_and_block",
+            "description": "Isolate beaconing host and block C2 destination",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{c2_ip}}",
+              "compromised_host": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Deploy JA3/JA3S fingerprinting for C2 detection",
+        "Implement DNS sinkholing for known C2 domains"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if periodic traffic is from legitimate heartbeat service",
+          "Check beacon interval against known C2 profiles"
+        ],
+        "post_action_validation": [
+          "Confirm periodic callbacks stopped from host",
+          "Validate C2 infrastructure fully blocked"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Restore network access after host remediation",
+          "Remove C2 blocks after threat assessment"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-045",
+      "attack_name": "Sliver Implant Beacon",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "sliver_implant_beacon",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "geo_lookup",
+          "source": "maxmind_geoip"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "isolate_host_and_block",
+            "description": "Isolate host with Sliver implant and block C2",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{c2_ip}}",
+              "compromised_host": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Deploy behavioral detection for Sliver implant patterns",
+        "Implement mTLS inspection at perimeter"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if traffic pattern matches Sliver C2 profile",
+          "Check if tool is from authorized red team engagement"
+        ],
+        "post_action_validation": [
+          "Confirm Sliver beacon traffic stopped",
+          "Validate implant removed from host"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Restore network access for {{source_ip}}",
+          "Remove C2 block for {{c2_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-046",
+      "attack_name": "Meterpreter Reverse HTTPS Beacon",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "meterpreter_reverse_https_beacon",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "geo_lookup",
+          "source": "maxmind_geoip"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "isolate_host_and_block",
+            "description": "Isolate host and block Meterpreter C2",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{c2_ip}}",
+              "compromised_host": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Implement SSL/TLS inspection for outbound HTTPS",
+        "Deploy endpoint detection for Meterpreter artifacts"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if HTTPS traffic is from legitimate application",
+          "Check if reverse shell is from authorized pen test"
+        ],
+        "post_action_validation": [
+          "Confirm Meterpreter reverse HTTPS stopped",
+          "Validate host cleaned of Meterpreter artifacts"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Restore network access for {{source_ip}}",
+          "Remove C2 block for {{c2_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-047",
+      "attack_name": "DNS-Based C2 Beacon",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "dns_c2_beacon_detected",
+        "threshold": {
+          "count": 1,
+          "time_window": "120s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "dns_lookup",
+          "source": "internal_dns"
+        },
+        {
+          "type": "traffic_analysis",
+          "source": "dns_logs"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "isolate_host_and_block_dns",
+            "description": "Isolate host and block DNS C2 domain",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{c2_domain}}",
+              "compromised_host": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Implement DNS query inspection and filtering",
+        "Deploy DNS sinkholing for suspicious domains"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if DNS queries are for legitimate services",
+          "Check query entropy to confirm tunneling"
+        ],
+        "post_action_validation": [
+          "Confirm DNS-based C2 queries stopped",
+          "Validate DNS sinkhole is active for C2 domain"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Restore network access for {{source_ip}}",
+          "Remove DNS sinkhole for {{c2_domain}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-048",
+      "attack_name": "Compromised IoT Device C2",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "compromised_iot_c2_outbound",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "iot_inventory"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "isolate_iot_device",
+            "description": "Isolate compromised IoT device from network",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "vlan": "{{iot_vlan}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Implement IoT network segmentation with strict egress filtering",
+        "Deploy IoT firmware integrity monitoring"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if outbound connection is to legitimate IoT cloud service",
+          "Check if IoT device firmware is up to date"
+        ],
+        "post_action_validation": [
+          "Confirm no outbound C2 traffic from isolated IoT device",
+          "Validate IoT device re-imaged or patched"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Restore IoT device to production VLAN",
+          "Remove isolation rules"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-049",
+      "attack_name": "Quarantined Host C2 Callback",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "quarantined_host_c2_callback",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "enforce_full_isolation",
+            "description": "Enforce full network isolation on quarantined host",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Implement out-of-band quarantine verification",
+        "Deploy host-based firewall enforcing quarantine"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if C2 callback is residual from pre-quarantine infection",
+          "Check if quarantine rules are properly enforced"
+        ],
+        "post_action_validation": [
+          "Confirm all outbound traffic blocked from quarantined host",
+          "Validate quarantine enforcement at switch level"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Relax isolation after host is fully remediated"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-050",
+      "attack_name": "Quarantined Host Outbound HTTPS",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "quarantined_host_outbound_https",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "enforce_full_isolation",
+            "description": "Block all outbound HTTPS from quarantined host",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Configure quarantine VLAN to block all egress traffic",
+        "Implement NAC enforcement for quarantine compliance"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if HTTPS connection is to update server",
+          "Check if quarantine allows specific safe destinations"
+        ],
+        "post_action_validation": [
+          "Confirm no HTTPS egress from quarantined host",
+          "Validate VLAN ACLs block all outbound"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Restore selective HTTPS access after remediation"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-051",
+      "attack_name": "EternalBlue SMB Exploit (MS17-010)",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "eternalblue_smb_exploit",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "isolate_host_and_block",
+            "description": "Isolate targeted host and block attacker IP",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "compromised_host": "{{destination_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Apply MS17-010 patches on all Windows systems",
+        "Disable SMBv1 across the network"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if target system is patched against MS17-010",
+          "Check if SMB traffic is between authorized file shares"
+        ],
+        "post_action_validation": [
+          "Confirm no EternalBlue exploit attempts from blocked IP",
+          "Validate SMBv1 disabled across all hosts"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Restore network access for {{destination_ip}}",
+          "Remove block rule for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-052",
+      "attack_name": "Internal RPC Multi-Target Communication",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "internal_rpc_multi_target",
+        "threshold": {
+          "count": 10,
+          "time_window": "120s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        },
+        {
+          "type": "user_lookup",
+          "source": "active_directory"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "isolate_host",
+            "description": "Isolate host communicating with multiple targets via RPC",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Implement micro-segmentation for RPC traffic",
+        "Restrict RPC access to authorized domain controllers"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if source is a domain controller or admin workstation",
+          "Check if RPC activity correlates with legitimate admin tasks"
+        ],
+        "post_action_validation": [
+          "Confirm RPC multi-target communication stopped",
+          "Validate host is not compromised"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Restore network access for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-053",
+      "attack_name": "Suspicious Multi-Server RDP",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "suspicious_multi_server_rdp",
+        "threshold": {
+          "count": 5,
+          "time_window": "300s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        },
+        {
+          "type": "user_lookup",
+          "source": "active_directory"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "isolate_host",
+            "description": "Isolate host making suspicious multi-server RDP connections",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Implement RDP gateway for all remote connections",
+        "Restrict RDP access via network-level authentication"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if source is an authorized admin workstation",
+          "Check if RDP sessions are part of scheduled maintenance"
+        ],
+        "post_action_validation": [
+          "Confirm multi-server RDP connections stopped",
+          "Validate RDP access policies enforced"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Restore network access for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-054",
+      "attack_name": "Mimikatz Pass-the-Hash",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "mimikatz_pth_detected",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        },
+        {
+          "type": "user_lookup",
+          "source": "active_directory"
+        },
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "isolate_host_and_reset_creds",
+            "description": "Isolate host and reset compromised credentials",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "account": "{{target_username}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Enable Credential Guard on all Windows systems",
+        "Implement LAPS for local admin password management"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if SMB login is from legitimate admin tool",
+          "Check if credential hash matches known service accounts"
+        ],
+        "post_action_validation": [
+          "Confirm Pass-the-Hash activity stopped",
+          "Validate credential reset completed"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Restore network access for {{source_ip}}",
+          "Issue new credentials for {{target_username}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-055",
+      "attack_name": "PsExec Remote Execution via SMB",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "psexec_remote_execution",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        },
+        {
+          "type": "user_lookup",
+          "source": "active_directory"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "isolate_host",
+            "description": "Isolate host executing PsExec remotely",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Restrict SMB named pipe access via Group Policy",
+        "Implement application control to block PsExec"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if PsExec is used by authorized IT admin",
+          "Check if execution targets are managed endpoints"
+        ],
+        "post_action_validation": [
+          "Confirm PsExec remote execution stopped",
+          "Validate SMB pipe restrictions applied"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Restore network access for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-056",
+      "attack_name": "DMZ-to-Internal SSH Connection",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "dmz_to_internal_ssh",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        },
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_connection_and_alert",
+            "description": "Block DMZ-to-internal SSH and alert SOC",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "internal_host": "{{destination_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Implement strict DMZ-to-internal firewall rules",
+        "Deploy jump boxes for authorized DMZ-to-internal access"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if DMZ host needs SSH access to internal network",
+          "Check if connection is from authorized bastion host"
+        ],
+        "post_action_validation": [
+          "Confirm DMZ-to-internal SSH connections blocked",
+          "Validate firewall rules prevent DMZ-internal SSH"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Re-allow SSH connection if authorized use case confirmed"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-057",
+      "attack_name": "DMZ-to-Internal SMB Access",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "dmz_to_internal_smb",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        },
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_connection_and_alert",
+            "description": "Block DMZ-to-internal SMB and alert SOC",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "internal_host": "{{destination_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Block all SMB traffic from DMZ to internal network",
+        "Implement application-layer gateway for file transfers"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if DMZ server needs file share access",
+          "Check if SMB connection targets authorized shared drive"
+        ],
+        "post_action_validation": [
+          "Confirm DMZ-to-internal SMB connections blocked",
+          "Validate no data exfiltration via SMB"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Re-allow SMB connection if authorized"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-058",
+      "attack_name": "DMZ-to-Internal Database Connection",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "dmz_to_internal_database",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        },
+        {
+          "type": "user_lookup",
+          "source": "active_directory"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_connection_and_isolate",
+            "description": "Block DMZ database connection and isolate DMZ host",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "database": "{{destination_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Implement database access only through API layer",
+        "Deploy database activity monitoring for direct connections"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if DMZ host has legitimate database access need",
+          "Check if connection uses authorized database credentials"
+        ],
+        "post_action_validation": [
+          "Confirm no direct DMZ-to-database connections",
+          "Validate database access audit trail"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Restore DMZ host network access",
+          "Re-enable database connection if authorized"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-059",
+      "attack_name": "DMZ Anomalous Internal Traffic",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "dmz_anomalous_internal_traffic",
+        "threshold": {
+          "count": 3,
+          "time_window": "120s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        },
+        {
+          "type": "traffic_analysis",
+          "source": "netflow"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_connection_and_alert",
+            "description": "Block anomalous DMZ-to-internal traffic",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "internal_host": "{{destination_ip}}",
+              "port": "{{destination_port}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Implement default-deny policy between DMZ and internal",
+        "Monitor all non-standard port usage from DMZ"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if non-standard port is used by legitimate application",
+          "Check if traffic pattern is from scheduled data sync"
+        ],
+        "post_action_validation": [
+          "Confirm anomalous traffic stopped",
+          "Validate default-deny policy enforced"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Re-allow traffic on port if legitimate use confirmed"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-060",
+      "attack_name": "SSH Tunnel Pivot Between Subnets",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "ssh_tunnel_pivot_subnets",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        },
+        {
+          "type": "traffic_analysis",
+          "source": "netflow"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "isolate_host",
+            "description": "Isolate host establishing SSH tunnels across subnets",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Implement inter-VLAN SSH restrictions",
+        "Deploy network detection for SSH tunnel patterns"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if SSH tunnel is from authorized admin",
+          "Check if tunnel forward matches legitimate use case"
+        ],
+        "post_action_validation": [
+          "Confirm SSH tunnel connections stopped",
+          "Validate inter-subnet SSH restrictions enforced"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Restore network access for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-061",
+      "attack_name": "SOCKS Proxy Pivot",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "socks_proxy_pivot_detected",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "traffic_analysis",
+          "source": "netflow"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "isolate_host_and_block",
+            "description": "Isolate host running SOCKS proxy pivot",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Block SOCKS proxy ports at network perimeter",
+        "Implement deep packet inspection for proxy protocols"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if SOCKS proxy is authorized corporate tool",
+          "Check if proxy traffic matches legitimate VPN patterns"
+        ],
+        "post_action_validation": [
+          "Confirm SOCKS proxy traffic stopped",
+          "Validate proxy detection rules active"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Restore network access for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-062",
+      "attack_name": "Chisel Reverse Tunnel",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "chisel_reverse_tunnel_detected",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "traffic_analysis",
+          "source": "netflow"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "isolate_host_and_block",
+            "description": "Isolate host and block Chisel tunnel destination",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "tunnel_endpoint": "{{destination_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Block Chisel traffic signatures at IDS/IPS",
+        "Implement application whitelisting to prevent Chisel execution"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if Chisel is used by authorized red team",
+          "Check if tunnel traffic is from security assessment"
+        ],
+        "post_action_validation": [
+          "Confirm Chisel tunnel traffic stopped",
+          "Validate IDS rules for Chisel active"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Restore network access for {{source_ip}}",
+          "Remove block for {{destination_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-063",
+      "attack_name": "Ligolo Proxy Pivot Agent",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "ligolo_proxy_pivot_detected",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "traffic_analysis",
+          "source": "netflow"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "isolate_host_and_block",
+            "description": "Isolate host and block Ligolo proxy communication",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Block Ligolo traffic patterns at perimeter",
+        "Deploy endpoint detection for Ligolo agent binaries"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if Ligolo is used in authorized penetration test",
+          "Check if proxy agent is known security tool"
+        ],
+        "post_action_validation": [
+          "Confirm Ligolo proxy communication stopped",
+          "Validate endpoint detection rules updated"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Restore network access for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-064",
+      "attack_name": "Quarantined Host Lateral SMB",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "quarantined_host_lateral_smb",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "enforce_full_isolation",
+            "description": "Enforce complete isolation on quarantined host",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Implement hardware-level network isolation for quarantine",
+        "Deploy NAC enforcement to prevent quarantine bypass"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if SMB connection is residual from pre-quarantine state",
+          "Check if quarantine VLAN ACLs are properly configured"
+        ],
+        "post_action_validation": [
+          "Confirm all lateral SMB connections blocked",
+          "Validate full network isolation enforced"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Relax isolation after host remediation confirmed"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-065",
+      "attack_name": "TCP SYN Flood",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "tcp_syn_flood_detected",
+        "threshold": {
+          "count": 1000,
+          "time_window": "10s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "geo_lookup",
+          "source": "maxmind_geoip"
+        },
+        {
+          "type": "traffic_analysis",
+          "source": "netflow"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "rate_limit_and_block",
+            "description": "Rate-limit and block SYN flood source IP",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Deploy DDoS mitigation appliance or service",
+        "Enable SYN cookies on all public-facing servers"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if high SYN rate is from legitimate traffic spike",
+          "Check if source IP is a known CDN or load balancer"
+        ],
+        "post_action_validation": [
+          "Confirm SYN flood traffic reduced to normal levels",
+          "Validate DDoS mitigation active"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove rate limit for {{source_ip}}",
+          "Remove block rule for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-066",
+      "attack_name": "UDP Flood",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "udp_flood_detected",
+        "threshold": {
+          "count": 1000,
+          "time_window": "10s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "geo_lookup",
+          "source": "maxmind_geoip"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "rate_limit_and_block",
+            "description": "Rate-limit and block UDP flood source",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Implement UDP rate limiting at network perimeter",
+        "Deploy scrubbing service for volumetric UDP attacks"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if UDP traffic is from legitimate DNS or NTP service",
+          "Check if traffic volume matches known amplification patterns"
+        ],
+        "post_action_validation": [
+          "Confirm UDP flood traffic subsided",
+          "Validate rate limiting rules active"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove rate limit for {{source_ip}}",
+          "Remove block rule"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-067",
+      "attack_name": "HTTP DDoS Flood",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "http_ddos_flood_detected",
+        "threshold": {
+          "count": 500,
+          "time_window": "10s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "geo_lookup",
+          "source": "maxmind_geoip"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "rate_limit_and_waf_block",
+            "description": "Rate-limit HTTP requests and add WAF block",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "waf_rule": "http_flood_block"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Deploy CDN with DDoS protection capabilities",
+        "Implement HTTP request rate limiting per IP"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if high request rate is from legitimate crawler or bot",
+          "Check if requests target specific resource or are distributed"
+        ],
+        "post_action_validation": [
+          "Confirm HTTP request rate returned to normal",
+          "Validate WAF rate limiting rules active"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove rate limit for {{source_ip}}",
+          "Remove WAF block rule"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-068",
+      "attack_name": "DHCP Starvation Attack",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "dhcp_starvation_detected",
+        "threshold": {
+          "count": 50,
+          "time_window": "30s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        },
+        {
+          "type": "traffic_analysis",
+          "source": "netflow"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_mac",
+            "description": "Block MAC address performing DHCP starvation",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_mac}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Enable DHCP snooping on all switches",
+        "Implement port security to limit MACs per port"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if excessive DHCP requests are from legitimate DHCP relay",
+          "Check if MAC address belongs to authorized device"
+        ],
+        "post_action_validation": [
+          "Confirm DHCP starvation stopped",
+          "Validate DHCP pool has available leases"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove MAC block for {{source_mac}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-069",
+      "attack_name": "DHCP IP Pool Exhaustion",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "dhcp_pool_exhaustion",
+        "threshold": {
+          "count": 100,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        },
+        {
+          "type": "traffic_analysis",
+          "source": "netflow"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_mac_and_flush",
+            "description": "Block source MAC and flush rogue DHCP leases",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_mac}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Resize DHCP pools and reduce lease times",
+        "Enable DHCP snooping with rate limiting"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if pool exhaustion is from legitimate device provisioning",
+          "Check if DHCP leases are held by known devices"
+        ],
+        "post_action_validation": [
+          "Confirm DHCP pool recovery in progress",
+          "Validate all rogue leases released"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove MAC block for {{source_mac}}",
+          "Restore DHCP lease time"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-070",
+      "attack_name": "Rogue DHCP Server",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "rogue_dhcp_server_detected",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        },
+        {
+          "type": "traffic_analysis",
+          "source": "netflow"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "isolate_rogue_dhcp",
+            "description": "Isolate rogue DHCP server port",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "switch_port": "{{switch_port}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Enable DHCP snooping to allow only authorized DHCP servers",
+        "Implement 802.1X for network access control"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if DHCP server is an authorized secondary server",
+          "Check if gateway offered by server is legitimate"
+        ],
+        "post_action_validation": [
+          "Confirm rogue DHCP offers stopped",
+          "Validate only authorized DHCP server is responding"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Re-enable switch port after rogue server removed"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-071",
+      "attack_name": "DHCP DISCOVER Flood (Randomized MAC)",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "dhcp_discover_flood_random_mac",
+        "threshold": {
+          "count": 100,
+          "time_window": "30s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "traffic_analysis",
+          "source": "netflow"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_switch_port",
+            "description": "Block switch port with DHCP flood traffic",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{switch_port}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Enable port security with MAC limiting",
+        "Implement DHCP snooping rate limiting"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if randomized MACs are from legitimate containerized environment",
+          "Check if flood originates from single physical port"
+        ],
+        "post_action_validation": [
+          "Confirm DHCP DISCOVER flood stopped",
+          "Validate port security limits enforced"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Re-enable switch port after source identified"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-072",
+      "attack_name": "MAC Address Table Overflow",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "mac_table_overflow_detected",
+        "threshold": {
+          "count": 500,
+          "time_window": "30s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "traffic_analysis",
+          "source": "netflow"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_switch_port",
+            "description": "Block switch port causing MAC table overflow",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{switch_port}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Enable port security to limit MAC addresses per port",
+        "Implement dynamic ARP inspection"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if excessive MACs are from virtualized environment",
+          "Check if switch port connects to legitimate hypervisor"
+        ],
+        "post_action_validation": [
+          "Confirm MAC table size returned to normal",
+          "Validate port security enforced"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Re-enable switch port after investigation"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-073",
+      "attack_name": "MAC Flooding (CAM Table Exhaustion)",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "mac_flooding_cam_exhaustion",
+        "threshold": {
+          "count": 500,
+          "time_window": "30s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "traffic_analysis",
+          "source": "netflow"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_switch_port",
+            "description": "Block switch port with MAC flooding attack",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{switch_port}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Enable port security with violation shutdown",
+        "Configure storm control on all access ports"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if MAC flood is from misconfigured network device",
+          "Check if switch has entered hub mode"
+        ],
+        "post_action_validation": [
+          "Confirm MAC flooding stopped and CAM table recovered",
+          "Validate switch operating normally"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Re-enable switch port after source remediated"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-074",
+      "attack_name": "Macof-Style MAC Flooding Tool",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "macof_tool_detected",
+        "threshold": {
+          "count": 500,
+          "time_window": "10s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "traffic_analysis",
+          "source": "netflow"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_switch_port",
+            "description": "Shutdown switch port running macof tool",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{switch_port}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Enable port security with err-disable on violation",
+        "Deploy network access control (802.1X)"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if traffic pattern matches macof tool signature",
+          "Check if switch port connects to authorized device"
+        ],
+        "post_action_validation": [
+          "Confirm macof traffic stopped",
+          "Validate switch CAM table recovered"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Re-enable switch port after device secured"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-075",
+      "attack_name": "Switch Hub Mode After MAC Flood",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "switch_hub_mode_after_flood",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "traffic_analysis",
+          "source": "netflow"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "restart_switch_and_isolate",
+            "description": "Clear switch MAC table and isolate flooding source",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{switch_ip}}",
+              "source_port": "{{switch_port}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Enable storm control and port security on all switches",
+        "Implement private VLANs to limit broadcast domains"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if switch entered hub mode due to MAC flood",
+          "Check if hub mode is affecting network confidentiality"
+        ],
+        "post_action_validation": [
+          "Confirm switch operating in normal forwarding mode",
+          "Validate port security preventing future floods"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Re-enable all ports after MAC table recovery"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-076",
+      "attack_name": "ARP Spoofing (Duplicate IP)",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "arp_spoofing_duplicate_ip",
+        "threshold": {
+          "count": 3,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "traffic_analysis",
+          "source": "netflow"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_spoofing_mac",
+            "description": "Block MAC address performing ARP spoofing",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_mac}}",
+              "victim_ip": "{{spoofed_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Enable Dynamic ARP Inspection on all VLANs",
+        "Implement static ARP entries for critical servers"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if duplicate IP is from legitimate failover configuration",
+          "Check if both MACs are assigned to authorized devices"
+        ],
+        "post_action_validation": [
+          "Confirm ARP spoofing stopped",
+          "Validate correct MAC-to-IP mappings restored"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block for {{source_mac}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-077",
+      "attack_name": "ARP Cache Poisoning (Gateway Override)",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "arp_cache_poisoning_gateway",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "traffic_analysis",
+          "source": "netflow"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_spoofing_mac_and_alert",
+            "description": "Block attacker MAC and send critical alert",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_mac}}",
+              "gateway_ip": "{{gateway_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Implement static ARP entries for default gateway",
+        "Enable DHCP snooping and DAI on all switches"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if gateway MAC change is from legitimate failover",
+          "Check if ARP reply is from authorized router"
+        ],
+        "post_action_validation": [
+          "Confirm gateway ARP entries are correct",
+          "Validate DAI is blocking poisoned ARP replies"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove MAC block for {{source_mac}}",
+          "Restore ARP cache on affected hosts"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-078",
+      "attack_name": "Gratuitous ARP Flood (Ettercap/Bettercap)",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "gratuitous_arp_flood_detected",
+        "threshold": {
+          "count": 50,
+          "time_window": "30s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "traffic_analysis",
+          "source": "netflow"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_switch_port",
+            "description": "Block source port generating gratuitous ARP flood",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{switch_port}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Enable ARP rate limiting on all switch ports",
+        "Deploy Ettercap/Bettercap detection signatures at IDS"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if gratuitous ARP is from VRRP or HSRP failover",
+          "Check if ARP flood correlates with network reconfiguration"
+        ],
+        "post_action_validation": [
+          "Confirm gratuitous ARP flood stopped",
+          "Validate ARP inspection working correctly"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Re-enable switch port after source identified"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-079",
+      "attack_name": "MitM After ARP Spoof",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "mitm_after_arp_spoof",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "traffic_analysis",
+          "source": "netflow"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "isolate_attacker_and_restore",
+            "description": "Isolate MitM attacker and restore ARP tables",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Enforce HTTPS/TLS for all internal communications",
+        "Deploy certificate pinning for critical applications"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if traffic interception is from authorized security tool",
+          "Check if HTTP inspection is from corporate proxy"
+        ],
+        "post_action_validation": [
+          "Confirm MitM interception stopped",
+          "Validate ARP tables correct on all hosts"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Restore network access for {{source_ip}}",
+          "Flush ARP caches on affected subnet"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-080",
+      "attack_name": "SIP BYE Teardown (VoIP Hijack)",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "sip_bye_teardown_attack",
+        "threshold": {
+          "count": 5,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_source_ip",
+            "description": "Block IP performing SIP BYE teardown attacks",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Implement SIP message authentication (digest auth)",
+        "Deploy SBC with call security features"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if BYE messages are from legitimate call endpoint",
+          "Check if VoIP sessions are being unexpectedly terminated"
+        ],
+        "post_action_validation": [
+          "Confirm no unauthorized SIP BYE messages from IP",
+          "Validate SIP authentication enforced"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove block rule for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-081",
+      "attack_name": "SIP INVITE Flood (VoIP DoS)",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "sip_invite_flood_dos",
+        "threshold": {
+          "count": 200,
+          "time_window": "10s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "traffic_analysis",
+          "source": "netflow"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "rate_limit_and_block",
+            "description": "Rate-limit SIP INVITE and block flooding source",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Deploy SBC with SIP flood protection",
+        "Implement SIP INVITE rate limiting per source"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if INVITE flood is from legitimate auto-dialer",
+          "Check if VoIP service is impacted"
+        ],
+        "post_action_validation": [
+          "Confirm SIP INVITE rate returned to normal",
+          "Validate VoIP service availability restored"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove rate limit for {{source_ip}}",
+          "Remove block rule"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-082",
+      "attack_name": "DNS Tunnel Activity",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "dns_tunnel_activity_detected",
+        "threshold": {
+          "count": 20,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "dns_lookup",
+          "source": "internal_dns"
+        },
+        {
+          "type": "traffic_analysis",
+          "source": "dns_logs"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_dns_domain_and_isolate",
+            "description": "Block tunneling domain and isolate source host",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{tunnel_domain}}",
+              "compromised_host": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Deploy DNS inspection and filtering appliance",
+        "Implement DNS query length and entropy monitoring"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if long DNS queries are from legitimate DKIM or SPF lookups",
+          "Check query entropy against tunneling thresholds"
+        ],
+        "post_action_validation": [
+          "Confirm DNS tunnel traffic stopped",
+          "Validate DNS filtering blocking tunnel domain"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove DNS block for {{tunnel_domain}}",
+          "Restore network access for {{source_ip}}"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-083",
+      "attack_name": "DNS Tunneling (High Frequency)",
+      "severity": "Critical",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "dns_tunneling_high_frequency",
+        "threshold": {
+          "count": 50,
+          "time_window": "30s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "traffic_analysis",
+          "source": "dns_logs"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_dns_domain_and_isolate",
+            "description": "Block high-frequency DNS tunneling domain",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{tunnel_domain}}",
+              "compromised_host": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Deploy passive DNS monitoring for anomaly detection",
+        "Implement per-client DNS query rate limiting"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if high-frequency queries are from legitimate SaaS application",
+          "Check if DNS query volume matches normal patterns"
+        ],
+        "post_action_validation": [
+          "Confirm DNS query frequency returned to baseline",
+          "Validate data exfiltration stopped"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove DNS block for {{tunnel_domain}}",
+          "Restore host network access"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-084",
+      "attack_name": "DNS Query for .onion Domain",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "dns_query_onion_domain",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_dns_query_and_alert",
+            "description": "Block .onion DNS queries and alert SOC",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}",
+              "domain": "{{queried_domain}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Block all .onion domain resolution at DNS resolver",
+        "Implement DNS sinkholing for Tor-related domains"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if .onion query is from security research activity",
+          "Check if source host has authorized Tor access"
+        ],
+        "post_action_validation": [
+          "Confirm no .onion DNS queries from source",
+          "Validate DNS filtering active for .onion domains"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove DNS block for .onion queries if authorized"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-085",
+      "attack_name": "DNS Query for DGA Domain",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "dns_query_dga_domain",
+        "threshold": {
+          "count": 5,
+          "time_window": "120s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "ip_reputation",
+          "source": "threat_intel_feed"
+        },
+        {
+          "type": "dns_lookup",
+          "source": "internal_dns"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_dns_domain_and_isolate",
+            "description": "Block DGA domain and isolate querying host",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{dga_domain}}",
+              "compromised_host": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Deploy ML-based DGA detection at DNS resolver",
+        "Implement DNS RPZ for known DGA domains"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify domain against DGA detection algorithms",
+          "Check if domain resolves to known malicious infrastructure"
+        ],
+        "post_action_validation": [
+          "Confirm DGA domain queries stopped",
+          "Validate host is cleaned of malware generating DGA queries"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Remove DNS block for {{dga_domain}}",
+          "Restore host network access after remediation"
+        ]
+      }
+    },
+    {
+      "attack_id": "ATK-086",
+      "attack_name": "Quarantined Host DNS Query",
+      "severity": "High",
+      "trigger_conditions": {
+        "log_source": "ELK",
+        "detection_rule": "quarantined_host_external_dns",
+        "threshold": {
+          "count": 1,
+          "time_window": "60s"
+        }
+      },
+      "enrichment_steps": [
+        {
+          "type": "asset_lookup",
+          "source": "cmdb"
+        }
+      ],
+      "playbook": {
+        "automation_level": "auto",
+        "steps": [
+          {
+            "phase": "immediate_containment",
+            "action_type": "block_dns_egress",
+            "description": "Block all external DNS from quarantined host",
+            "script": {
+              "name": "PLACEHOLDER_SCRIPT_NAME",
+              "path": "PLACEHOLDER_SCRIPT_PATH",
+              "execution": "python3",
+              "timeout": 10
+            },
+            "parameters": {
+              "target": "{{source_ip}}"
+            },
+            "execution_target": {
+              "type": "local"
+            },
+            "on_success": [
+              "log:action_success"
+            ],
+            "on_failure": [
+              "retry:2",
+              "alert:soc_team"
+            ]
+          }
+        ]
+      },
+      "remediation": [
+        "Configure quarantine VLAN to redirect DNS to sinkhole",
+        "Implement DNS egress filtering for quarantine network"
+      ],
+      "verification_logic": {
+        "false_positive_checks": [
+          "Verify if DNS query is to internal resolver for remediation",
+          "Check if quarantine policy allows specific DNS destinations"
+        ],
+        "post_action_validation": [
+          "Confirm all external DNS blocked from quarantined host",
+          "Validate DNS sinkhole active for quarantine VLAN"
+        ]
+      },
+      "rollback": {
+        "enabled": true,
+        "steps": [
+          "Restore DNS access after host remediation"
+        ]
+      }
+    }
+  ]
+}
