@@ -1,0 +1,582 @@
+{
+    "metadata": {
+        "description": "Catalog of all attack types and classes covered in the SOAR project",
+        "total_attack_types": 22,
+        "total_attack_classes": 6,
+        "generated_from": "all_attacks_combined.json"
+    },
+    "attack_classes": [
+        {
+            "class_id": "CLS-001",
+            "class_name": "Reconnaissance & Scanning",
+            "sim_scenario": "port_scan",
+            "mitre_tactic": "Discovery (TA0007)",
+            "attack_types": [
+                {
+                    "attack_id": "ATK-001",
+                    "attack_name": "Nmap SYN Stealth Scan",
+                    "signature": "ET SCAN NMAP -sS SYN Stealth Scan",
+                    "signature_id": 2000537
+                },
+                {
+                    "attack_id": "ATK-002",
+                    "attack_name": "Nmap Version Detection",
+                    "signature": "ET SCAN NMAP -sV Version Detection Probe",
+                    "signature_id": 2000545
+                },
+                {
+                    "attack_id": "ATK-003",
+                    "attack_name": "Nmap OS Fingerprinting",
+                    "signature": "ET SCAN NMAP OS Detection via TCP Fingerprinting",
+                    "signature_id": 2000538
+                },
+                {
+                    "attack_id": "ATK-004",
+                    "attack_name": "Nmap Scripting Engine (NSE) Scan",
+                    "signature": "ET SCAN NMAP Scripting Engine User-Agent Detected (Nmap/NSE)",
+                    "signature_id": 2024364
+                },
+                {
+                    "attack_id": "ATK-005",
+                    "attack_name": "Nmap String in User-Agent",
+                    "signature": "ET SCAN Nmap String Detected in HTTP User-Agent",
+                    "signature_id": 2009358
+                },
+                {
+                    "attack_id": "ATK-006",
+                    "attack_name": "Rapid Port Scan",
+                    "signature": "ET SCAN Suspicious Rapid Port Scan",
+                    "signature_id": 2009582
+                },
+                {
+                    "attack_id": "ATK-007",
+                    "attack_name": "SNMP Default Community Enumeration",
+                    "signature": "ET SCAN SNMP Enumeration with Default Community String public",
+                    "signature_id": 2011000
+                },
+                {
+                    "attack_id": "ATK-008",
+                    "attack_name": "SNMP Bulk Walk Recon",
+                    "signature": "ET SCAN SNMP Bulk Walk Request Multiple OIDs",
+                    "signature_id": 2011001
+                },
+                {
+                    "attack_id": "ATK-009",
+                    "attack_name": "SNMP Community String Brute Force",
+                    "signature": "ET SCAN SNMP v1 GetRequest Brute Force Community String",
+                    "signature_id": 2011002
+                },
+                {
+                    "attack_id": "ATK-010",
+                    "attack_name": "SNMP SET Privilege Escalation",
+                    "signature": "ET POLICY SNMP SET Request with Write Community Privilege Escalation",
+                    "signature_id": 2011003
+                },
+                {
+                    "attack_id": "ATK-011",
+                    "attack_name": "SIP/VoIP User Enumeration",
+                    "signature": "ET SCAN SIP INVITE Method Brute Force User Enumeration",
+                    "signature_id": 2012100
+                }
+            ]
+        },
+        {
+            "class_id": "CLS-002",
+            "class_name": "Credential Access & Brute Force",
+            "sim_scenario": "ssh_bruteforce",
+            "mitre_tactic": "Credential Access (TA0006)",
+            "attack_types": [
+                {
+                    "attack_id": "ATK-012",
+                    "attack_name": "SSH Failed Password Attempt",
+                    "signature": "ET SCAN SSH Failed Password Attempt",
+                    "signature_id": 2003068
+                },
+                {
+                    "attack_id": "ATK-013",
+                    "attack_name": "SSH Failed Password From External Source",
+                    "signature": "ET SCAN SSH Failed Password Authentication From External Source",
+                    "signature_id": 2003069
+                },
+                {
+                    "attack_id": "ATK-014",
+                    "attack_name": "SSH Brute Force (Possible)",
+                    "signature": "ET BRUTE SSH Authentication Failure Possible Brute Force",
+                    "signature_id": 2003195
+                },
+                {
+                    "attack_id": "ATK-015",
+                    "attack_name": "SSH Password Guessing Attack",
+                    "signature": "ET SCAN SSH Password Guessing Attack",
+                    "signature_id": 2019876
+                },
+                {
+                    "attack_id": "ATK-016",
+                    "attack_name": "SSH Multiple Failed Passwords",
+                    "signature": "ET SCAN SSH Login Attempt Multiple Failed Passwords",
+                    "signature_id": 2019877
+                },
+                {
+                    "attack_id": "ATK-017",
+                    "attack_name": "SSH BruteForce Tool (Fake PUTTY)",
+                    "signature": "ET SCAN SSH BruteForce Tool with fake PUTTY version",
+                    "signature_id": 2001219
+                },
+                {
+                    "attack_id": "ATK-018",
+                    "attack_name": "SSH Scanner Detected",
+                    "signature": "ET SCAN SSH Scanner",
+                    "signature_id": 2001721
+                },
+                {
+                    "attack_id": "ATK-019",
+                    "attack_name": "SIP REGISTER Brute Force",
+                    "signature": "ET SCAN SIP REGISTER Brute Force Authentication Attempt",
+                    "signature_id": 2012101
+                }
+            ]
+        },
+        {
+            "class_id": "CLS-003",
+            "class_name": "Web Application & Initial Access",
+            "sim_scenario": "web_attack",
+            "mitre_tactic": "Initial Access (TA0001)",
+            "attack_types": [
+                {
+                    "attack_id": "ATK-020",
+                    "attack_name": "SQL Injection (SELECT FROM)",
+                    "signature": "ET WEB_SERVER SQL Injection Attempt -- SELECT FROM",
+                    "signature_id": 2006445
+                },
+                {
+                    "attack_id": "ATK-021",
+                    "attack_name": "SQL Injection (UNION SELECT)",
+                    "signature": "ET WEB_SERVER Possible SQL Injection UNION SELECT",
+                    "signature_id": 2006444
+                },
+                {
+                    "attack_id": "ATK-022",
+                    "attack_name": "Cross-Site Scripting (XSS)",
+                    "signature": "ET WEB_SERVER XSS Attempt in URI",
+                    "signature_id": 2009600
+                },
+                {
+                    "attack_id": "ATK-023",
+                    "attack_name": "Remote File Inclusion (RFI)",
+                    "signature": "ET WEB_SERVER PHP Remote File Inclusion Attempt",
+                    "signature_id": 2002083
+                },
+                {
+                    "attack_id": "ATK-024",
+                    "attack_name": "Directory Traversal",
+                    "signature": "ET WEB_SERVER Directory Traversal Attempt (../..)",
+                    "signature_id": 2100498
+                },
+                {
+                    "attack_id": "ATK-025",
+                    "attack_name": "CGI Shellshock (CVE-2014-6271)",
+                    "signature": "ET WEB_SERVER CGI-BIN Access Attempt With Command Execution (Shellshock CVE-2014-6271)",
+                    "signature_id": 2019232
+                },
+                {
+                    "attack_id": "ATK-026",
+                    "attack_name": "CGI /bin/bash Execution",
+                    "signature": "ET WEB_SERVER CGI /bin/bash Execution Attempt",
+                    "signature_id": 2019233
+                },
+                {
+                    "attack_id": "ATK-027",
+                    "attack_name": "CGI PHP Remote Code Execution",
+                    "signature": "ET WEB_SERVER Possible CGI-BIN PHP Remote Code Execution",
+                    "signature_id": 2019234
+                },
+                {
+                    "attack_id": "ATK-028",
+                    "attack_name": "Apache Struts OGNL Injection (CVE-2017-5638)",
+                    "signature": "ET EXPLOIT Possible Apache Struts OGNL Injection (CVE-2017-5638)",
+                    "signature_id": 2024175
+                },
+                {
+                    "attack_id": "ATK-029",
+                    "attack_name": "Log4j RCE (CVE-2021-44228)",
+                    "signature": "ET EXPLOIT Log4j RCE Attempt (CVE-2021-44228) JNDI LDAP",
+                    "signature_id": 2034647
+                },
+                {
+                    "attack_id": "ATK-030",
+                    "attack_name": "ProxyShell SSRF (CVE-2021-34473)",
+                    "signature": "ET EXPLOIT ProxyShell SSRF Attempt (CVE-2021-34473)",
+                    "signature_id": 2034326
+                },
+                {
+                    "attack_id": "ATK-031",
+                    "attack_name": "Spring4Shell RCE (CVE-2022-22965)",
+                    "signature": "ET EXPLOIT Spring4Shell RCE Attempt (CVE-2022-22965)",
+                    "signature_id": 2035755
+                },
+                {
+                    "attack_id": "ATK-032",
+                    "attack_name": "Reverse Shell Payload Download",
+                    "signature": "ET EXPLOIT Possible Reverse Shell Payload Download After Initial Compromise",
+                    "signature_id": 2035756
+                },
+                {
+                    "attack_id": "ATK-033",
+                    "attack_name": "FTP Anonymous Login Attempt",
+                    "signature": "ET POLICY FTP Anonymous Login Attempt",
+                    "signature_id": 2002383
+                },
+                {
+                    "attack_id": "ATK-034",
+                    "attack_name": "FTP Anonymous Successful Login",
+                    "signature": "ET POLICY FTP Anonymous Successful Login",
+                    "signature_id": 2002384
+                },
+                {
+                    "attack_id": "ATK-035",
+                    "attack_name": "FTP Anonymous Data Transfer",
+                    "signature": "ET POLICY FTP Login With Anonymous Credentials Data Transfer",
+                    "signature_id": 2002385
+                },
+                {
+                    "attack_id": "ATK-036",
+                    "attack_name": "FTP Brute Force After Anonymous",
+                    "signature": "ET POLICY FTP Brute Force Login Attempt After Anonymous",
+                    "signature_id": 2003446
+                },
+                {
+                    "attack_id": "ATK-037",
+                    "attack_name": "IoT MQTT Unauthenticated Access",
+                    "signature": "ET EXPLOIT IoT MQTT Broker Unauthenticated Access Attempt",
+                    "signature_id": 2038000
+                },
+                {
+                    "attack_id": "ATK-038",
+                    "attack_name": "MQTT Wildcard Topic Subscribe",
+                    "signature": "ET EXPLOIT MQTT Subscribe to Wildcard Topic # From External Source",
+                    "signature_id": 2038001
+                },
+                {
+                    "attack_id": "ATK-039",
+                    "attack_name": "MQTT Malicious Publish to Actuator",
+                    "signature": "ET EXPLOIT MQTT Malicious Publish to IoT Actuator Control Topic",
+                    "signature_id": 2038002
+                }
+            ]
+        },
+        {
+            "class_id": "CLS-004",
+            "class_name": "Command & Control (C2)",
+            "sim_scenario": "malware_or_c2",
+            "mitre_tactic": "Command and Control (TA0011)",
+            "attack_types": [
+                {
+                    "attack_id": "ATK-040",
+                    "attack_name": "Cobalt Strike Beacon",
+                    "signature": "ET MALWARE Cobalt Strike Beacon Observed",
+                    "signature_id": 2019714
+                },
+                {
+                    "attack_id": "ATK-041",
+                    "attack_name": "Metasploit Payload Detected",
+                    "signature": "ET MALWARE Metasploit Payload Detected",
+                    "signature_id": 2012887
+                },
+                {
+                    "attack_id": "ATK-042",
+                    "attack_name": "Emotet C2 Communication",
+                    "signature": "ET MALWARE Win32/Emotet C2 Communication",
+                    "signature_id": 2031449
+                },
+                {
+                    "attack_id": "ATK-043",
+                    "attack_name": "APT RAT Checkin",
+                    "signature": "ET TROJAN APT RAT Checkin",
+                    "signature_id": 2027929
+                },
+                {
+                    "attack_id": "ATK-044",
+                    "attack_name": "Periodic C2 Beacon Callback",
+                    "signature": "ET MALWARE Periodic Beacon Callback Interval Matches Known C2 Profile",
+                    "signature_id": 2033650
+                },
+                {
+                    "attack_id": "ATK-045",
+                    "attack_name": "Sliver Implant Beacon",
+                    "signature": "ET MALWARE Sliver Implant Beacon Traffic Detected",
+                    "signature_id": 2037100
+                },
+                {
+                    "attack_id": "ATK-046",
+                    "attack_name": "Meterpreter Reverse HTTPS Beacon",
+                    "signature": "ET MALWARE Meterpreter Reverse HTTPS Beacon Detected",
+                    "signature_id": 2037101
+                },
+                {
+                    "attack_id": "ATK-047",
+                    "attack_name": "DNS-Based C2 Beacon",
+                    "signature": "ET MALWARE DNS Based C2 Beacon Detected Encoded Payload",
+                    "signature_id": 2037102
+                },
+                {
+                    "attack_id": "ATK-048",
+                    "attack_name": "Compromised IoT Device C2",
+                    "signature": "ET MALWARE Compromised IoT Device Outbound C2 Communication",
+                    "signature_id": 2038003
+                },
+                {
+                    "attack_id": "ATK-049",
+                    "attack_name": "Quarantined Host C2 Callback",
+                    "signature": "ET POLICY Quarantined Host C2 Callback Attempt Detected",
+                    "signature_id": 2030103
+                },
+                {
+                    "attack_id": "ATK-050",
+                    "attack_name": "Quarantined Host Outbound HTTPS",
+                    "signature": "ET POLICY Quarantined Host Attempting Outbound HTTPS Connection",
+                    "signature_id": 2030100
+                }
+            ]
+        },
+        {
+            "class_id": "CLS-005",
+            "class_name": "Lateral Movement & Pivoting",
+            "sim_scenario": "lateral_movement_suspicion",
+            "mitre_tactic": "Lateral Movement (TA0008)",
+            "attack_types": [
+                {
+                    "attack_id": "ATK-051",
+                    "attack_name": "EternalBlue SMB Exploit (MS17-010)",
+                    "signature": "ET EXPLOIT SMB EternalBlue Exploit Attempt (MS17-010)",
+                    "signature_id": 2024220
+                },
+                {
+                    "attack_id": "ATK-052",
+                    "attack_name": "Internal RPC Multi-Target Communication",
+                    "signature": "ET SCAN Internal Host Communicating with Multiple Internal Targets via RPC",
+                    "signature_id": 2003197
+                },
+                {
+                    "attack_id": "ATK-053",
+                    "attack_name": "Suspicious Multi-Server RDP",
+                    "signature": "ET POLICY Suspicious RDP Connection From Internal Host to Multiple Servers",
+                    "signature_id": 2019842
+                },
+                {
+                    "attack_id": "ATK-054",
+                    "attack_name": "Mimikatz Pass-the-Hash",
+                    "signature": "ET EXPLOIT Mimikatz Pass-the-Hash SMB Login Detected",
+                    "signature_id": 2027844
+                },
+                {
+                    "attack_id": "ATK-055",
+                    "attack_name": "PsExec Remote Execution via SMB",
+                    "signature": "ET EXPLOIT PsExec Remote Execution via SMB Named Pipe",
+                    "signature_id": 2027845
+                },
+                {
+                    "attack_id": "ATK-056",
+                    "attack_name": "DMZ-to-Internal SSH Connection",
+                    "signature": "ET POLICY DMZ Host Initiating SSH Connection to Internal Network",
+                    "signature_id": 2019400
+                },
+                {
+                    "attack_id": "ATK-057",
+                    "attack_name": "DMZ-to-Internal SMB Access",
+                    "signature": "ET POLICY DMZ Server Accessing Internal SMB Share",
+                    "signature_id": 2019401
+                },
+                {
+                    "attack_id": "ATK-058",
+                    "attack_name": "DMZ-to-Internal Database Connection",
+                    "signature": "ET POLICY DMZ Host Direct Database Connection to Internal MySQL Server",
+                    "signature_id": 2019402
+                },
+                {
+                    "attack_id": "ATK-059",
+                    "attack_name": "DMZ Anomalous Internal Traffic",
+                    "signature": "ET POLICY Anomalous DMZ to Internal Traffic on Non-Standard Port",
+                    "signature_id": 2019403
+                },
+                {
+                    "attack_id": "ATK-060",
+                    "attack_name": "SSH Tunnel Pivot Between Subnets",
+                    "signature": "ET POLICY Potential Pivot SSH Tunnel Established Between Subnets",
+                    "signature_id": 2025100
+                },
+                {
+                    "attack_id": "ATK-061",
+                    "attack_name": "SOCKS Proxy Pivot",
+                    "signature": "ET POLICY SOCKS Proxy Tunneling Detected — Pivot Activity",
+                    "signature_id": 2025101
+                },
+                {
+                    "attack_id": "ATK-062",
+                    "attack_name": "Chisel Reverse Tunnel",
+                    "signature": "ET EXPLOIT Chisel Reverse Tunnel Traffic Detected",
+                    "signature_id": 2036500
+                },
+                {
+                    "attack_id": "ATK-063",
+                    "attack_name": "Ligolo Proxy Pivot Agent",
+                    "signature": "ET POLICY Potential Ligolo Proxy Pivot Agent Communication",
+                    "signature_id": 2036501
+                },
+                {
+                    "attack_id": "ATK-064",
+                    "attack_name": "Quarantined Host Lateral SMB",
+                    "signature": "ET POLICY Quarantined Host Attempting Lateral SMB Connection",
+                    "signature_id": 2030102
+                }
+            ]
+        },
+        {
+            "class_id": "CLS-006",
+            "class_name": "Denial of Service & Network Attacks",
+            "sim_scenario": "dos_or_flood",
+            "mitre_tactic": "Impact (TA0040)",
+            "attack_types": [
+                {
+                    "attack_id": "ATK-065",
+                    "attack_name": "TCP SYN Flood",
+                    "signature": "ET DOS Possible TCP SYN Flood Attack",
+                    "signature_id": 2002992
+                },
+                {
+                    "attack_id": "ATK-066",
+                    "attack_name": "UDP Flood",
+                    "signature": "ET DOS Possible UDP Flood",
+                    "signature_id": 2002994
+                },
+                {
+                    "attack_id": "ATK-067",
+                    "attack_name": "HTTP DDoS Flood",
+                    "signature": "ET DOS Excessive HTTP Requests Indicating Possible DDoS",
+                    "signature_id": 2012134
+                },
+                {
+                    "attack_id": "ATK-068",
+                    "attack_name": "DHCP Starvation Attack",
+                    "signature": "ET DOS DHCP Starvation Attack — Excessive DHCPDISCOVER from Single MAC",
+                    "signature_id": 2032000
+                },
+                {
+                    "attack_id": "ATK-069",
+                    "attack_name": "DHCP IP Pool Exhaustion",
+                    "signature": "ET DOS DHCP Starvation Rapid IP Pool Exhaustion",
+                    "signature_id": 2032001
+                },
+                {
+                    "attack_id": "ATK-070",
+                    "attack_name": "Rogue DHCP Server",
+                    "signature": "ET POLICY Rogue DHCP Server Detected Offering Non-Standard Gateway",
+                    "signature_id": 2032002
+                },
+                {
+                    "attack_id": "ATK-071",
+                    "attack_name": "DHCP DISCOVER Flood (Randomized MAC)",
+                    "signature": "ET DOS DHCP DISCOVER Flood With Randomized MAC Addresses",
+                    "signature_id": 2032003
+                },
+                {
+                    "attack_id": "ATK-072",
+                    "attack_name": "MAC Address Table Overflow",
+                    "signature": "ET DOS MAC Address Table Overflow — Excessive Unique Source MACs Detected",
+                    "signature_id": 2033000
+                },
+                {
+                    "attack_id": "ATK-073",
+                    "attack_name": "MAC Flooding (CAM Table Exhaustion)",
+                    "signature": "ET DOS MAC Flooding Attack Switch CAM Table Exhaustion",
+                    "signature_id": 2033001
+                },
+                {
+                    "attack_id": "ATK-074",
+                    "attack_name": "Macof-Style MAC Flooding Tool",
+                    "signature": "ET DOS Macof Style MAC Flooding Tool Detected",
+                    "signature_id": 2033002
+                },
+                {
+                    "attack_id": "ATK-075",
+                    "attack_name": "Switch Hub Mode After MAC Flood",
+                    "signature": "ET DOS Network Switch Operating in Hub Mode After MAC Flood",
+                    "signature_id": 2033003
+                },
+                {
+                    "attack_id": "ATK-076",
+                    "attack_name": "ARP Spoofing (Duplicate IP)",
+                    "signature": "ET DOS ARP Spoofing Attack — Duplicate IP Address Detected",
+                    "signature_id": 2034000
+                },
+                {
+                    "attack_id": "ATK-077",
+                    "attack_name": "ARP Cache Poisoning (Gateway Override)",
+                    "signature": "ET DOS ARP Cache Poisoning Gateway MAC Override",
+                    "signature_id": 2034001
+                },
+                {
+                    "attack_id": "ATK-078",
+                    "attack_name": "Gratuitous ARP Flood (Ettercap/Bettercap)",
+                    "signature": "ET DOS Gratuitous ARP Flood Detected — Possible Ettercap/Bettercap",
+                    "signature_id": 2034002
+                },
+                {
+                    "attack_id": "ATK-079",
+                    "attack_name": "MitM After ARP Spoof",
+                    "signature": "ET POLICY Man-in-the-Middle Intercepted HTTP Traffic After ARP Spoof",
+                    "signature_id": 2034003
+                },
+                {
+                    "attack_id": "ATK-080",
+                    "attack_name": "SIP BYE Teardown (VoIP Hijack)",
+                    "signature": "ET EXPLOIT SIP BYE Teardown Attack VoIP Call Hijacking",
+                    "signature_id": 2012102
+                },
+                {
+                    "attack_id": "ATK-081",
+                    "attack_name": "SIP INVITE Flood (VoIP DoS)",
+                    "signature": "ET DOS SIP INVITE Flood — VoIP Denial of Service",
+                    "signature_id": 2012103
+                }
+            ]
+        },
+        {
+            "class_id": "CLS-007",
+            "class_name": "DNS Exfiltration & Suspicious Activity",
+            "sim_scenario": "dns_suspicious",
+            "mitre_tactic": "Exfiltration (TA0010)",
+            "attack_types": [
+                {
+                    "attack_id": "ATK-082",
+                    "attack_name": "DNS Tunnel Activity",
+                    "signature": "ET DNS DNS Tunnel Activity Detected",
+                    "signature_id": 2027865
+                },
+                {
+                    "attack_id": "ATK-083",
+                    "attack_name": "DNS Tunneling (High Frequency)",
+                    "signature": "ET DNS High Frequency DNS Requests indicating DNS Tunneling",
+                    "signature_id": 2027867
+                },
+                {
+                    "attack_id": "ATK-084",
+                    "attack_name": "DNS Query for .onion Domain",
+                    "signature": "ET DNS Query for .onion Proxy Domain",
+                    "signature_id": 2022918
+                },
+                {
+                    "attack_id": "ATK-085",
+                    "attack_name": "DNS Query for DGA Domain",
+                    "signature": "ET DNS Suspicious DNS Query for DGA Domain",
+                    "signature_id": 2035999
+                },
+                {
+                    "attack_id": "ATK-086",
+                    "attack_name": "Quarantined Host DNS Query",
+                    "signature": "ET POLICY Quarantined Host DNS Query to External Resolver",
+                    "signature_id": 2030101
+                }
+            ]
+        }
+    ]
+}

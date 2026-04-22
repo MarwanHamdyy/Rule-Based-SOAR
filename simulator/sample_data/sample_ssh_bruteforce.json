@@ -1,0 +1,152 @@
+[
+    {
+        "@timestamp": "2024-06-01T10:05:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ssh-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "203.0.113.100",
+                "src_port": 44000,
+                "dest_ip": "10.0.0.20",
+                "dest_port": 22,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN SSH BruteForce Tool with fake PUTTY version",
+                    "signature_id": 2001219,
+                    "category": "Attempted Administrator Privilege Gain",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T10:05:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 80.0,
+        "_sim_scenario": "ssh_bruteforce"
+    },
+    {
+        "@timestamp": "2024-06-01T10:05:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ssh-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "203.0.113.100",
+                "src_port": 44001,
+                "dest_ip": "10.0.0.20",
+                "dest_port": 22,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN Potential SSH Brute Force Attempt",
+                    "signature_id": 2001722,
+                    "category": "Attempted Administrator Privilege Gain",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T10:05:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 82.0,
+        "_sim_scenario": "ssh_bruteforce"
+    },
+    {
+        "@timestamp": "2024-06-01T10:05:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ssh-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "203.0.113.100",
+                "src_port": 44002,
+                "dest_ip": "10.0.0.20",
+                "dest_port": 22,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET BRUTE SSH Authentication Failure",
+                    "signature_id": 2003195,
+                    "category": "Attempted Admin Privilege Gain",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T10:05:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 78.0,
+        "_sim_scenario": "ssh_bruteforce"
+    },
+    {
+        "@timestamp": "2024-06-01T10:05:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ssh-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "203.0.113.100",
+                "src_port": 44003,
+                "dest_ip": "10.0.0.20",
+                "dest_port": 22,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN SSH BruteForce Tool with fake PUTTY version",
+                    "signature_id": 2001219,
+                    "category": "Attempted Administrator Privilege Gain",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T10:05:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 85.0,
+        "_sim_scenario": "ssh_bruteforce"
+    },
+    {
+        "@timestamp": "2024-06-01T10:05:02.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ssh-005",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "203.0.113.100",
+                "src_port": 44004,
+                "dest_ip": "10.0.0.21",
+                "dest_port": 22,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN SSH Scanner",
+                    "signature_id": 2001721,
+                    "category": "Attempted Administrator Privilege Gain",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T10:05:02.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 70.0,
+        "_sim_scenario": "ssh_bruteforce"
+    }
+]

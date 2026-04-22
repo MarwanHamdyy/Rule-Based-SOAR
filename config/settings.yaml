@@ -34,3 +34,14 @@ logging:
   file: "./logs/soar.log"
   max_bytes: 10485760               # 10 MB log rotation
   backup_count: 5
+
+# ============================================================
+# Simulation Mode (used by simulate.py only – does NOT affect
+# the live engine unless ES_SOURCE_INDEX is overridden)
+# ============================================================
+simulation:
+  index: "${SIM_INDEX:soar-simulation}"    # Dedicated sim index name
+  rate_per_second: 10                       # Max publish rate (0 = unlimited)
+  default_src_ip: "192.168.100.99"          # Attacker IP used when --src-ip is omitted
+  sensor_name: "sim-sensor-01"             # Value placed in host.name
+  interval_ms: 500                          # Milliseconds between event timestamps

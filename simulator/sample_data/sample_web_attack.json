@@ -1,0 +1,152 @@
+[
+    {
+        "@timestamp": "2024-06-01T10:10:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-web-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "198.51.100.50",
+                "src_port": 60100,
+                "dest_ip": "10.0.0.30",
+                "dest_port": 80,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET WEB_SERVER SQL Injection Attempt -- SELECT FROM",
+                    "signature_id": 2006445,
+                    "category": "Web Application Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T10:10:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 75.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T10:10:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-web-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "198.51.100.50",
+                "src_port": 60101,
+                "dest_ip": "10.0.0.30",
+                "dest_port": 80,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET WEB_SERVER XSS Attempt in URI",
+                    "signature_id": 2009600,
+                    "category": "Web Application Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T10:10:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 70.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T10:10:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-web-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "198.51.100.50",
+                "src_port": 60102,
+                "dest_ip": "10.0.0.31",
+                "dest_port": 443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET WEB_SERVER Possible SQL Injection UNION SELECT",
+                    "signature_id": 2006444,
+                    "category": "Web Application Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T10:10:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 80.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T10:10:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-web-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "198.51.100.50",
+                "src_port": 60103,
+                "dest_ip": "10.0.0.30",
+                "dest_port": 8080,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET WEB_SERVER PHP Remote File Inclusion Attempt",
+                    "signature_id": 2002083,
+                    "category": "Web Application Attack",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T10:10:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 65.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T10:10:02.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-web-005",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "198.51.100.50",
+                "src_port": 60104,
+                "dest_ip": "10.0.0.31",
+                "dest_port": 80,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET WEB_SERVER Directory Traversal Attempt (../..)",
+                    "signature_id": 2100498,
+                    "category": "Web Application Attack",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T10:10:02.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 60.0,
+        "_sim_scenario": "web_attack"
+    }
+]

@@ -1,0 +1,122 @@
+[
+    {
+        "@timestamp": "2024-06-01T12:10:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-snmp-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.25",
+                "src_port": 57500,
+                "dest_ip": "10.0.0.1",
+                "dest_port": 161,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET SCAN SNMP Enumeration with Default Community String public",
+                    "signature_id": 2011000,
+                    "category": "Attempted Information Leak",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T12:10:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 55.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T12:10:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-snmp-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.25",
+                "src_port": 57501,
+                "dest_ip": "10.0.0.2",
+                "dest_port": 161,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET SCAN SNMP Bulk Walk Request Multiple OIDs — Network Recon",
+                    "signature_id": 2011001,
+                    "category": "Attempted Information Leak",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T12:10:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 58.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T12:10:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-snmp-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.25",
+                "src_port": 57502,
+                "dest_ip": "10.0.0.3",
+                "dest_port": 161,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET SCAN SNMP v1 GetRequest Brute Force Community String",
+                    "signature_id": 2011002,
+                    "category": "Attempted Information Leak",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T12:10:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 65.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T12:10:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-snmp-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.25",
+                "src_port": 57503,
+                "dest_ip": "10.0.0.4",
+                "dest_port": 161,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET POLICY SNMP SET Request with Write Community Privilege Escalation",
+                    "signature_id": 2011003,
+                    "category": "Attempted Administrator Privilege Gain",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T12:10:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 75.0,
+        "_sim_scenario": "port_scan"
+    }
+]

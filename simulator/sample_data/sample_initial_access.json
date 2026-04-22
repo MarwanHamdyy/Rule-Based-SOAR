@@ -1,0 +1,152 @@
+[
+    {
+        "@timestamp": "2024-06-01T11:10:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ia-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "45.33.49.100",
+                "src_port": 60500,
+                "dest_ip": "10.0.0.30",
+                "dest_port": 443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET EXPLOIT Possible Apache Struts OGNL Injection (CVE-2017-5638)",
+                    "signature_id": 2024175,
+                    "category": "Web Application Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:10:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 92.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T11:10:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ia-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "45.33.49.100",
+                "src_port": 60501,
+                "dest_ip": "10.0.0.30",
+                "dest_port": 443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET EXPLOIT Log4j RCE Attempt (CVE-2021-44228) JNDI LDAP",
+                    "signature_id": 2034647,
+                    "category": "Attempted Administrator Privilege Gain",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:10:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 98.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T11:10:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ia-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "45.33.49.100",
+                "src_port": 60502,
+                "dest_ip": "10.0.0.31",
+                "dest_port": 80,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET EXPLOIT ProxyShell SSRF Attempt (CVE-2021-34473)",
+                    "signature_id": 2034326,
+                    "category": "Attempted Administrator Privilege Gain",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:10:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 95.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T11:10:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ia-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "45.33.49.100",
+                "src_port": 60503,
+                "dest_ip": "10.0.0.30",
+                "dest_port": 8080,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET EXPLOIT Spring4Shell RCE Attempt (CVE-2022-22965)",
+                    "signature_id": 2035755,
+                    "category": "Attempted Administrator Privilege Gain",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:10:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 96.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T11:10:02.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ia-005",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "45.33.49.100",
+                "src_port": 60504,
+                "dest_ip": "10.0.0.31",
+                "dest_port": 443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET EXPLOIT Possible Reverse Shell Payload Download After Initial Compromise",
+                    "signature_id": 2035756,
+                    "category": "A Network Trojan was Detected",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:10:02.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 97.0,
+        "_sim_scenario": "web_attack"
+    }
+]

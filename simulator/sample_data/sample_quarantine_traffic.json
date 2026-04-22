@@ -1,0 +1,122 @@
+[
+    {
+        "@timestamp": "2024-06-01T11:45:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-quar-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.99",
+                "src_port": 49700,
+                "dest_ip": "198.51.100.50",
+                "dest_port": 443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY Quarantined Host Attempting Outbound HTTPS Connection",
+                    "signature_id": 2030100,
+                    "category": "Potentially Bad Traffic",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:45:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 82.0,
+        "_sim_scenario": "malware_or_c2"
+    },
+    {
+        "@timestamp": "2024-06-01T11:45:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-quar-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.99",
+                "src_port": 49701,
+                "dest_ip": "8.8.8.8",
+                "dest_port": 53,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET POLICY Quarantined Host DNS Query to External Resolver",
+                    "signature_id": 2030101,
+                    "category": "Potentially Bad Traffic",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T11:45:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 70.0,
+        "_sim_scenario": "dns_suspicious"
+    },
+    {
+        "@timestamp": "2024-06-01T11:45:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-quar-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.99",
+                "src_port": 49702,
+                "dest_ip": "10.0.0.10",
+                "dest_port": 445,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY Quarantined Host Attempting Lateral SMB Connection",
+                    "signature_id": 2030102,
+                    "category": "Lateral Movement",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:45:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 90.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    },
+    {
+        "@timestamp": "2024-06-01T11:45:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-quar-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.99",
+                "src_port": 49703,
+                "dest_ip": "185.220.101.45",
+                "dest_port": 4444,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY Quarantined Host C2 Callback Attempt Detected",
+                    "signature_id": 2030103,
+                    "category": "Malware Command and Control Activity Detected",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:45:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 95.0,
+        "_sim_scenario": "malware_or_c2"
+    }
+]

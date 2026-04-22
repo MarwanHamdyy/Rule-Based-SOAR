@@ -1,0 +1,1948 @@
+{
+  "generated_at": "2026-03-07T23:24:30.542713+00:00",
+  "total_actions": 55,
+  "actions": [
+    {
+      "@timestamp": "2026-03-07T23:24:30.077510+00:00",
+      "action_id": "89cfd3b1-9f0b-48f4-8caa-995725d20f5d",
+      "rule_id": "SOAR-004",
+      "attack_type": "malware_or_c2",
+      "source_ip": "192.168.100.99",
+      "source_port": 61384,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.88,
+      "risk_score": 87.7,
+      "recommended_mitigation": "IMMEDIATELY isolate the affected host from the network. Preserve memory dump and disk image for forensic investigation. Block the C2 destination IP/domain on all firewalls. Initiate incident response procedures and notify the SOC team.",
+      "reasons": [
+        "Malware/C2 signature detected: \"ET SCAN Potential SSH Brute Force Attempt\" (category: Attempted Administrator Privilege Gain).",
+        "Very high risk_score: 87.7."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:30.076Z",
+        "signature": "ET SCAN Potential SSH Brute Force Attempt",
+        "signature_id": 2001722,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-5cbd68ebe57b"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Command and Control",
+        "mitre_technique": "T1071 - Application Layer Protocol",
+        "nist_ref": "NIST SP 800-61 Rev 2 - Section 3.3 Containment",
+        "owasp_ref": "OWASP-A08:2021 Software and Data Integrity Failures"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.077510+00:00",
+      "action_id": "8e6e1b90-f63d-47d5-856d-6f131d78895f",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 61384,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.85,
+      "risk_score": 87.7,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 1 (threshold \u2264 2) \u2014 high-priority alert.",
+        "risk_score=87.7 exceeds threshold 70.0.",
+        "Signature: \"ET SCAN Potential SSH Brute Force Attempt\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:30.076Z",
+        "signature": "ET SCAN Potential SSH Brute Force Attempt",
+        "signature_id": 2001722,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-5cbd68ebe57b"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.077510+00:00",
+      "action_id": "12d537ba-2f8e-4bc6-99db-07d56c8a4d47",
+      "rule_id": "SOAR-004",
+      "attack_type": "malware_or_c2",
+      "source_ip": "192.168.100.99",
+      "source_port": 62869,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.95,
+      "risk_score": 81.9,
+      "recommended_mitigation": "IMMEDIATELY isolate the affected host from the network. Preserve memory dump and disk image for forensic investigation. Block the C2 destination IP/domain on all firewalls. Initiate incident response procedures and notify the SOC team.",
+      "reasons": [
+        "Malware/C2 signature detected: \"ET SSH Bruteforce Banner Response\" (category: Attempted Administrator Privilege Gain).",
+        "Alert repeated 2 times in 5 min \u2014 consistent with periodic C2 beacon behaviour."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:30.576Z",
+        "signature": "ET SSH Bruteforce Banner Response",
+        "signature_id": 2019876,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-71a7c48aa6f5"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Command and Control",
+        "mitre_technique": "T1071 - Application Layer Protocol",
+        "nist_ref": "NIST SP 800-61 Rev 2 - Section 3.3 Containment",
+        "owasp_ref": "OWASP-A08:2021 Software and Data Integrity Failures"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.077510+00:00",
+      "action_id": "f411f9c3-fa50-4ec5-83db-24a937136d1a",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 62869,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.75,
+      "risk_score": 81.9,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 2 (threshold \u2264 2) \u2014 high-priority alert.",
+        "risk_score=81.9 exceeds threshold 70.0.",
+        "Signature: \"ET SSH Bruteforce Banner Response\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:30.576Z",
+        "signature": "ET SSH Bruteforce Banner Response",
+        "signature_id": 2019876,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-71a7c48aa6f5"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.077510+00:00",
+      "action_id": "8d4cd71f-76ab-4e8e-9c3a-27e4c2d69ae9",
+      "rule_id": "SOAR-004",
+      "attack_type": "malware_or_c2",
+      "source_ip": "192.168.100.99",
+      "source_port": 40870,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.95,
+      "risk_score": 69.0,
+      "recommended_mitigation": "IMMEDIATELY isolate the affected host from the network. Preserve memory dump and disk image for forensic investigation. Block the C2 destination IP/domain on all firewalls. Initiate incident response procedures and notify the SOC team.",
+      "reasons": [
+        "Malware/C2 signature detected: \"ET SCAN Potential SSH Brute Force Attempt\" (category: Attempted Administrator Privilege Gain).",
+        "Alert repeated 3 times in 5 min \u2014 consistent with periodic C2 beacon behaviour."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:31.076Z",
+        "signature": "ET SCAN Potential SSH Brute Force Attempt",
+        "signature_id": 2001722,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-1e548f874b05"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Command and Control",
+        "mitre_technique": "T1071 - Application Layer Protocol",
+        "nist_ref": "NIST SP 800-61 Rev 2 - Section 3.3 Containment",
+        "owasp_ref": "OWASP-A08:2021 Software and Data Integrity Failures"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.077510+00:00",
+      "action_id": "377d47ef-8019-48d7-b307-b3a202481aaa",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 40870,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.85,
+      "risk_score": 69.0,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 1 (threshold \u2264 2) \u2014 high-priority alert.",
+        "Signature: \"ET SCAN Potential SSH Brute Force Attempt\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:31.076Z",
+        "signature": "ET SCAN Potential SSH Brute Force Attempt",
+        "signature_id": 2001722,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-1e548f874b05"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.077510+00:00",
+      "action_id": "e94e1e59-57b3-4cb3-a240-976984343fec",
+      "rule_id": "SOAR-004",
+      "attack_type": "malware_or_c2",
+      "source_ip": "192.168.100.99",
+      "source_port": 10390,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.95,
+      "risk_score": 65.5,
+      "recommended_mitigation": "IMMEDIATELY isolate the affected host from the network. Preserve memory dump and disk image for forensic investigation. Block the C2 destination IP/domain on all firewalls. Initiate incident response procedures and notify the SOC team.",
+      "reasons": [
+        "Malware/C2 signature detected: \"ET SSH Bruteforce Banner Response\" (category: Attempted Administrator Privilege Gain).",
+        "Alert repeated 4 times in 5 min \u2014 consistent with periodic C2 beacon behaviour."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:31.576Z",
+        "signature": "ET SSH Bruteforce Banner Response",
+        "signature_id": 2019876,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-8e16aa346986"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Command and Control",
+        "mitre_technique": "T1071 - Application Layer Protocol",
+        "nist_ref": "NIST SP 800-61 Rev 2 - Section 3.3 Containment",
+        "owasp_ref": "OWASP-A08:2021 Software and Data Integrity Failures"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.077510+00:00",
+      "action_id": "21b4d1be-116a-4057-bb66-e1f0b8a45bf6",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 10390,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.75,
+      "risk_score": 65.5,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 2 (threshold \u2264 2) \u2014 high-priority alert.",
+        "Signature: \"ET SSH Bruteforce Banner Response\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:31.576Z",
+        "signature": "ET SSH Bruteforce Banner Response",
+        "signature_id": 2019876,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-8e16aa346986"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.077510+00:00",
+      "action_id": "d4870e64-2070-4653-af5d-5496feeaaac6",
+      "rule_id": "SOAR-004",
+      "attack_type": "malware_or_c2",
+      "source_ip": "192.168.100.99",
+      "source_port": 45783,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.95,
+      "risk_score": 89.5,
+      "recommended_mitigation": "IMMEDIATELY isolate the affected host from the network. Preserve memory dump and disk image for forensic investigation. Block the C2 destination IP/domain on all firewalls. Initiate incident response procedures and notify the SOC team.",
+      "reasons": [
+        "Malware/C2 signature detected: \"ET SSH Bruteforce Banner Response\" (category: Attempted Administrator Privilege Gain).",
+        "Alert repeated 5 times in 5 min \u2014 consistent with periodic C2 beacon behaviour.",
+        "Very high risk_score: 89.5."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:32.076Z",
+        "signature": "ET SSH Bruteforce Banner Response",
+        "signature_id": 2019876,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-dbd9fc82c29a"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Command and Control",
+        "mitre_technique": "T1071 - Application Layer Protocol",
+        "nist_ref": "NIST SP 800-61 Rev 2 - Section 3.3 Containment",
+        "owasp_ref": "OWASP-A08:2021 Software and Data Integrity Failures"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.077510+00:00",
+      "action_id": "0facb611-30f7-4d68-903e-ed6e9d7c4098",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 45783,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.75,
+      "risk_score": 89.5,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 2 (threshold \u2264 2) \u2014 high-priority alert.",
+        "risk_score=89.5 exceeds threshold 70.0.",
+        "Signature: \"ET SSH Bruteforce Banner Response\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:32.076Z",
+        "signature": "ET SSH Bruteforce Banner Response",
+        "signature_id": 2019876,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-dbd9fc82c29a"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.077510+00:00",
+      "action_id": "e0c18f33-1ba6-4f2f-9560-f07fde6081ba",
+      "rule_id": "SOAR-004",
+      "attack_type": "malware_or_c2",
+      "source_ip": "192.168.100.99",
+      "source_port": 48940,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.95,
+      "risk_score": 80.4,
+      "recommended_mitigation": "IMMEDIATELY isolate the affected host from the network. Preserve memory dump and disk image for forensic investigation. Block the C2 destination IP/domain on all firewalls. Initiate incident response procedures and notify the SOC team.",
+      "reasons": [
+        "Malware/C2 signature detected: \"ET SCAN Potential SSH Brute Force Attempt\" (category: Attempted Administrator Privilege Gain).",
+        "Alert repeated 6 times in 5 min \u2014 consistent with periodic C2 beacon behaviour."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:32.576Z",
+        "signature": "ET SCAN Potential SSH Brute Force Attempt",
+        "signature_id": 2001722,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-3d281e4b13f4"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Command and Control",
+        "mitre_technique": "T1071 - Application Layer Protocol",
+        "nist_ref": "NIST SP 800-61 Rev 2 - Section 3.3 Containment",
+        "owasp_ref": "OWASP-A08:2021 Software and Data Integrity Failures"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.077510+00:00",
+      "action_id": "5ea3d74d-bc64-4a7b-931d-aa0c3ea0751e",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 48940,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.85,
+      "risk_score": 80.4,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 1 (threshold \u2264 2) \u2014 high-priority alert.",
+        "risk_score=80.4 exceeds threshold 70.0.",
+        "Signature: \"ET SCAN Potential SSH Brute Force Attempt\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:32.576Z",
+        "signature": "ET SCAN Potential SSH Brute Force Attempt",
+        "signature_id": 2001722,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-3d281e4b13f4"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.077510+00:00",
+      "action_id": "b12b4139-c096-4dcd-91e8-e34a7a149ddd",
+      "rule_id": "SOAR-003",
+      "attack_type": "web_attack",
+      "source_ip": "192.168.100.99",
+      "source_port": 49929,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "MEDIUM",
+      "confidence": 0.8,
+      "risk_score": 81.8,
+      "recommended_mitigation": "Block source IP at WAF/perimeter. Review Web Scanner indicators in web server access logs. Patch vulnerable web endpoints and enable WAF rules targeting OWASP Top-10.",
+      "reasons": [
+        "Detected Web Scanner: 6 web alerts from 192.168.100.99 in 60 s.",
+        "Signature: \"ET SCAN SSH Scanner\".",
+        "Category: \"Attempted Administrator Privilege Gain\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:33.076Z",
+        "signature": "ET SCAN SSH Scanner",
+        "signature_id": 2001721,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-fffb8b328dd1"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Initial Access",
+        "mitre_technique": "T1190 - Exploit Public-Facing Application",
+        "owasp_ref": "OWASP-A03:2021 Injection / OWASP-A01:2021 Broken Access Control",
+        "nist_ref": "NIST SP 800-44 - Guidelines on Securing Public Web Servers"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.077510+00:00",
+      "action_id": "f85fc121-40f6-46f2-8a9a-ad37db8a0762",
+      "rule_id": "SOAR-004",
+      "attack_type": "malware_or_c2",
+      "source_ip": "192.168.100.99",
+      "source_port": 49929,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.95,
+      "risk_score": 81.8,
+      "recommended_mitigation": "IMMEDIATELY isolate the affected host from the network. Preserve memory dump and disk image for forensic investigation. Block the C2 destination IP/domain on all firewalls. Initiate incident response procedures and notify the SOC team.",
+      "reasons": [
+        "Malware/C2 signature detected: \"ET SCAN SSH Scanner\" (category: Attempted Administrator Privilege Gain).",
+        "Alert repeated 7 times in 5 min \u2014 consistent with periodic C2 beacon behaviour."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:33.076Z",
+        "signature": "ET SCAN SSH Scanner",
+        "signature_id": 2001721,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-fffb8b328dd1"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Command and Control",
+        "mitre_technique": "T1071 - Application Layer Protocol",
+        "nist_ref": "NIST SP 800-61 Rev 2 - Section 3.3 Containment",
+        "owasp_ref": "OWASP-A08:2021 Software and Data Integrity Failures"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.077510+00:00",
+      "action_id": "ea2e23c5-da57-4b25-af57-49d4a0616ffd",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 49929,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.75,
+      "risk_score": 81.8,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 2 (threshold \u2264 2) \u2014 high-priority alert.",
+        "risk_score=81.8 exceeds threshold 70.0.",
+        "Signature: \"ET SCAN SSH Scanner\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:33.076Z",
+        "signature": "ET SCAN SSH Scanner",
+        "signature_id": 2001721,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-fffb8b328dd1"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.078509+00:00",
+      "action_id": "1c15ace2-e886-42c2-8818-041dd4530a31",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 39659,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.85,
+      "risk_score": 76.4,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 1 (threshold \u2264 2) \u2014 high-priority alert.",
+        "risk_score=76.4 exceeds threshold 70.0.",
+        "Signature: \"ET BRUTE SSH Authentication Failure\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:33.576Z",
+        "signature": "ET BRUTE SSH Authentication Failure",
+        "signature_id": 2003195,
+        "category": "Attempted Admin Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-5c349d2137b6"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.078509+00:00",
+      "action_id": "4622c5c1-2fce-4cc6-848a-e610bf33ed8a",
+      "rule_id": "SOAR-004",
+      "attack_type": "malware_or_c2",
+      "source_ip": "192.168.100.99",
+      "source_port": 15209,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.95,
+      "risk_score": 68.7,
+      "recommended_mitigation": "IMMEDIATELY isolate the affected host from the network. Preserve memory dump and disk image for forensic investigation. Block the C2 destination IP/domain on all firewalls. Initiate incident response procedures and notify the SOC team.",
+      "reasons": [
+        "Malware/C2 signature detected: \"ET SCAN SSH BruteForce Tool with fake PUTTY version\" (category: Attempted Administrator Privilege Gain).",
+        "Alert repeated 9 times in 5 min \u2014 consistent with periodic C2 beacon behaviour."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:34.076Z",
+        "signature": "ET SCAN SSH BruteForce Tool with fake PUTTY version",
+        "signature_id": 2001219,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-c1f4ec41e442"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Command and Control",
+        "mitre_technique": "T1071 - Application Layer Protocol",
+        "nist_ref": "NIST SP 800-61 Rev 2 - Section 3.3 Containment",
+        "owasp_ref": "OWASP-A08:2021 Software and Data Integrity Failures"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.078509+00:00",
+      "action_id": "b4e19b47-d7c2-4d14-b3aa-d447566489a8",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 15209,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.85,
+      "risk_score": 68.7,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 1 (threshold \u2264 2) \u2014 high-priority alert.",
+        "Signature: \"ET SCAN SSH BruteForce Tool with fake PUTTY version\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:34.076Z",
+        "signature": "ET SCAN SSH BruteForce Tool with fake PUTTY version",
+        "signature_id": 2001219,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-c1f4ec41e442"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.078509+00:00",
+      "action_id": "0d0fe3dd-643c-47cb-84ae-e52d49c18dc6",
+      "rule_id": "SOAR-004",
+      "attack_type": "malware_or_c2",
+      "source_ip": "192.168.100.99",
+      "source_port": 52015,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.95,
+      "risk_score": 77.5,
+      "recommended_mitigation": "IMMEDIATELY isolate the affected host from the network. Preserve memory dump and disk image for forensic investigation. Block the C2 destination IP/domain on all firewalls. Initiate incident response procedures and notify the SOC team.",
+      "reasons": [
+        "Malware/C2 signature detected: \"ET SCAN SSH BruteForce Tool with fake PUTTY version\" (category: Attempted Administrator Privilege Gain).",
+        "Alert repeated 10 times in 5 min \u2014 consistent with periodic C2 beacon behaviour."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:34.576Z",
+        "signature": "ET SCAN SSH BruteForce Tool with fake PUTTY version",
+        "signature_id": 2001219,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-22c94602ea99"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Command and Control",
+        "mitre_technique": "T1071 - Application Layer Protocol",
+        "nist_ref": "NIST SP 800-61 Rev 2 - Section 3.3 Containment",
+        "owasp_ref": "OWASP-A08:2021 Software and Data Integrity Failures"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.078509+00:00",
+      "action_id": "121d4a91-dbc7-4510-9741-ee6a81ed5a9c",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 52015,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.85,
+      "risk_score": 77.5,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 1 (threshold \u2264 2) \u2014 high-priority alert.",
+        "risk_score=77.5 exceeds threshold 70.0.",
+        "Signature: \"ET SCAN SSH BruteForce Tool with fake PUTTY version\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:34.576Z",
+        "signature": "ET SCAN SSH BruteForce Tool with fake PUTTY version",
+        "signature_id": 2001219,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-22c94602ea99"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.078509+00:00",
+      "action_id": "5a98919c-5ae9-4312-8653-9d4e814451af",
+      "rule_id": "SOAR-004",
+      "attack_type": "malware_or_c2",
+      "source_ip": "192.168.100.99",
+      "source_port": 38185,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.95,
+      "risk_score": 76.3,
+      "recommended_mitigation": "IMMEDIATELY isolate the affected host from the network. Preserve memory dump and disk image for forensic investigation. Block the C2 destination IP/domain on all firewalls. Initiate incident response procedures and notify the SOC team.",
+      "reasons": [
+        "Malware/C2 signature detected: \"ET SSH Bruteforce Banner Response\" (category: Attempted Administrator Privilege Gain).",
+        "Alert repeated 11 times in 5 min \u2014 consistent with periodic C2 beacon behaviour."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:35.076Z",
+        "signature": "ET SSH Bruteforce Banner Response",
+        "signature_id": 2019876,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-bd7a54fd5d15"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Command and Control",
+        "mitre_technique": "T1071 - Application Layer Protocol",
+        "nist_ref": "NIST SP 800-61 Rev 2 - Section 3.3 Containment",
+        "owasp_ref": "OWASP-A08:2021 Software and Data Integrity Failures"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.078509+00:00",
+      "action_id": "45fc1fd0-142f-4b09-b7cf-265f92c683ff",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 38185,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.75,
+      "risk_score": 76.3,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 2 (threshold \u2264 2) \u2014 high-priority alert.",
+        "risk_score=76.3 exceeds threshold 70.0.",
+        "Signature: \"ET SSH Bruteforce Banner Response\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:35.076Z",
+        "signature": "ET SSH Bruteforce Banner Response",
+        "signature_id": 2019876,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-bd7a54fd5d15"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.078509+00:00",
+      "action_id": "bd46ee36-5325-44fb-9d1c-7c5f10662b9f",
+      "rule_id": "SOAR-004",
+      "attack_type": "malware_or_c2",
+      "source_ip": "192.168.100.99",
+      "source_port": 57987,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.95,
+      "risk_score": 86.1,
+      "recommended_mitigation": "IMMEDIATELY isolate the affected host from the network. Preserve memory dump and disk image for forensic investigation. Block the C2 destination IP/domain on all firewalls. Initiate incident response procedures and notify the SOC team.",
+      "reasons": [
+        "Malware/C2 signature detected: \"ET SCAN SSH BruteForce Tool with fake PUTTY version\" (category: Attempted Administrator Privilege Gain).",
+        "Alert repeated 12 times in 5 min \u2014 consistent with periodic C2 beacon behaviour.",
+        "Very high risk_score: 86.1."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:35.576Z",
+        "signature": "ET SCAN SSH BruteForce Tool with fake PUTTY version",
+        "signature_id": 2001219,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-dc39ad14a423"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Command and Control",
+        "mitre_technique": "T1071 - Application Layer Protocol",
+        "nist_ref": "NIST SP 800-61 Rev 2 - Section 3.3 Containment",
+        "owasp_ref": "OWASP-A08:2021 Software and Data Integrity Failures"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.078509+00:00",
+      "action_id": "5ecd94c4-21fb-4e39-8d4e-bf7e68ad7f7c",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 57987,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.85,
+      "risk_score": 86.1,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 1 (threshold \u2264 2) \u2014 high-priority alert.",
+        "risk_score=86.1 exceeds threshold 70.0.",
+        "Signature: \"ET SCAN SSH BruteForce Tool with fake PUTTY version\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:35.576Z",
+        "signature": "ET SCAN SSH BruteForce Tool with fake PUTTY version",
+        "signature_id": 2001219,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-dc39ad14a423"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.078509+00:00",
+      "action_id": "f71dd7d2-41a9-40fe-ba25-2ec85618b0f4",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 38029,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.85,
+      "risk_score": 79.2,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 1 (threshold \u2264 2) \u2014 high-priority alert.",
+        "risk_score=79.2 exceeds threshold 70.0.",
+        "Signature: \"ET BRUTE SSH Authentication Failure\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:36.076Z",
+        "signature": "ET BRUTE SSH Authentication Failure",
+        "signature_id": 2003195,
+        "category": "Attempted Admin Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-9d8d78d13b3b"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.078509+00:00",
+      "action_id": "2e5c6c4f-5636-453b-80b8-6193294423ed",
+      "rule_id": "SOAR-004",
+      "attack_type": "malware_or_c2",
+      "source_ip": "192.168.100.99",
+      "source_port": 62915,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.95,
+      "risk_score": 77.4,
+      "recommended_mitigation": "IMMEDIATELY isolate the affected host from the network. Preserve memory dump and disk image for forensic investigation. Block the C2 destination IP/domain on all firewalls. Initiate incident response procedures and notify the SOC team.",
+      "reasons": [
+        "Malware/C2 signature detected: \"ET SCAN SSH BruteForce Tool with fake PUTTY version\" (category: Attempted Administrator Privilege Gain).",
+        "Alert repeated 14 times in 5 min \u2014 consistent with periodic C2 beacon behaviour."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:36.576Z",
+        "signature": "ET SCAN SSH BruteForce Tool with fake PUTTY version",
+        "signature_id": 2001219,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-a2e9bb606eff"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Command and Control",
+        "mitre_technique": "T1071 - Application Layer Protocol",
+        "nist_ref": "NIST SP 800-61 Rev 2 - Section 3.3 Containment",
+        "owasp_ref": "OWASP-A08:2021 Software and Data Integrity Failures"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.078509+00:00",
+      "action_id": "6980c46e-480f-44e7-bd9a-fe255083c16d",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 62915,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.85,
+      "risk_score": 77.4,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 1 (threshold \u2264 2) \u2014 high-priority alert.",
+        "risk_score=77.4 exceeds threshold 70.0.",
+        "Signature: \"ET SCAN SSH BruteForce Tool with fake PUTTY version\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:36.576Z",
+        "signature": "ET SCAN SSH BruteForce Tool with fake PUTTY version",
+        "signature_id": 2001219,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-a2e9bb606eff"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.078509+00:00",
+      "action_id": "dc26b0ea-9090-4050-b411-41ccd8d23f15",
+      "rule_id": "SOAR-004",
+      "attack_type": "malware_or_c2",
+      "source_ip": "192.168.100.99",
+      "source_port": 44507,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.88,
+      "risk_score": 87.7,
+      "recommended_mitigation": "IMMEDIATELY isolate the affected host from the network. Preserve memory dump and disk image for forensic investigation. Block the C2 destination IP/domain on all firewalls. Initiate incident response procedures and notify the SOC team.",
+      "reasons": [
+        "Alert repeated 15 times in 5 min \u2014 consistent with periodic C2 beacon behaviour.",
+        "Very high risk_score: 87.7."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:37.076Z",
+        "signature": "ET BRUTE SSH Authentication Failure",
+        "signature_id": 2003195,
+        "category": "Attempted Admin Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-1e00f4b5ded7"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Command and Control",
+        "mitre_technique": "T1071 - Application Layer Protocol",
+        "nist_ref": "NIST SP 800-61 Rev 2 - Section 3.3 Containment",
+        "owasp_ref": "OWASP-A08:2021 Software and Data Integrity Failures"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.078509+00:00",
+      "action_id": "cebd2ded-0af8-4631-a2c1-8c9695f08281",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 44507,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.85,
+      "risk_score": 87.7,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 1 (threshold \u2264 2) \u2014 high-priority alert.",
+        "risk_score=87.7 exceeds threshold 70.0.",
+        "Signature: \"ET BRUTE SSH Authentication Failure\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:37.076Z",
+        "signature": "ET BRUTE SSH Authentication Failure",
+        "signature_id": 2003195,
+        "category": "Attempted Admin Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-1e00f4b5ded7"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.078509+00:00",
+      "action_id": "ac513b3d-1dc0-4a9f-9f6f-55ae1b7ffb37",
+      "rule_id": "SOAR-004",
+      "attack_type": "malware_or_c2",
+      "source_ip": "192.168.100.99",
+      "source_port": 21736,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.95,
+      "risk_score": 71.2,
+      "recommended_mitigation": "IMMEDIATELY isolate the affected host from the network. Preserve memory dump and disk image for forensic investigation. Block the C2 destination IP/domain on all firewalls. Initiate incident response procedures and notify the SOC team.",
+      "reasons": [
+        "Malware/C2 signature detected: \"ET SCAN SSH BruteForce Tool with fake PUTTY version\" (category: Attempted Administrator Privilege Gain).",
+        "Alert repeated 16 times in 5 min \u2014 consistent with periodic C2 beacon behaviour."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:37.576Z",
+        "signature": "ET SCAN SSH BruteForce Tool with fake PUTTY version",
+        "signature_id": 2001219,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-ce5d93f67f22"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Command and Control",
+        "mitre_technique": "T1071 - Application Layer Protocol",
+        "nist_ref": "NIST SP 800-61 Rev 2 - Section 3.3 Containment",
+        "owasp_ref": "OWASP-A08:2021 Software and Data Integrity Failures"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.078509+00:00",
+      "action_id": "922ba9e8-9cba-4474-adc5-af529a886023",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 21736,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.85,
+      "risk_score": 71.2,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 1 (threshold \u2264 2) \u2014 high-priority alert.",
+        "risk_score=71.2 exceeds threshold 70.0.",
+        "Signature: \"ET SCAN SSH BruteForce Tool with fake PUTTY version\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:37.576Z",
+        "signature": "ET SCAN SSH BruteForce Tool with fake PUTTY version",
+        "signature_id": 2001219,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-ce5d93f67f22"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.078509+00:00",
+      "action_id": "c6e63028-8627-4250-a327-f92c231fb6fe",
+      "rule_id": "SOAR-004",
+      "attack_type": "malware_or_c2",
+      "source_ip": "192.168.100.99",
+      "source_port": 55835,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.95,
+      "risk_score": 71.7,
+      "recommended_mitigation": "IMMEDIATELY isolate the affected host from the network. Preserve memory dump and disk image for forensic investigation. Block the C2 destination IP/domain on all firewalls. Initiate incident response procedures and notify the SOC team.",
+      "reasons": [
+        "Malware/C2 signature detected: \"ET SCAN SSH BruteForce Tool with fake PUTTY version\" (category: Attempted Administrator Privilege Gain).",
+        "Alert repeated 17 times in 5 min \u2014 consistent with periodic C2 beacon behaviour."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:38.076Z",
+        "signature": "ET SCAN SSH BruteForce Tool with fake PUTTY version",
+        "signature_id": 2001219,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-a18dee497664"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Command and Control",
+        "mitre_technique": "T1071 - Application Layer Protocol",
+        "nist_ref": "NIST SP 800-61 Rev 2 - Section 3.3 Containment",
+        "owasp_ref": "OWASP-A08:2021 Software and Data Integrity Failures"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.078509+00:00",
+      "action_id": "ef10ccc8-5667-43bd-bb0d-a20325279c7f",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 55835,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.85,
+      "risk_score": 71.7,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 1 (threshold \u2264 2) \u2014 high-priority alert.",
+        "risk_score=71.7 exceeds threshold 70.0.",
+        "Signature: \"ET SCAN SSH BruteForce Tool with fake PUTTY version\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:38.076Z",
+        "signature": "ET SCAN SSH BruteForce Tool with fake PUTTY version",
+        "signature_id": 2001219,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-a18dee497664"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.078509+00:00",
+      "action_id": "a3753e99-8162-4c33-91ca-66e4b4e5027d",
+      "rule_id": "SOAR-004",
+      "attack_type": "malware_or_c2",
+      "source_ip": "192.168.100.99",
+      "source_port": 33933,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.95,
+      "risk_score": 77.4,
+      "recommended_mitigation": "IMMEDIATELY isolate the affected host from the network. Preserve memory dump and disk image for forensic investigation. Block the C2 destination IP/domain on all firewalls. Initiate incident response procedures and notify the SOC team.",
+      "reasons": [
+        "Malware/C2 signature detected: \"ET SCAN SSH BruteForce Tool with fake PUTTY version\" (category: Attempted Administrator Privilege Gain).",
+        "Alert repeated 18 times in 5 min \u2014 consistent with periodic C2 beacon behaviour."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:38.576Z",
+        "signature": "ET SCAN SSH BruteForce Tool with fake PUTTY version",
+        "signature_id": 2001219,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-a3d8416bf87a"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Command and Control",
+        "mitre_technique": "T1071 - Application Layer Protocol",
+        "nist_ref": "NIST SP 800-61 Rev 2 - Section 3.3 Containment",
+        "owasp_ref": "OWASP-A08:2021 Software and Data Integrity Failures"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.078509+00:00",
+      "action_id": "67cd38ca-ca02-4972-9eee-c158ab7c2ec9",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 33933,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.85,
+      "risk_score": 77.4,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 1 (threshold \u2264 2) \u2014 high-priority alert.",
+        "risk_score=77.4 exceeds threshold 70.0.",
+        "Signature: \"ET SCAN SSH BruteForce Tool with fake PUTTY version\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:38.576Z",
+        "signature": "ET SCAN SSH BruteForce Tool with fake PUTTY version",
+        "signature_id": 2001219,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-a3d8416bf87a"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.079509+00:00",
+      "action_id": "5b826622-9f5f-4d8c-90d4-b4cd8d427ffc",
+      "rule_id": "SOAR-003",
+      "attack_type": "web_attack",
+      "source_ip": "192.168.100.99",
+      "source_port": 49785,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "MEDIUM",
+      "confidence": 0.8,
+      "risk_score": 76.7,
+      "recommended_mitigation": "Block source IP at WAF/perimeter. Review Web Scanner indicators in web server access logs. Patch vulnerable web endpoints and enable WAF rules targeting OWASP Top-10.",
+      "reasons": [
+        "Detected Web Scanner: 18 web alerts from 192.168.100.99 in 60 s.",
+        "Signature: \"ET SCAN SSH Scanner\".",
+        "Category: \"Attempted Administrator Privilege Gain\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:39.076Z",
+        "signature": "ET SCAN SSH Scanner",
+        "signature_id": 2001721,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-331a9dca6cdd"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Initial Access",
+        "mitre_technique": "T1190 - Exploit Public-Facing Application",
+        "owasp_ref": "OWASP-A03:2021 Injection / OWASP-A01:2021 Broken Access Control",
+        "nist_ref": "NIST SP 800-44 - Guidelines on Securing Public Web Servers"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.079509+00:00",
+      "action_id": "8d37aacd-c122-49fb-a0db-c9e2b78c1641",
+      "rule_id": "SOAR-004",
+      "attack_type": "malware_or_c2",
+      "source_ip": "192.168.100.99",
+      "source_port": 49785,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.95,
+      "risk_score": 76.7,
+      "recommended_mitigation": "IMMEDIATELY isolate the affected host from the network. Preserve memory dump and disk image for forensic investigation. Block the C2 destination IP/domain on all firewalls. Initiate incident response procedures and notify the SOC team.",
+      "reasons": [
+        "Malware/C2 signature detected: \"ET SCAN SSH Scanner\" (category: Attempted Administrator Privilege Gain).",
+        "Alert repeated 19 times in 5 min \u2014 consistent with periodic C2 beacon behaviour."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:39.076Z",
+        "signature": "ET SCAN SSH Scanner",
+        "signature_id": 2001721,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-331a9dca6cdd"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Command and Control",
+        "mitre_technique": "T1071 - Application Layer Protocol",
+        "nist_ref": "NIST SP 800-61 Rev 2 - Section 3.3 Containment",
+        "owasp_ref": "OWASP-A08:2021 Software and Data Integrity Failures"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.079509+00:00",
+      "action_id": "f17b9369-88c3-4cbd-9066-fc32ee96aff6",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 49785,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.75,
+      "risk_score": 76.7,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 2 (threshold \u2264 2) \u2014 high-priority alert.",
+        "risk_score=76.7 exceeds threshold 70.0.",
+        "Signature: \"ET SCAN SSH Scanner\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:39.076Z",
+        "signature": "ET SCAN SSH Scanner",
+        "signature_id": 2001721,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-331a9dca6cdd"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.079509+00:00",
+      "action_id": "85c34f4c-2878-4f17-a441-a8776db0b8b2",
+      "rule_id": "SOAR-004",
+      "attack_type": "malware_or_c2",
+      "source_ip": "192.168.100.99",
+      "source_port": 31318,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.95,
+      "risk_score": 72.7,
+      "recommended_mitigation": "IMMEDIATELY isolate the affected host from the network. Preserve memory dump and disk image for forensic investigation. Block the C2 destination IP/domain on all firewalls. Initiate incident response procedures and notify the SOC team.",
+      "reasons": [
+        "Malware/C2 signature detected: \"ET SCAN Potential SSH Brute Force Attempt\" (category: Attempted Administrator Privilege Gain).",
+        "Alert repeated 20 times in 5 min \u2014 consistent with periodic C2 beacon behaviour."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:39.576Z",
+        "signature": "ET SCAN Potential SSH Brute Force Attempt",
+        "signature_id": 2001722,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-0b6e4e74e687"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Command and Control",
+        "mitre_technique": "T1071 - Application Layer Protocol",
+        "nist_ref": "NIST SP 800-61 Rev 2 - Section 3.3 Containment",
+        "owasp_ref": "OWASP-A08:2021 Software and Data Integrity Failures"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.079509+00:00",
+      "action_id": "6b07545f-bd47-447c-a528-7fe56a756061",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 31318,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.85,
+      "risk_score": 72.7,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 1 (threshold \u2264 2) \u2014 high-priority alert.",
+        "risk_score=72.7 exceeds threshold 70.0.",
+        "Signature: \"ET SCAN Potential SSH Brute Force Attempt\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:39.576Z",
+        "signature": "ET SCAN Potential SSH Brute Force Attempt",
+        "signature_id": 2001722,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-0b6e4e74e687"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.079509+00:00",
+      "action_id": "c2dc27ef-d8f9-4af8-8b76-3e52fd7b177d",
+      "rule_id": "SOAR-001",
+      "attack_type": "port_scan",
+      "source_ip": "192.168.100.99",
+      "source_port": 61125,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.85,
+      "risk_score": 69.2,
+      "recommended_mitigation": "Block outbound connections from this source IP at the perimeter firewall. Review whether this IP belongs to an authorised scanner. Capture full packet headers for forensic analysis.",
+      "reasons": [
+        "Source generated 20 alerts (threshold: 20) in the last 60 s."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:40.076Z",
+        "signature": "ET BRUTE SSH Authentication Failure",
+        "signature_id": 2003195,
+        "category": "Attempted Admin Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-c02b6760fe1e"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Discovery",
+        "mitre_technique": "T1046 - Network Service Scanning",
+        "nist_ref": "NIST SP 800-94 - Guide to Intrusion Detection and Prevention Systems"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.079509+00:00",
+      "action_id": "c73d4225-6ceb-49ae-ba82-f14e7a9f1439",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 61125,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.85,
+      "risk_score": 69.2,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 1 (threshold \u2264 2) \u2014 high-priority alert.",
+        "Signature: \"ET BRUTE SSH Authentication Failure\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:40.076Z",
+        "signature": "ET BRUTE SSH Authentication Failure",
+        "signature_id": 2003195,
+        "category": "Attempted Admin Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-c02b6760fe1e"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.079509+00:00",
+      "action_id": "76a0c35f-6717-46c7-ac07-cfd469f59f59",
+      "rule_id": "SOAR-001",
+      "attack_type": "port_scan",
+      "source_ip": "192.168.100.99",
+      "source_port": 58857,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.85,
+      "risk_score": 89.3,
+      "recommended_mitigation": "Block outbound connections from this source IP at the perimeter firewall. Review whether this IP belongs to an authorised scanner. Capture full packet headers for forensic analysis.",
+      "reasons": [
+        "Source generated 21 alerts (threshold: 20) in the last 60 s."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:40.576Z",
+        "signature": "ET SCAN SSH BruteForce Tool with fake PUTTY version",
+        "signature_id": 2001219,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-5bbcc368e6f4"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Discovery",
+        "mitre_technique": "T1046 - Network Service Scanning",
+        "nist_ref": "NIST SP 800-94 - Guide to Intrusion Detection and Prevention Systems"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.079509+00:00",
+      "action_id": "599dcafb-575a-4e81-ba77-820df8fef512",
+      "rule_id": "SOAR-004",
+      "attack_type": "malware_or_c2",
+      "source_ip": "192.168.100.99",
+      "source_port": 58857,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.95,
+      "risk_score": 89.3,
+      "recommended_mitigation": "IMMEDIATELY isolate the affected host from the network. Preserve memory dump and disk image for forensic investigation. Block the C2 destination IP/domain on all firewalls. Initiate incident response procedures and notify the SOC team.",
+      "reasons": [
+        "Malware/C2 signature detected: \"ET SCAN SSH BruteForce Tool with fake PUTTY version\" (category: Attempted Administrator Privilege Gain).",
+        "Alert repeated 22 times in 5 min \u2014 consistent with periodic C2 beacon behaviour.",
+        "Very high risk_score: 89.3."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:40.576Z",
+        "signature": "ET SCAN SSH BruteForce Tool with fake PUTTY version",
+        "signature_id": 2001219,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-5bbcc368e6f4"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Command and Control",
+        "mitre_technique": "T1071 - Application Layer Protocol",
+        "nist_ref": "NIST SP 800-61 Rev 2 - Section 3.3 Containment",
+        "owasp_ref": "OWASP-A08:2021 Software and Data Integrity Failures"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.079509+00:00",
+      "action_id": "192afaa5-bcc1-4624-a8a2-378f1b4842aa",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 58857,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.85,
+      "risk_score": 89.3,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 1 (threshold \u2264 2) \u2014 high-priority alert.",
+        "risk_score=89.3 exceeds threshold 70.0.",
+        "Signature: \"ET SCAN SSH BruteForce Tool with fake PUTTY version\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:40.576Z",
+        "signature": "ET SCAN SSH BruteForce Tool with fake PUTTY version",
+        "signature_id": 2001219,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-5bbcc368e6f4"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.079509+00:00",
+      "action_id": "157d8d2d-a2ac-4695-94c3-cf1cb2f03778",
+      "rule_id": "SOAR-001",
+      "attack_type": "port_scan",
+      "source_ip": "192.168.100.99",
+      "source_port": 25037,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.85,
+      "risk_score": 86.0,
+      "recommended_mitigation": "Block outbound connections from this source IP at the perimeter firewall. Review whether this IP belongs to an authorised scanner. Capture full packet headers for forensic analysis.",
+      "reasons": [
+        "Source generated 22 alerts (threshold: 20) in the last 60 s."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:41.076Z",
+        "signature": "ET BRUTE SSH Authentication Failure",
+        "signature_id": 2003195,
+        "category": "Attempted Admin Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-223a6c391fc2"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Discovery",
+        "mitre_technique": "T1046 - Network Service Scanning",
+        "nist_ref": "NIST SP 800-94 - Guide to Intrusion Detection and Prevention Systems"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.079509+00:00",
+      "action_id": "9fcdf91c-6ad0-46f3-9aa9-9f8805f00b8f",
+      "rule_id": "SOAR-004",
+      "attack_type": "malware_or_c2",
+      "source_ip": "192.168.100.99",
+      "source_port": 25037,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.88,
+      "risk_score": 86.0,
+      "recommended_mitigation": "IMMEDIATELY isolate the affected host from the network. Preserve memory dump and disk image for forensic investigation. Block the C2 destination IP/domain on all firewalls. Initiate incident response procedures and notify the SOC team.",
+      "reasons": [
+        "Alert repeated 23 times in 5 min \u2014 consistent with periodic C2 beacon behaviour.",
+        "Very high risk_score: 86.0."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:41.076Z",
+        "signature": "ET BRUTE SSH Authentication Failure",
+        "signature_id": 2003195,
+        "category": "Attempted Admin Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-223a6c391fc2"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Command and Control",
+        "mitre_technique": "T1071 - Application Layer Protocol",
+        "nist_ref": "NIST SP 800-61 Rev 2 - Section 3.3 Containment",
+        "owasp_ref": "OWASP-A08:2021 Software and Data Integrity Failures"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.079509+00:00",
+      "action_id": "3d1c4675-3bd8-42a0-83d0-ee3bc5c0ed49",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 25037,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.85,
+      "risk_score": 86.0,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 1 (threshold \u2264 2) \u2014 high-priority alert.",
+        "risk_score=86.0 exceeds threshold 70.0.",
+        "Signature: \"ET BRUTE SSH Authentication Failure\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:41.076Z",
+        "signature": "ET BRUTE SSH Authentication Failure",
+        "signature_id": 2003195,
+        "category": "Attempted Admin Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-223a6c391fc2"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.079509+00:00",
+      "action_id": "73c72b82-e674-4145-b128-75a013aa2ac4",
+      "rule_id": "SOAR-001",
+      "attack_type": "port_scan",
+      "source_ip": "192.168.100.99",
+      "source_port": 35102,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.85,
+      "risk_score": 72.9,
+      "recommended_mitigation": "Block outbound connections from this source IP at the perimeter firewall. Review whether this IP belongs to an authorised scanner. Capture full packet headers for forensic analysis.",
+      "reasons": [
+        "Source generated 23 alerts (threshold: 20) in the last 60 s."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:41.576Z",
+        "signature": "ET SCAN SSH Scanner",
+        "signature_id": 2001721,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-8f4b2fd989c1"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Discovery",
+        "mitre_technique": "T1046 - Network Service Scanning",
+        "nist_ref": "NIST SP 800-94 - Guide to Intrusion Detection and Prevention Systems"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.079509+00:00",
+      "action_id": "777be127-72f9-412d-9be8-80e1c8d204f7",
+      "rule_id": "SOAR-003",
+      "attack_type": "web_attack",
+      "source_ip": "192.168.100.99",
+      "source_port": 35102,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "MEDIUM",
+      "confidence": 0.8,
+      "risk_score": 72.9,
+      "recommended_mitigation": "Block source IP at WAF/perimeter. Review Web Scanner indicators in web server access logs. Patch vulnerable web endpoints and enable WAF rules targeting OWASP Top-10.",
+      "reasons": [
+        "Detected Web Scanner: 23 web alerts from 192.168.100.99 in 60 s.",
+        "Signature: \"ET SCAN SSH Scanner\".",
+        "Category: \"Attempted Administrator Privilege Gain\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:41.576Z",
+        "signature": "ET SCAN SSH Scanner",
+        "signature_id": 2001721,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-8f4b2fd989c1"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Initial Access",
+        "mitre_technique": "T1190 - Exploit Public-Facing Application",
+        "owasp_ref": "OWASP-A03:2021 Injection / OWASP-A01:2021 Broken Access Control",
+        "nist_ref": "NIST SP 800-44 - Guidelines on Securing Public Web Servers"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.079509+00:00",
+      "action_id": "1f1f6a61-7ed1-4cef-8e8f-969b884d60b0",
+      "rule_id": "SOAR-004",
+      "attack_type": "malware_or_c2",
+      "source_ip": "192.168.100.99",
+      "source_port": 35102,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.95,
+      "risk_score": 72.9,
+      "recommended_mitigation": "IMMEDIATELY isolate the affected host from the network. Preserve memory dump and disk image for forensic investigation. Block the C2 destination IP/domain on all firewalls. Initiate incident response procedures and notify the SOC team.",
+      "reasons": [
+        "Malware/C2 signature detected: \"ET SCAN SSH Scanner\" (category: Attempted Administrator Privilege Gain).",
+        "Alert repeated 24 times in 5 min \u2014 consistent with periodic C2 beacon behaviour."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:41.576Z",
+        "signature": "ET SCAN SSH Scanner",
+        "signature_id": 2001721,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-8f4b2fd989c1"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Command and Control",
+        "mitre_technique": "T1071 - Application Layer Protocol",
+        "nist_ref": "NIST SP 800-61 Rev 2 - Section 3.3 Containment",
+        "owasp_ref": "OWASP-A08:2021 Software and Data Integrity Failures"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.079509+00:00",
+      "action_id": "99c4d70f-d0a8-477f-a050-24acea712cb7",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 35102,
+      "destination_ip": "10.0.0.20",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.75,
+      "risk_score": 72.9,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 2 (threshold \u2264 2) \u2014 high-priority alert.",
+        "risk_score=72.9 exceeds threshold 70.0.",
+        "Signature: \"ET SCAN SSH Scanner\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:41.576Z",
+        "signature": "ET SCAN SSH Scanner",
+        "signature_id": 2001721,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-8f4b2fd989c1"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.079509+00:00",
+      "action_id": "dcb83654-aa8d-437e-b24b-e817e684b1b6",
+      "rule_id": "SOAR-001",
+      "attack_type": "port_scan",
+      "source_ip": "192.168.100.99",
+      "source_port": 48851,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.85,
+      "risk_score": 75.6,
+      "recommended_mitigation": "Block outbound connections from this source IP at the perimeter firewall. Review whether this IP belongs to an authorised scanner. Capture full packet headers for forensic analysis.",
+      "reasons": [
+        "Source generated 24 alerts (threshold: 20) in the last 60 s."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:42.076Z",
+        "signature": "ET SCAN SSH BruteForce Tool with fake PUTTY version",
+        "signature_id": 2001219,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-e2c7ddddfcec"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Discovery",
+        "mitre_technique": "T1046 - Network Service Scanning",
+        "nist_ref": "NIST SP 800-94 - Guide to Intrusion Detection and Prevention Systems"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.079509+00:00",
+      "action_id": "f415a82e-1046-4a34-8426-bd60bcfc2e07",
+      "rule_id": "SOAR-004",
+      "attack_type": "malware_or_c2",
+      "source_ip": "192.168.100.99",
+      "source_port": 48851,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.95,
+      "risk_score": 75.6,
+      "recommended_mitigation": "IMMEDIATELY isolate the affected host from the network. Preserve memory dump and disk image for forensic investigation. Block the C2 destination IP/domain on all firewalls. Initiate incident response procedures and notify the SOC team.",
+      "reasons": [
+        "Malware/C2 signature detected: \"ET SCAN SSH BruteForce Tool with fake PUTTY version\" (category: Attempted Administrator Privilege Gain).",
+        "Alert repeated 25 times in 5 min \u2014 consistent with periodic C2 beacon behaviour."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:42.076Z",
+        "signature": "ET SCAN SSH BruteForce Tool with fake PUTTY version",
+        "signature_id": 2001219,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-e2c7ddddfcec"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Command and Control",
+        "mitre_technique": "T1071 - Application Layer Protocol",
+        "nist_ref": "NIST SP 800-61 Rev 2 - Section 3.3 Containment",
+        "owasp_ref": "OWASP-A08:2021 Software and Data Integrity Failures"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:24:30.079509+00:00",
+      "action_id": "4267f5b1-88a2-42b6-8e33-f2a3fe138ceb",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 48851,
+      "destination_ip": "10.0.0.21",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "CRITICAL",
+      "confidence": 0.85,
+      "risk_score": 75.6,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 1 (threshold \u2264 2) \u2014 high-priority alert.",
+        "risk_score=75.6 exceeds threshold 70.0.",
+        "Signature: \"ET SCAN SSH BruteForce Tool with fake PUTTY version\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:23:42.076Z",
+        "signature": "ET SCAN SSH BruteForce Tool with fake PUTTY version",
+        "signature_id": 2001219,
+        "category": "Attempted Administrator Privilege Gain",
+        "severity": 1,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-ssh_bruteforce-e2c7ddddfcec"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    }
+  ]
+}

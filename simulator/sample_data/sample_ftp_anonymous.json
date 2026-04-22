@@ -1,0 +1,122 @@
+[
+    {
+        "@timestamp": "2024-06-01T11:05:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ftp-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "198.51.100.80",
+                "src_port": 51200,
+                "dest_ip": "10.0.0.40",
+                "dest_port": 21,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY FTP Anonymous Login Attempt",
+                    "signature_id": 2002383,
+                    "category": "Potentially Bad Traffic",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T11:05:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 55.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T11:05:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ftp-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "198.51.100.80",
+                "src_port": 51201,
+                "dest_ip": "10.0.0.40",
+                "dest_port": 21,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY FTP Anonymous Successful Login",
+                    "signature_id": 2002384,
+                    "category": "Potentially Bad Traffic",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:05:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 65.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T11:05:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ftp-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "198.51.100.80",
+                "src_port": 51202,
+                "dest_ip": "10.0.0.40",
+                "dest_port": 21,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY FTP Login With Anonymous Credentials Data Transfer",
+                    "signature_id": 2002385,
+                    "category": "Attempted Information Leak",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:05:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 72.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T11:05:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ftp-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "198.51.100.80",
+                "src_port": 51203,
+                "dest_ip": "10.0.0.41",
+                "dest_port": 21,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY FTP Brute Force Login Attempt After Anonymous",
+                    "signature_id": 2003446,
+                    "category": "Attempted Administrator Privilege Gain",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:05:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 75.0,
+        "_sim_scenario": "web_attack"
+    }
+]

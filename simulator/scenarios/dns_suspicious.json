@@ -1,0 +1,8 @@
+{
+    "scenario": "dns_suspicious",
+    "description": "Simulates high-frequency DNS queries to suspicious domains suggesting DNS tunneling or data exfiltration.",
+    "src_ip": "10.0.0.77",
+    "count": 15,
+    "rate_per_second": 5,
+    "notes": "Triggers SOAR-005 (DNSSuspiciousRule) – requires event_count_threshold=3 within the medium (60 s) window."
+}

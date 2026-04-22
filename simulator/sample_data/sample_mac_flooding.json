@@ -1,0 +1,122 @@
+[
+    {
+        "@timestamp": "2024-06-01T11:55:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-macfl-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.200",
+                "src_port": 0,
+                "dest_ip": "10.0.0.1",
+                "dest_port": 0,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET DOS MAC Address Table Overflow — Excessive Unique Source MACs Detected",
+                    "signature_id": 2033000,
+                    "category": "Denial of Service Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:55:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 72.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T11:55:00.200Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-macfl-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.201",
+                "src_port": 0,
+                "dest_ip": "10.0.0.1",
+                "dest_port": 0,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET DOS MAC Flooding Attack Switch CAM Table Exhaustion",
+                    "signature_id": 2033001,
+                    "category": "Denial of Service Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:55:00.200Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 74.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T11:55:00.400Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-macfl-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.202",
+                "src_port": 0,
+                "dest_ip": "10.0.0.1",
+                "dest_port": 0,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET DOS Macof Style MAC Flooding Tool Detected",
+                    "signature_id": 2033002,
+                    "category": "Denial of Service Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:55:00.400Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 76.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T11:55:00.600Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-macfl-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.203",
+                "src_port": 0,
+                "dest_ip": "10.0.0.254",
+                "dest_port": 0,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET DOS Network Switch Operating in Hub Mode After MAC Flood",
+                    "signature_id": 2033003,
+                    "category": "Denial of Service Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:55:00.600Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 80.0,
+        "_sim_scenario": "dos_or_flood"
+    }
+]

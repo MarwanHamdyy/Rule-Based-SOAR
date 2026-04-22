@@ -1,0 +1,2912 @@
+[
+    {
+        "@timestamp": "2024-06-01T12:05:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-arp-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.200",
+                "src_port": 0,
+                "dest_ip": "10.0.0.1",
+                "dest_port": 0,
+                "proto": "arp",
+                "alert": {
+                    "signature": "ET DOS ARP Spoofing Attack \u2014 Duplicate IP Address Detected",
+                    "signature_id": 2034000,
+                    "category": "Denial of Service Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T12:05:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 80.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T12:05:00.300Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-arp-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.200",
+                "src_port": 0,
+                "dest_ip": "10.0.0.254",
+                "dest_port": 0,
+                "proto": "arp",
+                "alert": {
+                    "signature": "ET DOS ARP Cache Poisoning Gateway MAC Override",
+                    "signature_id": 2034001,
+                    "category": "Denial of Service Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T12:05:00.300Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 85.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T12:05:00.600Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-arp-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.200",
+                "src_port": 0,
+                "dest_ip": "10.0.0.1",
+                "dest_port": 0,
+                "proto": "arp",
+                "alert": {
+                    "signature": "ET DOS Gratuitous ARP Flood Detected \u2014 Possible Ettercap/Bettercap",
+                    "signature_id": 2034002,
+                    "category": "Denial of Service Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T12:05:00.600Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 82.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T12:05:00.900Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-arp-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.200",
+                "src_port": 0,
+                "dest_ip": "10.0.0.50",
+                "dest_port": 80,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY Man-in-the-Middle Intercepted HTTP Traffic After ARP Spoof",
+                    "signature_id": 2034003,
+                    "category": "Potentially Bad Traffic",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T12:05:00.900Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 88.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T11:40:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-c2b-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.60",
+                "src_port": 50100,
+                "dest_ip": "185.220.101.99",
+                "dest_port": 443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET MALWARE Cobalt Strike Beacon C2 Heartbeat Detected",
+                    "signature_id": 2019714,
+                    "category": "Malware Command and Control Activity Detected",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:40:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 96.0,
+        "_sim_scenario": "malware_or_c2"
+    },
+    {
+        "@timestamp": "2024-06-01T11:40:30.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-c2b-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.60",
+                "src_port": 50101,
+                "dest_ip": "185.220.101.99",
+                "dest_port": 443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET MALWARE Periodic Beacon Callback Interval Matches Known C2 Profile",
+                    "signature_id": 2033650,
+                    "category": "Malware Command and Control Activity Detected",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:40:30.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 94.0,
+        "_sim_scenario": "malware_or_c2"
+    },
+    {
+        "@timestamp": "2024-06-01T11:41:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-c2b-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.60",
+                "src_port": 50102,
+                "dest_ip": "185.220.101.99",
+                "dest_port": 443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET MALWARE Sliver Implant Beacon Traffic Detected",
+                    "signature_id": 2037100,
+                    "category": "Malware Command and Control Activity Detected",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:41:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 95.0,
+        "_sim_scenario": "malware_or_c2"
+    },
+    {
+        "@timestamp": "2024-06-01T11:41:30.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-c2b-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.61",
+                "src_port": 50103,
+                "dest_ip": "45.33.32.200",
+                "dest_port": 8080,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET MALWARE Meterpreter Reverse HTTPS Beacon Detected",
+                    "signature_id": 2037101,
+                    "category": "Malware Command and Control Activity Detected",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:41:30.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 97.0,
+        "_sim_scenario": "malware_or_c2"
+    },
+    {
+        "@timestamp": "2024-06-01T11:42:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-c2b-005",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.60",
+                "src_port": 50104,
+                "dest_ip": "185.220.101.99",
+                "dest_port": 53,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET MALWARE DNS Based C2 Beacon Detected Encoded Payload",
+                    "signature_id": 2037102,
+                    "category": "Malware Command and Control Activity Detected",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:42:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 93.0,
+        "_sim_scenario": "malware_or_c2"
+    },
+    {
+        "@timestamp": "2024-06-01T11:15:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-cgi-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "185.220.101.77",
+                "src_port": 55100,
+                "dest_ip": "10.0.0.30",
+                "dest_port": 80,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET WEB_SERVER CGI-BIN Access Attempt With Command Execution (Shellshock CVE-2014-6271)",
+                    "signature_id": 2019232,
+                    "category": "Web Application Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:15:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 90.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T11:15:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-cgi-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "185.220.101.77",
+                "src_port": 55101,
+                "dest_ip": "10.0.0.30",
+                "dest_port": 80,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET WEB_SERVER CGI /bin/bash Execution Attempt",
+                    "signature_id": 2019233,
+                    "category": "Web Application Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:15:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 88.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T11:15:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-cgi-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "185.220.101.77",
+                "src_port": 55102,
+                "dest_ip": "10.0.0.31",
+                "dest_port": 8080,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET WEB_SERVER Possible CGI-BIN PHP Remote Code Execution",
+                    "signature_id": 2019234,
+                    "category": "Web Application Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:15:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 85.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T11:15:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-cgi-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "185.220.101.77",
+                "src_port": 55103,
+                "dest_ip": "10.0.0.30",
+                "dest_port": 443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET WEB_SERVER CGI Test Script Access (printenv)",
+                    "signature_id": 2100109,
+                    "category": "Web Application Attack",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T11:15:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 70.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T11:50:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dhcp-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "0.0.0.0",
+                "src_port": 68,
+                "dest_ip": "255.255.255.255",
+                "dest_port": 67,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET DOS DHCP Starvation Attack \u2014 Excessive DHCPDISCOVER from Single MAC",
+                    "signature_id": 2032000,
+                    "category": "Denial of Service Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:50:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 75.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T11:50:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dhcp-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "0.0.0.0",
+                "src_port": 68,
+                "dest_ip": "255.255.255.255",
+                "dest_port": 67,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET DOS DHCP Starvation Rapid IP Pool Exhaustion",
+                    "signature_id": 2032001,
+                    "category": "Denial of Service Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:50:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 78.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T11:50:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dhcp-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.1.200",
+                "src_port": 67,
+                "dest_ip": "255.255.255.255",
+                "dest_port": 68,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET POLICY Rogue DHCP Server Detected Offering Non-Standard Gateway",
+                    "signature_id": 2032002,
+                    "category": "Potentially Bad Traffic",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:50:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 85.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T11:50:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dhcp-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "0.0.0.0",
+                "src_port": 68,
+                "dest_ip": "255.255.255.255",
+                "dest_port": 67,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET DOS DHCP DISCOVER Flood With Randomized MAC Addresses",
+                    "signature_id": 2032003,
+                    "category": "Denial of Service Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:50:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 80.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T11:30:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dmz-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "172.16.0.10",
+                "src_port": 47000,
+                "dest_ip": "10.0.0.50",
+                "dest_port": 22,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY DMZ Host Initiating SSH Connection to Internal Network",
+                    "signature_id": 2019400,
+                    "category": "Potentially Bad Traffic",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:30:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-dmz"
+        },
+        "risk_score": 80.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    },
+    {
+        "@timestamp": "2024-06-01T11:30:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dmz-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "172.16.0.10",
+                "src_port": 47001,
+                "dest_ip": "10.0.0.51",
+                "dest_port": 445,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY DMZ Server Accessing Internal SMB Share",
+                    "signature_id": 2019401,
+                    "category": "Potentially Bad Traffic",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:30:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-dmz"
+        },
+        "risk_score": 85.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    },
+    {
+        "@timestamp": "2024-06-01T11:30:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dmz-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "172.16.0.11",
+                "src_port": 47002,
+                "dest_ip": "10.0.0.52",
+                "dest_port": 3306,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY DMZ Host Direct Database Connection to Internal MySQL Server",
+                    "signature_id": 2019402,
+                    "category": "Potentially Bad Traffic",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:30:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-dmz"
+        },
+        "risk_score": 88.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    },
+    {
+        "@timestamp": "2024-06-01T11:30:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dmz-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "172.16.0.10",
+                "src_port": 47003,
+                "dest_ip": "10.0.0.53",
+                "dest_port": 5432,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY Anomalous DMZ to Internal Traffic on Non-Standard Port",
+                    "signature_id": 2019403,
+                    "category": "Potentially Bad Traffic",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T11:30:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-dmz"
+        },
+        "risk_score": 75.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    },
+    {
+        "@timestamp": "2024-06-01T10:20:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dns-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.77",
+                "src_port": 54123,
+                "dest_ip": "8.8.8.8",
+                "dest_port": 53,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET DNS DNS Tunnel Activity Detected",
+                    "signature_id": 2027865,
+                    "category": "DNS Exfiltration",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T10:20:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 60.0,
+        "_sim_scenario": "dns_suspicious"
+    },
+    {
+        "@timestamp": "2024-06-01T10:20:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dns-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.77",
+                "src_port": 54124,
+                "dest_ip": "1.1.1.1",
+                "dest_port": 53,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET DNS High Frequency DNS Requests indicating DNS Tunneling",
+                    "signature_id": 2027867,
+                    "category": "DNS Exfiltration",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T10:20:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 65.0,
+        "_sim_scenario": "dns_suspicious"
+    },
+    {
+        "@timestamp": "2024-06-01T10:20:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dns-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.77",
+                "src_port": 54125,
+                "dest_ip": "8.8.8.8",
+                "dest_port": 53,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET DNS Query for .onion Proxy Domain",
+                    "signature_id": 2022918,
+                    "category": "Potentially Bad Traffic",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T10:20:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 55.0,
+        "_sim_scenario": "dns_suspicious"
+    },
+    {
+        "@timestamp": "2024-06-01T10:20:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dns-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.77",
+                "src_port": 54126,
+                "dest_ip": "8.8.8.8",
+                "dest_port": 53,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET DNS Suspicious DNS Query for DGA Domain",
+                    "signature_id": 2035999,
+                    "category": "Potentially Bad Traffic",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T10:20:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 58.0,
+        "_sim_scenario": "dns_suspicious"
+    },
+    {
+        "@timestamp": "2024-06-01T10:25:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dos-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.0.2.200",
+                "src_port": 0,
+                "dest_ip": "10.0.0.5",
+                "dest_port": 80,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET DOS Possible TCP SYN Flood Attack",
+                    "signature_id": 2002992,
+                    "category": "Denial of Service Attack",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T10:25:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 70.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T10:25:00.200Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dos-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.0.2.200",
+                "src_port": 0,
+                "dest_ip": "10.0.0.5",
+                "dest_port": 80,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET DOS Possible TCP SYN Flood Attack",
+                    "signature_id": 2002992,
+                    "category": "Denial of Service Attack",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T10:25:00.200Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 72.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T10:25:00.400Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dos-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.0.2.200",
+                "src_port": 12345,
+                "dest_ip": "10.0.0.100",
+                "dest_port": 53,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET DOS Possible UDP Flood",
+                    "signature_id": 2002994,
+                    "category": "Denial of Service Attack",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T10:25:00.400Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 68.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T10:25:00.600Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dos-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.0.2.200",
+                "src_port": 0,
+                "dest_ip": "10.0.0.5",
+                "dest_port": 443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET DOS Excessive HTTP Requests Indicating Possible DDoS",
+                    "signature_id": 2012134,
+                    "category": "Denial of Service Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T10:25:00.600Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 78.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T10:25:00.800Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dos-005",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.0.2.200",
+                "src_port": 0,
+                "dest_ip": "10.0.0.5",
+                "dest_port": 80,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET DOS Possible TCP SYN Flood Attack",
+                    "signature_id": 2002992,
+                    "category": "Denial of Service Attack",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T10:25:00.800Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 75.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T11:05:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ftp-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "198.51.100.80",
+                "src_port": 51200,
+                "dest_ip": "10.0.0.40",
+                "dest_port": 21,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY FTP Anonymous Login Attempt",
+                    "signature_id": 2002383,
+                    "category": "Potentially Bad Traffic",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T11:05:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 55.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T11:05:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ftp-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "198.51.100.80",
+                "src_port": 51201,
+                "dest_ip": "10.0.0.40",
+                "dest_port": 21,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY FTP Anonymous Successful Login",
+                    "signature_id": 2002384,
+                    "category": "Potentially Bad Traffic",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:05:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 65.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T11:05:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ftp-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "198.51.100.80",
+                "src_port": 51202,
+                "dest_ip": "10.0.0.40",
+                "dest_port": 21,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY FTP Login With Anonymous Credentials Data Transfer",
+                    "signature_id": 2002385,
+                    "category": "Attempted Information Leak",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:05:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 72.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T11:05:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ftp-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "198.51.100.80",
+                "src_port": 51203,
+                "dest_ip": "10.0.0.41",
+                "dest_port": 21,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY FTP Brute Force Login Attempt After Anonymous",
+                    "signature_id": 2003446,
+                    "category": "Attempted Administrator Privilege Gain",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:05:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 75.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T11:10:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ia-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "45.33.49.100",
+                "src_port": 60500,
+                "dest_ip": "10.0.0.30",
+                "dest_port": 443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET EXPLOIT Possible Apache Struts OGNL Injection (CVE-2017-5638)",
+                    "signature_id": 2024175,
+                    "category": "Web Application Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:10:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 92.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T11:10:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ia-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "45.33.49.100",
+                "src_port": 60501,
+                "dest_ip": "10.0.0.30",
+                "dest_port": 443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET EXPLOIT Log4j RCE Attempt (CVE-2021-44228) JNDI LDAP",
+                    "signature_id": 2034647,
+                    "category": "Attempted Administrator Privilege Gain",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:10:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 98.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T11:10:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ia-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "45.33.49.100",
+                "src_port": 60502,
+                "dest_ip": "10.0.0.31",
+                "dest_port": 80,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET EXPLOIT ProxyShell SSRF Attempt (CVE-2021-34473)",
+                    "signature_id": 2034326,
+                    "category": "Attempted Administrator Privilege Gain",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:10:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 95.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T11:10:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ia-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "45.33.49.100",
+                "src_port": 60503,
+                "dest_ip": "10.0.0.30",
+                "dest_port": 8080,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET EXPLOIT Spring4Shell RCE Attempt (CVE-2022-22965)",
+                    "signature_id": 2035755,
+                    "category": "Attempted Administrator Privilege Gain",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:10:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 96.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T11:10:02.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ia-005",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "45.33.49.100",
+                "src_port": 60504,
+                "dest_ip": "10.0.0.31",
+                "dest_port": 443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET EXPLOIT Possible Reverse Shell Payload Download After Initial Compromise",
+                    "signature_id": 2035756,
+                    "category": "A Network Trojan was Detected",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:10:02.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 97.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T12:00:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-mqtt-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "198.51.100.90",
+                "src_port": 57000,
+                "dest_ip": "10.0.10.100",
+                "dest_port": 1883,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET EXPLOIT IoT MQTT Broker Unauthenticated Access Attempt",
+                    "signature_id": 2038000,
+                    "category": "Attempted Information Leak",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T12:00:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-iot"
+        },
+        "risk_score": 78.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T12:00:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-mqtt-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "198.51.100.90",
+                "src_port": 57001,
+                "dest_ip": "10.0.10.100",
+                "dest_port": 1883,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET EXPLOIT MQTT Subscribe to Wildcard Topic # From External Source",
+                    "signature_id": 2038001,
+                    "category": "Attempted Information Leak",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T12:00:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-iot"
+        },
+        "risk_score": 82.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T12:00:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-mqtt-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "198.51.100.90",
+                "src_port": 57002,
+                "dest_ip": "10.0.10.101",
+                "dest_port": 8883,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET EXPLOIT MQTT Malicious Publish to IoT Actuator Control Topic",
+                    "signature_id": 2038002,
+                    "category": "Web Application Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T12:00:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-iot"
+        },
+        "risk_score": 90.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T12:00:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-mqtt-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.10.50",
+                "src_port": 57003,
+                "dest_ip": "198.51.100.90",
+                "dest_port": 443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET MALWARE Compromised IoT Device Outbound C2 Communication",
+                    "signature_id": 2038003,
+                    "category": "Malware Command and Control Activity Detected",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T12:00:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-iot"
+        },
+        "risk_score": 92.0,
+        "_sim_scenario": "malware_or_c2"
+    },
+    {
+        "@timestamp": "2024-06-01T11:25:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-lat-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.55",
+                "src_port": 49500,
+                "dest_ip": "10.0.0.10",
+                "dest_port": 445,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET EXPLOIT SMB EternalBlue Exploit Attempt (MS17-010)",
+                    "signature_id": 2024220,
+                    "category": "Lateral Movement",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:25:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 95.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    },
+    {
+        "@timestamp": "2024-06-01T11:25:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-lat-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.55",
+                "src_port": 49501,
+                "dest_ip": "10.0.0.11",
+                "dest_port": 135,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN Internal Host Communicating with Multiple Internal Targets via RPC",
+                    "signature_id": 2003197,
+                    "category": "Lateral Movement",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:25:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 88.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    },
+    {
+        "@timestamp": "2024-06-01T11:25:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-lat-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.55",
+                "src_port": 49502,
+                "dest_ip": "10.0.0.12",
+                "dest_port": 3389,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY Suspicious RDP Connection From Internal Host to Multiple Servers",
+                    "signature_id": 2019842,
+                    "category": "Lateral Movement",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:25:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 85.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    },
+    {
+        "@timestamp": "2024-06-01T11:25:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-lat-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.55",
+                "src_port": 49503,
+                "dest_ip": "10.0.0.13",
+                "dest_port": 445,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET EXPLOIT Mimikatz Pass-the-Hash SMB Login Detected",
+                    "signature_id": 2027844,
+                    "category": "Lateral Movement",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:25:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 92.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    },
+    {
+        "@timestamp": "2024-06-01T11:25:02.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-lat-005",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.55",
+                "src_port": 49504,
+                "dest_ip": "10.0.0.14",
+                "dest_port": 139,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET EXPLOIT PsExec Remote Execution via SMB Named Pipe",
+                    "signature_id": 2027845,
+                    "category": "Lateral Movement",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:25:02.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 90.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    },
+    {
+        "@timestamp": "2024-06-01T11:55:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-macfl-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.200",
+                "src_port": 0,
+                "dest_ip": "10.0.0.1",
+                "dest_port": 0,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET DOS MAC Address Table Overflow \u2014 Excessive Unique Source MACs Detected",
+                    "signature_id": 2033000,
+                    "category": "Denial of Service Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:55:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 72.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T11:55:00.200Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-macfl-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.201",
+                "src_port": 0,
+                "dest_ip": "10.0.0.1",
+                "dest_port": 0,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET DOS MAC Flooding Attack Switch CAM Table Exhaustion",
+                    "signature_id": 2033001,
+                    "category": "Denial of Service Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:55:00.200Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 74.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T11:55:00.400Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-macfl-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.202",
+                "src_port": 0,
+                "dest_ip": "10.0.0.1",
+                "dest_port": 0,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET DOS Macof Style MAC Flooding Tool Detected",
+                    "signature_id": 2033002,
+                    "category": "Denial of Service Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:55:00.400Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 76.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T11:55:00.600Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-macfl-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.203",
+                "src_port": 0,
+                "dest_ip": "10.0.0.254",
+                "dest_port": 0,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET DOS Network Switch Operating in Hub Mode After MAC Flood",
+                    "signature_id": 2033003,
+                    "category": "Denial of Service Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:55:00.600Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 80.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T10:15:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-c2-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.55",
+                "src_port": 49200,
+                "dest_ip": "185.220.101.45",
+                "dest_port": 443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET MALWARE Cobalt Strike Beacon Observed",
+                    "signature_id": 2019714,
+                    "category": "Malware Command and Control Activity Detected",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T10:15:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 95.0,
+        "_sim_scenario": "malware_or_c2"
+    },
+    {
+        "@timestamp": "2024-06-01T10:15:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-c2-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.55",
+                "src_port": 49201,
+                "dest_ip": "45.33.32.156",
+                "dest_port": 4444,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET MALWARE Metasploit Payload Detected",
+                    "signature_id": 2012887,
+                    "category": "Malware Command and Control Activity Detected",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T10:15:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 98.0,
+        "_sim_scenario": "malware_or_c2"
+    },
+    {
+        "@timestamp": "2024-06-01T10:15:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-c2-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.55",
+                "src_port": 49202,
+                "dest_ip": "185.220.101.45",
+                "dest_port": 443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET MALWARE Win32/Emotet C2 Communication",
+                    "signature_id": 2031449,
+                    "category": "Malware Command and Control Activity Detected",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T10:15:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 90.0,
+        "_sim_scenario": "malware_or_c2"
+    },
+    {
+        "@timestamp": "2024-06-01T10:15:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-c2-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.55",
+                "src_port": 49203,
+                "dest_ip": "198.51.100.1",
+                "dest_port": 80,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET TROJAN APT RAT Checkin",
+                    "signature_id": 2027929,
+                    "category": "A Network Trojan was Detected",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T10:15:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 92.0,
+        "_sim_scenario": "malware_or_c2"
+    },
+    {
+        "@timestamp": "2024-06-01T11:20:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-nmap-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.15",
+                "src_port": 56000,
+                "dest_ip": "10.0.0.1",
+                "dest_port": 80,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN NMAP -sS SYN Stealth Scan",
+                    "signature_id": 2000537,
+                    "category": "Attempted Information Leak",
+                    "severity": 3
+                },
+                "timestamp": "2024-06-01T11:20:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 40.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T11:20:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-nmap-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.15",
+                "src_port": 56001,
+                "dest_ip": "10.0.0.2",
+                "dest_port": 22,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN NMAP -sV Version Detection Probe",
+                    "signature_id": 2000545,
+                    "category": "Attempted Information Leak",
+                    "severity": 3
+                },
+                "timestamp": "2024-06-01T11:20:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 42.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T11:20:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-nmap-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.15",
+                "src_port": 56002,
+                "dest_ip": "10.0.0.3",
+                "dest_port": 443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN NMAP OS Detection via TCP Fingerprinting",
+                    "signature_id": 2000538,
+                    "category": "Attempted Information Leak",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T11:20:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 48.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T11:20:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-nmap-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.15",
+                "src_port": 56003,
+                "dest_ip": "10.0.0.4",
+                "dest_port": 3389,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN NMAP Scripting Engine User-Agent Detected (Nmap/NSE)",
+                    "signature_id": 2024364,
+                    "category": "Attempted Information Leak",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T11:20:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 50.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T11:20:02.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-nmap-005",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.15",
+                "src_port": 56004,
+                "dest_ip": "10.0.0.5",
+                "dest_port": 445,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN Nmap String Detected in HTTP User-Agent",
+                    "signature_id": 2009358,
+                    "category": "Attempted Information Leak",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T11:20:02.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 52.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T11:35:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-pivot-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.55",
+                "src_port": 48000,
+                "dest_ip": "10.0.1.10",
+                "dest_port": 22,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY Potential Pivot SSH Tunnel Established Between Subnets",
+                    "signature_id": 2025100,
+                    "category": "Lateral Movement",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:35:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 85.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    },
+    {
+        "@timestamp": "2024-06-01T11:35:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-pivot-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.55",
+                "src_port": 48001,
+                "dest_ip": "10.0.2.20",
+                "dest_port": 1080,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY SOCKS Proxy Tunneling Detected \u2014 Pivot Activity",
+                    "signature_id": 2025101,
+                    "category": "Lateral Movement",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:35:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 88.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    },
+    {
+        "@timestamp": "2024-06-01T11:35:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-pivot-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.55",
+                "src_port": 48002,
+                "dest_ip": "10.0.3.30",
+                "dest_port": 8443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET EXPLOIT Chisel Reverse Tunnel Traffic Detected",
+                    "signature_id": 2036500,
+                    "category": "Lateral Movement",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:35:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 90.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    },
+    {
+        "@timestamp": "2024-06-01T11:35:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-pivot-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.55",
+                "src_port": 48003,
+                "dest_ip": "10.0.4.40",
+                "dest_port": 443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY Potential Ligolo Proxy Pivot Agent Communication",
+                    "signature_id": 2036501,
+                    "category": "Lateral Movement",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:35:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 92.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    },
+    {
+        "@timestamp": "2024-06-01T10:00:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ps-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.10",
+                "src_port": 54000,
+                "dest_ip": "10.0.0.1",
+                "dest_port": 21,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN Nmap SYN Scan",
+                    "signature_id": 2000537,
+                    "category": "Port Scan",
+                    "severity": 3
+                },
+                "timestamp": "2024-06-01T10:00:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 35.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T10:00:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ps-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.10",
+                "src_port": 54001,
+                "dest_ip": "10.0.0.2",
+                "dest_port": 22,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN Nmap SYN Scan",
+                    "signature_id": 2000537,
+                    "category": "Port Scan",
+                    "severity": 3
+                },
+                "timestamp": "2024-06-01T10:00:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 35.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T10:00:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ps-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.10",
+                "src_port": 54002,
+                "dest_ip": "10.0.0.3",
+                "dest_port": 23,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN Nmap OS Detection",
+                    "signature_id": 2000538,
+                    "category": "Port Scan",
+                    "severity": 3
+                },
+                "timestamp": "2024-06-01T10:00:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 40.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T10:00:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ps-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.10",
+                "src_port": 54003,
+                "dest_ip": "10.0.0.4",
+                "dest_port": 25,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN Nmap SYN Scan",
+                    "signature_id": 2000537,
+                    "category": "Port Scan",
+                    "severity": 3
+                },
+                "timestamp": "2024-06-01T10:00:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 38.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T10:00:02.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ps-005",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.10",
+                "src_port": 54004,
+                "dest_ip": "10.0.0.5",
+                "dest_port": 80,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN Suspicious Rapid Port Scan",
+                    "signature_id": 2009582,
+                    "category": "Attempted Recon",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T10:00:02.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 50.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T11:45:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-quar-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.99",
+                "src_port": 49700,
+                "dest_ip": "198.51.100.50",
+                "dest_port": 443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY Quarantined Host Attempting Outbound HTTPS Connection",
+                    "signature_id": 2030100,
+                    "category": "Potentially Bad Traffic",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:45:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 82.0,
+        "_sim_scenario": "malware_or_c2"
+    },
+    {
+        "@timestamp": "2024-06-01T11:45:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-quar-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.99",
+                "src_port": 49701,
+                "dest_ip": "8.8.8.8",
+                "dest_port": 53,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET POLICY Quarantined Host DNS Query to External Resolver",
+                    "signature_id": 2030101,
+                    "category": "Potentially Bad Traffic",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T11:45:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 70.0,
+        "_sim_scenario": "dns_suspicious"
+    },
+    {
+        "@timestamp": "2024-06-01T11:45:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-quar-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.99",
+                "src_port": 49702,
+                "dest_ip": "10.0.0.10",
+                "dest_port": 445,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY Quarantined Host Attempting Lateral SMB Connection",
+                    "signature_id": 2030102,
+                    "category": "Lateral Movement",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:45:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 90.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    },
+    {
+        "@timestamp": "2024-06-01T11:45:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-quar-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.99",
+                "src_port": 49703,
+                "dest_ip": "185.220.101.45",
+                "dest_port": 4444,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY Quarantined Host C2 Callback Attempt Detected",
+                    "signature_id": 2030103,
+                    "category": "Malware Command and Control Activity Detected",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:45:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 95.0,
+        "_sim_scenario": "malware_or_c2"
+    },
+    {
+        "@timestamp": "2024-06-01T12:15:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-sip-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "185.220.101.30",
+                "src_port": 5060,
+                "dest_ip": "10.0.0.70",
+                "dest_port": 5060,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET SCAN SIP INVITE Method Brute Force User Enumeration",
+                    "signature_id": 2012100,
+                    "category": "Attempted Information Leak",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T12:15:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 72.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T12:15:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-sip-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "185.220.101.30",
+                "src_port": 5060,
+                "dest_ip": "10.0.0.70",
+                "dest_port": 5060,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET SCAN SIP REGISTER Brute Force Authentication Attempt",
+                    "signature_id": 2012101,
+                    "category": "Attempted Administrator Privilege Gain",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T12:15:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 78.0,
+        "_sim_scenario": "ssh_bruteforce"
+    },
+    {
+        "@timestamp": "2024-06-01T12:15:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-sip-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "185.220.101.30",
+                "src_port": 5060,
+                "dest_ip": "10.0.0.71",
+                "dest_port": 5060,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET EXPLOIT SIP BYE Teardown Attack VoIP Call Hijacking",
+                    "signature_id": 2012102,
+                    "category": "Attempted Denial of Service",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T12:15:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 82.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T12:15:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-sip-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "185.220.101.30",
+                "src_port": 5060,
+                "dest_ip": "10.0.0.70",
+                "dest_port": 5060,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET DOS SIP INVITE Flood \u2014 VoIP Denial of Service",
+                    "signature_id": 2012103,
+                    "category": "Denial of Service Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T12:15:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 76.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T12:10:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-snmp-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.25",
+                "src_port": 57500,
+                "dest_ip": "10.0.0.1",
+                "dest_port": 161,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET SCAN SNMP Enumeration with Default Community String public",
+                    "signature_id": 2011000,
+                    "category": "Attempted Information Leak",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T12:10:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 55.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T12:10:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-snmp-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.25",
+                "src_port": 57501,
+                "dest_ip": "10.0.0.2",
+                "dest_port": 161,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET SCAN SNMP Bulk Walk Request Multiple OIDs \u2014 Network Recon",
+                    "signature_id": 2011001,
+                    "category": "Attempted Information Leak",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T12:10:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 58.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T12:10:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-snmp-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.25",
+                "src_port": 57502,
+                "dest_ip": "10.0.0.3",
+                "dest_port": 161,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET SCAN SNMP v1 GetRequest Brute Force Community String",
+                    "signature_id": 2011002,
+                    "category": "Attempted Information Leak",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T12:10:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 65.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T12:10:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-snmp-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.25",
+                "src_port": 57503,
+                "dest_ip": "10.0.0.4",
+                "dest_port": 161,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET POLICY SNMP SET Request with Write Community Privilege Escalation",
+                    "signature_id": 2011003,
+                    "category": "Attempted Administrator Privilege Gain",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T12:10:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 75.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T10:05:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ssh-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "203.0.113.100",
+                "src_port": 44000,
+                "dest_ip": "10.0.0.20",
+                "dest_port": 22,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN SSH BruteForce Tool with fake PUTTY version",
+                    "signature_id": 2001219,
+                    "category": "Attempted Administrator Privilege Gain",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T10:05:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 80.0,
+        "_sim_scenario": "ssh_bruteforce"
+    },
+    {
+        "@timestamp": "2024-06-01T10:05:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ssh-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "203.0.113.100",
+                "src_port": 44001,
+                "dest_ip": "10.0.0.20",
+                "dest_port": 22,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN Potential SSH Brute Force Attempt",
+                    "signature_id": 2001722,
+                    "category": "Attempted Administrator Privilege Gain",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T10:05:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 82.0,
+        "_sim_scenario": "ssh_bruteforce"
+    },
+    {
+        "@timestamp": "2024-06-01T10:05:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ssh-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "203.0.113.100",
+                "src_port": 44002,
+                "dest_ip": "10.0.0.20",
+                "dest_port": 22,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET BRUTE SSH Authentication Failure",
+                    "signature_id": 2003195,
+                    "category": "Attempted Admin Privilege Gain",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T10:05:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 78.0,
+        "_sim_scenario": "ssh_bruteforce"
+    },
+    {
+        "@timestamp": "2024-06-01T10:05:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ssh-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "203.0.113.100",
+                "src_port": 44003,
+                "dest_ip": "10.0.0.20",
+                "dest_port": 22,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN SSH BruteForce Tool with fake PUTTY version",
+                    "signature_id": 2001219,
+                    "category": "Attempted Administrator Privilege Gain",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T10:05:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 85.0,
+        "_sim_scenario": "ssh_bruteforce"
+    },
+    {
+        "@timestamp": "2024-06-01T10:05:02.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ssh-005",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "203.0.113.100",
+                "src_port": 44004,
+                "dest_ip": "10.0.0.21",
+                "dest_port": 22,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN SSH Scanner",
+                    "signature_id": 2001721,
+                    "category": "Attempted Administrator Privilege Gain",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T10:05:02.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 70.0,
+        "_sim_scenario": "ssh_bruteforce"
+    },
+    {
+        "@timestamp": "2024-06-01T11:00:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-sshfail-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "203.0.113.55",
+                "src_port": 48901,
+                "dest_ip": "10.0.0.20",
+                "dest_port": 22,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN SSH Failed Password Attempt",
+                    "signature_id": 2003068,
+                    "category": "Attempted Administrator Privilege Gain",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:00:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 78.0,
+        "_sim_scenario": "ssh_bruteforce"
+    },
+    {
+        "@timestamp": "2024-06-01T11:00:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-sshfail-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "203.0.113.55",
+                "src_port": 48902,
+                "dest_ip": "10.0.0.20",
+                "dest_port": 22,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN SSH Failed Password Authentication From External Source",
+                    "signature_id": 2003069,
+                    "category": "Attempted Administrator Privilege Gain",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:00:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 80.0,
+        "_sim_scenario": "ssh_bruteforce"
+    },
+    {
+        "@timestamp": "2024-06-01T11:00:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-sshfail-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "203.0.113.55",
+                "src_port": 48903,
+                "dest_ip": "10.0.0.21",
+                "dest_port": 22,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET BRUTE SSH Authentication Failure Possible Brute Force",
+                    "signature_id": 2003195,
+                    "category": "Attempted Administrator Privilege Gain",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:00:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 82.0,
+        "_sim_scenario": "ssh_bruteforce"
+    },
+    {
+        "@timestamp": "2024-06-01T11:00:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-sshfail-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "203.0.113.55",
+                "src_port": 48904,
+                "dest_ip": "10.0.0.20",
+                "dest_port": 22,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN SSH Password Guessing Attack",
+                    "signature_id": 2019876,
+                    "category": "Attempted Administrator Privilege Gain",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:00:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 85.0,
+        "_sim_scenario": "ssh_bruteforce"
+    },
+    {
+        "@timestamp": "2024-06-01T11:00:02.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-sshfail-005",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "203.0.113.55",
+                "src_port": 48905,
+                "dest_ip": "10.0.0.22",
+                "dest_port": 22,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN SSH Login Attempt Multiple Failed Passwords",
+                    "signature_id": 2019877,
+                    "category": "Attempted Administrator Privilege Gain",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:00:02.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 88.0,
+        "_sim_scenario": "ssh_bruteforce"
+    },
+    {
+        "@timestamp": "2024-06-01T10:10:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-web-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "198.51.100.50",
+                "src_port": 60100,
+                "dest_ip": "10.0.0.30",
+                "dest_port": 80,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET WEB_SERVER SQL Injection Attempt -- SELECT FROM",
+                    "signature_id": 2006445,
+                    "category": "Web Application Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T10:10:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 75.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T10:10:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-web-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "198.51.100.50",
+                "src_port": 60101,
+                "dest_ip": "10.0.0.30",
+                "dest_port": 80,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET WEB_SERVER XSS Attempt in URI",
+                    "signature_id": 2009600,
+                    "category": "Web Application Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T10:10:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 70.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T10:10:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-web-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "198.51.100.50",
+                "src_port": 60102,
+                "dest_ip": "10.0.0.31",
+                "dest_port": 443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET WEB_SERVER Possible SQL Injection UNION SELECT",
+                    "signature_id": 2006444,
+                    "category": "Web Application Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T10:10:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 80.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T10:10:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-web-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "198.51.100.50",
+                "src_port": 60103,
+                "dest_ip": "10.0.0.30",
+                "dest_port": 8080,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET WEB_SERVER PHP Remote File Inclusion Attempt",
+                    "signature_id": 2002083,
+                    "category": "Web Application Attack",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T10:10:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 65.0,
+        "_sim_scenario": "web_attack"
+    },
+    {
+        "@timestamp": "2024-06-01T10:10:02.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-web-005",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "198.51.100.50",
+                "src_port": 60104,
+                "dest_ip": "10.0.0.31",
+                "dest_port": 80,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET WEB_SERVER Directory Traversal Attempt (../..)",
+                    "signature_id": 2100498,
+                    "category": "Web Application Attack",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T10:10:02.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 60.0,
+        "_sim_scenario": "web_attack"
+    }
+]

@@ -1,0 +1,8 @@
+{
+    "scenario": "port_scan",
+    "description": "Simulates an Nmap-style TCP SYN port sweep from a single attacker IP hitting many ports across multiple targets.",
+    "src_ip": "192.168.100.10",
+    "count": 30,
+    "rate_per_second": 10,
+    "notes": "Triggers SOAR-001 (PortScanRule) – requires unique_dst_ports_threshold=15 within the short window."
+}

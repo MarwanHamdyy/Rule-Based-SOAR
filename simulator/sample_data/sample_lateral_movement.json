@@ -1,0 +1,152 @@
+[
+    {
+        "@timestamp": "2024-06-01T11:25:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-lat-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.55",
+                "src_port": 49500,
+                "dest_ip": "10.0.0.10",
+                "dest_port": 445,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET EXPLOIT SMB EternalBlue Exploit Attempt (MS17-010)",
+                    "signature_id": 2024220,
+                    "category": "Lateral Movement",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:25:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 95.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    },
+    {
+        "@timestamp": "2024-06-01T11:25:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-lat-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.55",
+                "src_port": 49501,
+                "dest_ip": "10.0.0.11",
+                "dest_port": 135,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN Internal Host Communicating with Multiple Internal Targets via RPC",
+                    "signature_id": 2003197,
+                    "category": "Lateral Movement",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:25:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 88.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    },
+    {
+        "@timestamp": "2024-06-01T11:25:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-lat-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.55",
+                "src_port": 49502,
+                "dest_ip": "10.0.0.12",
+                "dest_port": 3389,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY Suspicious RDP Connection From Internal Host to Multiple Servers",
+                    "signature_id": 2019842,
+                    "category": "Lateral Movement",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:25:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 85.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    },
+    {
+        "@timestamp": "2024-06-01T11:25:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-lat-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.55",
+                "src_port": 49503,
+                "dest_ip": "10.0.0.13",
+                "dest_port": 445,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET EXPLOIT Mimikatz Pass-the-Hash SMB Login Detected",
+                    "signature_id": 2027844,
+                    "category": "Lateral Movement",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:25:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 92.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    },
+    {
+        "@timestamp": "2024-06-01T11:25:02.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-lat-005",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.55",
+                "src_port": 49504,
+                "dest_ip": "10.0.0.14",
+                "dest_port": 139,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET EXPLOIT PsExec Remote Execution via SMB Named Pipe",
+                    "signature_id": 2027845,
+                    "category": "Lateral Movement",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:25:02.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 90.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    }
+]

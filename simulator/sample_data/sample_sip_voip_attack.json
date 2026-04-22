@@ -1,0 +1,122 @@
+[
+    {
+        "@timestamp": "2024-06-01T12:15:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-sip-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "185.220.101.30",
+                "src_port": 5060,
+                "dest_ip": "10.0.0.70",
+                "dest_port": 5060,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET SCAN SIP INVITE Method Brute Force User Enumeration",
+                    "signature_id": 2012100,
+                    "category": "Attempted Information Leak",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T12:15:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 72.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T12:15:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-sip-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "185.220.101.30",
+                "src_port": 5060,
+                "dest_ip": "10.0.0.70",
+                "dest_port": 5060,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET SCAN SIP REGISTER Brute Force Authentication Attempt",
+                    "signature_id": 2012101,
+                    "category": "Attempted Administrator Privilege Gain",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T12:15:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 78.0,
+        "_sim_scenario": "ssh_bruteforce"
+    },
+    {
+        "@timestamp": "2024-06-01T12:15:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-sip-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "185.220.101.30",
+                "src_port": 5060,
+                "dest_ip": "10.0.0.71",
+                "dest_port": 5060,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET EXPLOIT SIP BYE Teardown Attack VoIP Call Hijacking",
+                    "signature_id": 2012102,
+                    "category": "Attempted Denial of Service",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T12:15:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 82.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T12:15:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-sip-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "185.220.101.30",
+                "src_port": 5060,
+                "dest_ip": "10.0.0.70",
+                "dest_port": 5060,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET DOS SIP INVITE Flood — VoIP Denial of Service",
+                    "signature_id": 2012103,
+                    "category": "Denial of Service Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T12:15:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 76.0,
+        "_sim_scenario": "dos_or_flood"
+    }
+]

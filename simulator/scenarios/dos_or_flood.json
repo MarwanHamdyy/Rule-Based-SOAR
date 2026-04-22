@@ -1,0 +1,8 @@
+{
+    "scenario": "dos_or_flood",
+    "description": "Simulates a high-volume TCP SYN flood / UDP flood Denial-of-Service attack against a public-facing server.",
+    "src_ip": "192.0.2.200",
+    "count": 80,
+    "rate_per_second": 20,
+    "notes": "Triggers SOAR-006 (DoSFloodRule) – requires event_count_threshold=50 within the short (30 s) window."
+}

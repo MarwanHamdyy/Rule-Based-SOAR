@@ -1,0 +1,122 @@
+[
+    {
+        "@timestamp": "2024-06-01T11:50:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dhcp-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "0.0.0.0",
+                "src_port": 68,
+                "dest_ip": "255.255.255.255",
+                "dest_port": 67,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET DOS DHCP Starvation Attack — Excessive DHCPDISCOVER from Single MAC",
+                    "signature_id": 2032000,
+                    "category": "Denial of Service Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:50:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 75.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T11:50:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dhcp-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "0.0.0.0",
+                "src_port": 68,
+                "dest_ip": "255.255.255.255",
+                "dest_port": 67,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET DOS DHCP Starvation Rapid IP Pool Exhaustion",
+                    "signature_id": 2032001,
+                    "category": "Denial of Service Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:50:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 78.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T11:50:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dhcp-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.1.200",
+                "src_port": 67,
+                "dest_ip": "255.255.255.255",
+                "dest_port": 68,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET POLICY Rogue DHCP Server Detected Offering Non-Standard Gateway",
+                    "signature_id": 2032002,
+                    "category": "Potentially Bad Traffic",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:50:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 85.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T11:50:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dhcp-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "0.0.0.0",
+                "src_port": 68,
+                "dest_ip": "255.255.255.255",
+                "dest_port": 67,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET DOS DHCP DISCOVER Flood With Randomized MAC Addresses",
+                    "signature_id": 2032003,
+                    "category": "Denial of Service Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:50:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 80.0,
+        "_sim_scenario": "dos_or_flood"
+    }
+]

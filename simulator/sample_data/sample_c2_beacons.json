@@ -1,0 +1,152 @@
+[
+    {
+        "@timestamp": "2024-06-01T11:40:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-c2b-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.60",
+                "src_port": 50100,
+                "dest_ip": "185.220.101.99",
+                "dest_port": 443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET MALWARE Cobalt Strike Beacon C2 Heartbeat Detected",
+                    "signature_id": 2019714,
+                    "category": "Malware Command and Control Activity Detected",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:40:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 96.0,
+        "_sim_scenario": "malware_or_c2"
+    },
+    {
+        "@timestamp": "2024-06-01T11:40:30.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-c2b-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.60",
+                "src_port": 50101,
+                "dest_ip": "185.220.101.99",
+                "dest_port": 443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET MALWARE Periodic Beacon Callback Interval Matches Known C2 Profile",
+                    "signature_id": 2033650,
+                    "category": "Malware Command and Control Activity Detected",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:40:30.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 94.0,
+        "_sim_scenario": "malware_or_c2"
+    },
+    {
+        "@timestamp": "2024-06-01T11:41:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-c2b-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.60",
+                "src_port": 50102,
+                "dest_ip": "185.220.101.99",
+                "dest_port": 443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET MALWARE Sliver Implant Beacon Traffic Detected",
+                    "signature_id": 2037100,
+                    "category": "Malware Command and Control Activity Detected",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:41:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 95.0,
+        "_sim_scenario": "malware_or_c2"
+    },
+    {
+        "@timestamp": "2024-06-01T11:41:30.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-c2b-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.61",
+                "src_port": 50103,
+                "dest_ip": "45.33.32.200",
+                "dest_port": 8080,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET MALWARE Meterpreter Reverse HTTPS Beacon Detected",
+                    "signature_id": 2037101,
+                    "category": "Malware Command and Control Activity Detected",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:41:30.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 97.0,
+        "_sim_scenario": "malware_or_c2"
+    },
+    {
+        "@timestamp": "2024-06-01T11:42:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-c2b-005",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.60",
+                "src_port": 50104,
+                "dest_ip": "185.220.101.99",
+                "dest_port": 53,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET MALWARE DNS Based C2 Beacon Detected Encoded Payload",
+                    "signature_id": 2037102,
+                    "category": "Malware Command and Control Activity Detected",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:42:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 93.0,
+        "_sim_scenario": "malware_or_c2"
+    }
+]

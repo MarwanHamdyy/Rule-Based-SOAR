@@ -1,0 +1,122 @@
+[
+    {
+        "@timestamp": "2024-06-01T12:05:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-arp-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.200",
+                "src_port": 0,
+                "dest_ip": "10.0.0.1",
+                "dest_port": 0,
+                "proto": "arp",
+                "alert": {
+                    "signature": "ET DOS ARP Spoofing Attack — Duplicate IP Address Detected",
+                    "signature_id": 2034000,
+                    "category": "Denial of Service Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T12:05:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 80.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T12:05:00.300Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-arp-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.200",
+                "src_port": 0,
+                "dest_ip": "10.0.0.254",
+                "dest_port": 0,
+                "proto": "arp",
+                "alert": {
+                    "signature": "ET DOS ARP Cache Poisoning Gateway MAC Override",
+                    "signature_id": 2034001,
+                    "category": "Denial of Service Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T12:05:00.300Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 85.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T12:05:00.600Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-arp-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.200",
+                "src_port": 0,
+                "dest_ip": "10.0.0.1",
+                "dest_port": 0,
+                "proto": "arp",
+                "alert": {
+                    "signature": "ET DOS Gratuitous ARP Flood Detected — Possible Ettercap/Bettercap",
+                    "signature_id": 2034002,
+                    "category": "Denial of Service Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T12:05:00.600Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 82.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T12:05:00.900Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-arp-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.200",
+                "src_port": 0,
+                "dest_ip": "10.0.0.50",
+                "dest_port": 80,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY Man-in-the-Middle Intercepted HTTP Traffic After ARP Spoof",
+                    "signature_id": 2034003,
+                    "category": "Potentially Bad Traffic",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T12:05:00.900Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 88.0,
+        "_sim_scenario": "dos_or_flood"
+    }
+]

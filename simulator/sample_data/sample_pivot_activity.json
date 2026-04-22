@@ -1,0 +1,122 @@
+[
+    {
+        "@timestamp": "2024-06-01T11:35:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-pivot-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.55",
+                "src_port": 48000,
+                "dest_ip": "10.0.1.10",
+                "dest_port": 22,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY Potential Pivot SSH Tunnel Established Between Subnets",
+                    "signature_id": 2025100,
+                    "category": "Lateral Movement",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:35:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 85.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    },
+    {
+        "@timestamp": "2024-06-01T11:35:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-pivot-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.55",
+                "src_port": 48001,
+                "dest_ip": "10.0.2.20",
+                "dest_port": 1080,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY SOCKS Proxy Tunneling Detected — Pivot Activity",
+                    "signature_id": 2025101,
+                    "category": "Lateral Movement",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:35:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 88.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    },
+    {
+        "@timestamp": "2024-06-01T11:35:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-pivot-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.55",
+                "src_port": 48002,
+                "dest_ip": "10.0.3.30",
+                "dest_port": 8443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET EXPLOIT Chisel Reverse Tunnel Traffic Detected",
+                    "signature_id": 2036500,
+                    "category": "Lateral Movement",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:35:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 90.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    },
+    {
+        "@timestamp": "2024-06-01T11:35:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-pivot-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.55",
+                "src_port": 48003,
+                "dest_ip": "10.0.4.40",
+                "dest_port": 443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY Potential Ligolo Proxy Pivot Agent Communication",
+                    "signature_id": 2036501,
+                    "category": "Lateral Movement",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:35:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 92.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    }
+]

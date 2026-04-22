@@ -4,6 +4,13 @@
 # ============================================================
 
 .PHONY: install setup run run-replay run-once test test-cov lint clean help
+.PHONY: sim-run sim-replay sim-list sim-clear sim-offline sim-offline-all
+
+# Simulation defaults (override on command line: SCENARIO=ssh_bruteforce make sim-run)
+SCENARIO ?= port_scan
+SIM_COUNT ?= 20
+SIM_RATE  ?= 10
+SIM_FILE  ?= simulator/sample_data/sample_ssh_bruteforce.json
 
 # Python interpreter
 PYTHON := python
@@ -44,6 +51,24 @@ test-cov:  ## Run tests with coverage report
 
 lint:  ## Check code style (requires ruff or flake8)
 	-ruff check . || flake8 . --max-line-length=110
+
+sim-list:  ## List available simulation scenarios
+	$(PYTHON) simulate.py list
+
+sim-run:  ## Run a synthetic scenario (SCENARIO=ssh_bruteforce COUNT=20 make sim-run)
+	$(PYTHON) simulate.py run --scenario $(SCENARIO) --count $(SIM_COUNT) --rate $(SIM_RATE)
+
+sim-replay:  ## Replay a JSON sample file (FILE=simulator/sample_data/sample_port_scan.json make sim-replay)
+	$(PYTHON) simulate.py replay --file $(SIM_FILE) --rate $(SIM_RATE)
+
+sim-clear:  ## Delete all documents from the simulation index
+	$(PYTHON) simulate.py clear
+
+sim-offline:  ## ★ Run offline (NO Elasticsearch needed): SCENARIO=ssh_bruteforce make sim-offline
+	$(PYTHON) simulate.py offline --scenario $(SCENARIO) --count $(SIM_COUNT)
+
+sim-offline-all:  ## ★ Run ALL scenarios offline (NO Elasticsearch needed)
+	$(PYTHON) simulate.py offline --scenario all --count $(SIM_COUNT)
 
 clean:  ## Remove __pycache__ and .pyc files
 	@find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true

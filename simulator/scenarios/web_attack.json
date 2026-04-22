@@ -1,0 +1,8 @@
+{
+    "scenario": "web_attack",
+    "description": "Simulates SQL injection and XSS attempts against a web server (port 80/443) from a single attacker.",
+    "src_ip": "198.51.100.50",
+    "count": 20,
+    "rate_per_second": 5,
+    "notes": "Triggers SOAR-003 (WebAttackRule) – requires event_count_threshold=5 within the medium (60 s) window."
+}

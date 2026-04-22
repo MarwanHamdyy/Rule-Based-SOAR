@@ -1,0 +1,152 @@
+[
+    {
+        "@timestamp": "2024-06-01T11:20:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-nmap-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.15",
+                "src_port": 56000,
+                "dest_ip": "10.0.0.1",
+                "dest_port": 80,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN NMAP -sS SYN Stealth Scan",
+                    "signature_id": 2000537,
+                    "category": "Attempted Information Leak",
+                    "severity": 3
+                },
+                "timestamp": "2024-06-01T11:20:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 40.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T11:20:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-nmap-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.15",
+                "src_port": 56001,
+                "dest_ip": "10.0.0.2",
+                "dest_port": 22,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN NMAP -sV Version Detection Probe",
+                    "signature_id": 2000545,
+                    "category": "Attempted Information Leak",
+                    "severity": 3
+                },
+                "timestamp": "2024-06-01T11:20:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 42.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T11:20:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-nmap-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.15",
+                "src_port": 56002,
+                "dest_ip": "10.0.0.3",
+                "dest_port": 443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN NMAP OS Detection via TCP Fingerprinting",
+                    "signature_id": 2000538,
+                    "category": "Attempted Information Leak",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T11:20:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 48.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T11:20:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-nmap-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.15",
+                "src_port": 56003,
+                "dest_ip": "10.0.0.4",
+                "dest_port": 3389,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN NMAP Scripting Engine User-Agent Detected (Nmap/NSE)",
+                    "signature_id": 2024364,
+                    "category": "Attempted Information Leak",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T11:20:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 50.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T11:20:02.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-nmap-005",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.15",
+                "src_port": 56004,
+                "dest_ip": "10.0.0.5",
+                "dest_port": 445,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN Nmap String Detected in HTTP User-Agent",
+                    "signature_id": 2009358,
+                    "category": "Attempted Information Leak",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T11:20:02.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 52.0,
+        "_sim_scenario": "port_scan"
+    }
+]

@@ -1,0 +1,122 @@
+[
+    {
+        "@timestamp": "2024-06-01T10:20:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dns-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.77",
+                "src_port": 54123,
+                "dest_ip": "8.8.8.8",
+                "dest_port": 53,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET DNS DNS Tunnel Activity Detected",
+                    "signature_id": 2027865,
+                    "category": "DNS Exfiltration",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T10:20:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 60.0,
+        "_sim_scenario": "dns_suspicious"
+    },
+    {
+        "@timestamp": "2024-06-01T10:20:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dns-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.77",
+                "src_port": 54124,
+                "dest_ip": "1.1.1.1",
+                "dest_port": 53,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET DNS High Frequency DNS Requests indicating DNS Tunneling",
+                    "signature_id": 2027867,
+                    "category": "DNS Exfiltration",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T10:20:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 65.0,
+        "_sim_scenario": "dns_suspicious"
+    },
+    {
+        "@timestamp": "2024-06-01T10:20:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dns-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.77",
+                "src_port": 54125,
+                "dest_ip": "8.8.8.8",
+                "dest_port": 53,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET DNS Query for .onion Proxy Domain",
+                    "signature_id": 2022918,
+                    "category": "Potentially Bad Traffic",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T10:20:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 55.0,
+        "_sim_scenario": "dns_suspicious"
+    },
+    {
+        "@timestamp": "2024-06-01T10:20:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dns-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "10.0.0.77",
+                "src_port": 54126,
+                "dest_ip": "8.8.8.8",
+                "dest_port": 53,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET DNS Suspicious DNS Query for DGA Domain",
+                    "signature_id": 2035999,
+                    "category": "Potentially Bad Traffic",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T10:20:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-02"
+        },
+        "risk_score": 58.0,
+        "_sim_scenario": "dns_suspicious"
+    }
+]

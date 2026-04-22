@@ -1,0 +1,1515 @@
+{
+  "generated_at": "2026-03-07T23:34:22.224589+00:00",
+  "total_actions": 45,
+  "actions": [
+    {
+      "@timestamp": "2026-03-07T23:34:21.513402+00:00",
+      "action_id": "c60db8f7-6924-4088-bc81-44b0ee9dfbec",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 39510,
+      "destination_ip": "10.0.0.7",
+      "destination_port": 22,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.75,
+      "risk_score": 50.6,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 2 (threshold \u2264 2) \u2014 high-priority alert.",
+        "Signature: \"ET SCAN Suspicious Rapid Port Scan\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:22.512Z",
+        "signature": "ET SCAN Suspicious Rapid Port Scan",
+        "signature_id": 2009582,
+        "category": "Attempted Recon",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-1c247fbdf168"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.514399+00:00",
+      "action_id": "5a58b89a-8429-4325-8a26-47e1373b4a98",
+      "rule_id": "SOAR-007",
+      "attack_type": "lateral_movement_suspicion",
+      "source_ip": "192.168.100.99",
+      "source_port": 50057,
+      "destination_ip": "10.0.0.5",
+      "destination_port": 27,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.78,
+      "risk_score": 48.5,
+      "recommended_mitigation": "Isolate the source host immediately for investigation. Audit Active Directory for credential compromise (check for suspicious logons). Enable network micro-segmentation to prevent further spread. Review EDR telemetry on the source host for process injection or credential dumping.",
+      "reasons": [
+        "Source 192.168.100.99 contacted 5 unique hosts (threshold: 5) in 5 min."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:25.012Z",
+        "signature": "ET SCAN Potential SSH Scan",
+        "signature_id": 2001219,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-fcdd7002c353"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Lateral Movement",
+        "mitre_technique": "T1021 - Remote Services / T1550 - Use Alternate Authentication Material",
+        "nist_ref": "NIST SP 800-207 - Zero Trust Architecture"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.514399+00:00",
+      "action_id": "23f4325d-bd4e-4603-af9a-bce0f6e5a980",
+      "rule_id": "SOAR-007",
+      "attack_type": "lateral_movement_suspicion",
+      "source_ip": "192.168.100.99",
+      "source_port": 20834,
+      "destination_ip": "10.0.0.6",
+      "destination_port": 28,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.78,
+      "risk_score": 40.9,
+      "recommended_mitigation": "Isolate the source host immediately for investigation. Audit Active Directory for credential compromise (check for suspicious logons). Enable network micro-segmentation to prevent further spread. Review EDR telemetry on the source host for process injection or credential dumping.",
+      "reasons": [
+        "Source 192.168.100.99 contacted 5 unique hosts (threshold: 5) in 5 min."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:25.512Z",
+        "signature": "ET SCAN Nmap SYN Scan",
+        "signature_id": 2000537,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-05338047dcab"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Lateral Movement",
+        "mitre_technique": "T1021 - Remote Services / T1550 - Use Alternate Authentication Material",
+        "nist_ref": "NIST SP 800-207 - Zero Trust Architecture"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.514399+00:00",
+      "action_id": "4a0d17e4-a2f5-471c-a83b-ba551dc019c8",
+      "rule_id": "SOAR-007",
+      "attack_type": "lateral_movement_suspicion",
+      "source_ip": "192.168.100.99",
+      "source_port": 34734,
+      "destination_ip": "10.0.0.3",
+      "destination_port": 29,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.78,
+      "risk_score": 39.0,
+      "recommended_mitigation": "Isolate the source host immediately for investigation. Audit Active Directory for credential compromise (check for suspicious logons). Enable network micro-segmentation to prevent further spread. Review EDR telemetry on the source host for process injection or credential dumping.",
+      "reasons": [
+        "Source 192.168.100.99 contacted 5 unique hosts (threshold: 5) in 5 min."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:26.012Z",
+        "signature": "ET SCAN Nmap OS Detection",
+        "signature_id": 2000538,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-d670ae7cc420"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Lateral Movement",
+        "mitre_technique": "T1021 - Remote Services / T1550 - Use Alternate Authentication Material",
+        "nist_ref": "NIST SP 800-207 - Zero Trust Architecture"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.514399+00:00",
+      "action_id": "dd6cd022-f647-4aae-9c8c-a49e1b9d0366",
+      "rule_id": "SOAR-007",
+      "attack_type": "lateral_movement_suspicion",
+      "source_ip": "192.168.100.99",
+      "source_port": 11292,
+      "destination_ip": "10.0.0.6",
+      "destination_port": 30,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.78,
+      "risk_score": 34.3,
+      "recommended_mitigation": "Isolate the source host immediately for investigation. Audit Active Directory for credential compromise (check for suspicious logons). Enable network micro-segmentation to prevent further spread. Review EDR telemetry on the source host for process injection or credential dumping.",
+      "reasons": [
+        "Source 192.168.100.99 contacted 5 unique hosts (threshold: 5) in 5 min."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:26.512Z",
+        "signature": "ET SCAN NMAP -sV Version Scan",
+        "signature_id": 2000545,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-0d8e5ee8a0b0"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Lateral Movement",
+        "mitre_technique": "T1021 - Remote Services / T1550 - Use Alternate Authentication Material",
+        "nist_ref": "NIST SP 800-207 - Zero Trust Architecture"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.514399+00:00",
+      "action_id": "eaf8ce1f-003d-4863-9347-8ee8fa3db77b",
+      "rule_id": "SOAR-007",
+      "attack_type": "lateral_movement_suspicion",
+      "source_ip": "192.168.100.99",
+      "source_port": 51902,
+      "destination_ip": "10.0.0.7",
+      "destination_port": 31,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.78,
+      "risk_score": 39.8,
+      "recommended_mitigation": "Isolate the source host immediately for investigation. Audit Active Directory for credential compromise (check for suspicious logons). Enable network micro-segmentation to prevent further spread. Review EDR telemetry on the source host for process injection or credential dumping.",
+      "reasons": [
+        "Source 192.168.100.99 contacted 5 unique hosts (threshold: 5) in 5 min."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:27.012Z",
+        "signature": "ET SCAN Suspicious Rapid Port Scan",
+        "signature_id": 2009582,
+        "category": "Attempted Recon",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-efbe96941d85"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Lateral Movement",
+        "mitre_technique": "T1021 - Remote Services / T1550 - Use Alternate Authentication Material",
+        "nist_ref": "NIST SP 800-207 - Zero Trust Architecture"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.514399+00:00",
+      "action_id": "894aa47a-e8b9-4ab8-958f-a7fdbca425e9",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 51902,
+      "destination_ip": "10.0.0.7",
+      "destination_port": 31,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.75,
+      "risk_score": 39.8,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 2 (threshold \u2264 2) \u2014 high-priority alert.",
+        "Signature: \"ET SCAN Suspicious Rapid Port Scan\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:27.012Z",
+        "signature": "ET SCAN Suspicious Rapid Port Scan",
+        "signature_id": 2009582,
+        "category": "Attempted Recon",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-efbe96941d85"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.514399+00:00",
+      "action_id": "cff6cd33-8dcc-4537-a259-b15a13c1e0c8",
+      "rule_id": "SOAR-007",
+      "attack_type": "lateral_movement_suspicion",
+      "source_ip": "192.168.100.99",
+      "source_port": 54862,
+      "destination_ip": "10.0.0.2",
+      "destination_port": 32,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.78,
+      "risk_score": 32.4,
+      "recommended_mitigation": "Isolate the source host immediately for investigation. Audit Active Directory for credential compromise (check for suspicious logons). Enable network micro-segmentation to prevent further spread. Review EDR telemetry on the source host for process injection or credential dumping.",
+      "reasons": [
+        "Source 192.168.100.99 contacted 6 unique hosts (threshold: 5) in 5 min."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:27.512Z",
+        "signature": "ET SCAN Nmap SYN Scan",
+        "signature_id": 2000537,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-3d833550de59"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Lateral Movement",
+        "mitre_technique": "T1021 - Remote Services / T1550 - Use Alternate Authentication Material",
+        "nist_ref": "NIST SP 800-207 - Zero Trust Architecture"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.514399+00:00",
+      "action_id": "77d942b9-9f91-472a-b897-8e9e850917ec",
+      "rule_id": "SOAR-007",
+      "attack_type": "lateral_movement_suspicion",
+      "source_ip": "192.168.100.99",
+      "source_port": 14178,
+      "destination_ip": "10.0.0.3",
+      "destination_port": 33,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.78,
+      "risk_score": 48.4,
+      "recommended_mitigation": "Isolate the source host immediately for investigation. Audit Active Directory for credential compromise (check for suspicious logons). Enable network micro-segmentation to prevent further spread. Review EDR telemetry on the source host for process injection or credential dumping.",
+      "reasons": [
+        "Source 192.168.100.99 contacted 6 unique hosts (threshold: 5) in 5 min."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:28.012Z",
+        "signature": "ET SCAN Potential SSH Scan",
+        "signature_id": 2001219,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-4680149d8696"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Lateral Movement",
+        "mitre_technique": "T1021 - Remote Services / T1550 - Use Alternate Authentication Material",
+        "nist_ref": "NIST SP 800-207 - Zero Trust Architecture"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.514399+00:00",
+      "action_id": "b84ee709-2fc4-4f6a-95a3-661bd731b355",
+      "rule_id": "SOAR-007",
+      "attack_type": "lateral_movement_suspicion",
+      "source_ip": "192.168.100.99",
+      "source_port": 18986,
+      "destination_ip": "10.0.0.8",
+      "destination_port": 34,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.78,
+      "risk_score": 41.1,
+      "recommended_mitigation": "Isolate the source host immediately for investigation. Audit Active Directory for credential compromise (check for suspicious logons). Enable network micro-segmentation to prevent further spread. Review EDR telemetry on the source host for process injection or credential dumping.",
+      "reasons": [
+        "Source 192.168.100.99 contacted 7 unique hosts (threshold: 5) in 5 min."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:28.512Z",
+        "signature": "ET SCAN Nmap SYN Scan",
+        "signature_id": 2000537,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-8fe4f4e77c94"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Lateral Movement",
+        "mitre_technique": "T1021 - Remote Services / T1550 - Use Alternate Authentication Material",
+        "nist_ref": "NIST SP 800-207 - Zero Trust Architecture"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.514399+00:00",
+      "action_id": "a44a08c0-ef04-49b1-a463-77389f3f7832",
+      "rule_id": "SOAR-001",
+      "attack_type": "port_scan",
+      "source_ip": "192.168.100.99",
+      "source_port": 25656,
+      "destination_ip": "10.0.0.3",
+      "destination_port": 35,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.85,
+      "risk_score": 49.3,
+      "recommended_mitigation": "Block outbound connections from this source IP at the perimeter firewall. Review whether this IP belongs to an authorised scanner. Capture full packet headers for forensic analysis.",
+      "reasons": [
+        "Source scanned 15 unique destination ports (threshold: 15) in the last 60 s."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:29.012Z",
+        "signature": "ET SCAN Suspicious Rapid Port Scan",
+        "signature_id": 2009582,
+        "category": "Attempted Recon",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-98ca68e671b4"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Discovery",
+        "mitre_technique": "T1046 - Network Service Scanning",
+        "nist_ref": "NIST SP 800-94 - Guide to Intrusion Detection and Prevention Systems"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.514399+00:00",
+      "action_id": "996d9b1d-273c-4912-89bb-76f2094595e0",
+      "rule_id": "SOAR-007",
+      "attack_type": "lateral_movement_suspicion",
+      "source_ip": "192.168.100.99",
+      "source_port": 25656,
+      "destination_ip": "10.0.0.3",
+      "destination_port": 35,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.78,
+      "risk_score": 49.3,
+      "recommended_mitigation": "Isolate the source host immediately for investigation. Audit Active Directory for credential compromise (check for suspicious logons). Enable network micro-segmentation to prevent further spread. Review EDR telemetry on the source host for process injection or credential dumping.",
+      "reasons": [
+        "Source 192.168.100.99 contacted 7 unique hosts (threshold: 5) in 5 min."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:29.012Z",
+        "signature": "ET SCAN Suspicious Rapid Port Scan",
+        "signature_id": 2009582,
+        "category": "Attempted Recon",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-98ca68e671b4"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Lateral Movement",
+        "mitre_technique": "T1021 - Remote Services / T1550 - Use Alternate Authentication Material",
+        "nist_ref": "NIST SP 800-207 - Zero Trust Architecture"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.514399+00:00",
+      "action_id": "fb1e848f-ba32-4281-9903-931678c36b77",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 25656,
+      "destination_ip": "10.0.0.3",
+      "destination_port": 35,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.75,
+      "risk_score": 49.3,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 2 (threshold \u2264 2) \u2014 high-priority alert.",
+        "Signature: \"ET SCAN Suspicious Rapid Port Scan\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:29.012Z",
+        "signature": "ET SCAN Suspicious Rapid Port Scan",
+        "signature_id": 2009582,
+        "category": "Attempted Recon",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-98ca68e671b4"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.514399+00:00",
+      "action_id": "4dccd2e2-dd81-4016-b27e-6a3e9921350a",
+      "rule_id": "SOAR-001",
+      "attack_type": "port_scan",
+      "source_ip": "192.168.100.99",
+      "source_port": 64980,
+      "destination_ip": "10.0.0.2",
+      "destination_port": 36,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.85,
+      "risk_score": 41.1,
+      "recommended_mitigation": "Block outbound connections from this source IP at the perimeter firewall. Review whether this IP belongs to an authorised scanner. Capture full packet headers for forensic analysis.",
+      "reasons": [
+        "Source scanned 16 unique destination ports (threshold: 15) in the last 60 s."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:29.512Z",
+        "signature": "ET SCAN NMAP -sV Version Scan",
+        "signature_id": 2000545,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-e11649507135"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Discovery",
+        "mitre_technique": "T1046 - Network Service Scanning",
+        "nist_ref": "NIST SP 800-94 - Guide to Intrusion Detection and Prevention Systems"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.515401+00:00",
+      "action_id": "1abcd238-9aa9-4b40-a6f3-ade9a4821979",
+      "rule_id": "SOAR-007",
+      "attack_type": "lateral_movement_suspicion",
+      "source_ip": "192.168.100.99",
+      "source_port": 64980,
+      "destination_ip": "10.0.0.2",
+      "destination_port": 36,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.78,
+      "risk_score": 41.1,
+      "recommended_mitigation": "Isolate the source host immediately for investigation. Audit Active Directory for credential compromise (check for suspicious logons). Enable network micro-segmentation to prevent further spread. Review EDR telemetry on the source host for process injection or credential dumping.",
+      "reasons": [
+        "Source 192.168.100.99 contacted 7 unique hosts (threshold: 5) in 5 min."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:29.512Z",
+        "signature": "ET SCAN NMAP -sV Version Scan",
+        "signature_id": 2000545,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-e11649507135"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Lateral Movement",
+        "mitre_technique": "T1021 - Remote Services / T1550 - Use Alternate Authentication Material",
+        "nist_ref": "NIST SP 800-207 - Zero Trust Architecture"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.515401+00:00",
+      "action_id": "fa8c6c3c-ba92-4499-b6bc-275fc63f5d49",
+      "rule_id": "SOAR-001",
+      "attack_type": "port_scan",
+      "source_ip": "192.168.100.99",
+      "source_port": 46497,
+      "destination_ip": "10.0.0.2",
+      "destination_port": 37,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.85,
+      "risk_score": 36.7,
+      "recommended_mitigation": "Block outbound connections from this source IP at the perimeter firewall. Review whether this IP belongs to an authorised scanner. Capture full packet headers for forensic analysis.",
+      "reasons": [
+        "Source scanned 17 unique destination ports (threshold: 15) in the last 60 s."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:30.012Z",
+        "signature": "ET SCAN NMAP -sV Version Scan",
+        "signature_id": 2000545,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-71ec3a3de22c"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Discovery",
+        "mitre_technique": "T1046 - Network Service Scanning",
+        "nist_ref": "NIST SP 800-94 - Guide to Intrusion Detection and Prevention Systems"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.515401+00:00",
+      "action_id": "0d7fefca-f9aa-432d-bd8a-37cf1b7da15d",
+      "rule_id": "SOAR-007",
+      "attack_type": "lateral_movement_suspicion",
+      "source_ip": "192.168.100.99",
+      "source_port": 46497,
+      "destination_ip": "10.0.0.2",
+      "destination_port": 37,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.78,
+      "risk_score": 36.7,
+      "recommended_mitigation": "Isolate the source host immediately for investigation. Audit Active Directory for credential compromise (check for suspicious logons). Enable network micro-segmentation to prevent further spread. Review EDR telemetry on the source host for process injection or credential dumping.",
+      "reasons": [
+        "Source 192.168.100.99 contacted 7 unique hosts (threshold: 5) in 5 min."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:30.012Z",
+        "signature": "ET SCAN NMAP -sV Version Scan",
+        "signature_id": 2000545,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-71ec3a3de22c"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Lateral Movement",
+        "mitre_technique": "T1021 - Remote Services / T1550 - Use Alternate Authentication Material",
+        "nist_ref": "NIST SP 800-207 - Zero Trust Architecture"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.515401+00:00",
+      "action_id": "42298d67-ef48-4e52-bae2-9bc16e0549f0",
+      "rule_id": "SOAR-001",
+      "attack_type": "port_scan",
+      "source_ip": "192.168.100.99",
+      "source_port": 61826,
+      "destination_ip": "10.0.0.2",
+      "destination_port": 38,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.85,
+      "risk_score": 30.7,
+      "recommended_mitigation": "Block outbound connections from this source IP at the perimeter firewall. Review whether this IP belongs to an authorised scanner. Capture full packet headers for forensic analysis.",
+      "reasons": [
+        "Source scanned 18 unique destination ports (threshold: 15) in the last 60 s."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:30.512Z",
+        "signature": "ET SCAN Nmap SYN Scan",
+        "signature_id": 2000537,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-8ea7f049652b"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Discovery",
+        "mitre_technique": "T1046 - Network Service Scanning",
+        "nist_ref": "NIST SP 800-94 - Guide to Intrusion Detection and Prevention Systems"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.515401+00:00",
+      "action_id": "9f32fce1-691e-4579-80d6-9879c6aa0df3",
+      "rule_id": "SOAR-007",
+      "attack_type": "lateral_movement_suspicion",
+      "source_ip": "192.168.100.99",
+      "source_port": 61826,
+      "destination_ip": "10.0.0.2",
+      "destination_port": 38,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.78,
+      "risk_score": 30.7,
+      "recommended_mitigation": "Isolate the source host immediately for investigation. Audit Active Directory for credential compromise (check for suspicious logons). Enable network micro-segmentation to prevent further spread. Review EDR telemetry on the source host for process injection or credential dumping.",
+      "reasons": [
+        "Source 192.168.100.99 contacted 7 unique hosts (threshold: 5) in 5 min."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:30.512Z",
+        "signature": "ET SCAN Nmap SYN Scan",
+        "signature_id": 2000537,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-8ea7f049652b"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Lateral Movement",
+        "mitre_technique": "T1021 - Remote Services / T1550 - Use Alternate Authentication Material",
+        "nist_ref": "NIST SP 800-207 - Zero Trust Architecture"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.515401+00:00",
+      "action_id": "c9ba0b54-5834-4d1f-9786-6c1e70ec2932",
+      "rule_id": "SOAR-001",
+      "attack_type": "port_scan",
+      "source_ip": "192.168.100.99",
+      "source_port": 45400,
+      "destination_ip": "10.0.0.7",
+      "destination_port": 39,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.85,
+      "risk_score": 32.3,
+      "recommended_mitigation": "Block outbound connections from this source IP at the perimeter firewall. Review whether this IP belongs to an authorised scanner. Capture full packet headers for forensic analysis.",
+      "reasons": [
+        "Source scanned 19 unique destination ports (threshold: 15) in the last 60 s."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:31.012Z",
+        "signature": "ET SCAN Suspicious Rapid Port Scan",
+        "signature_id": 2009582,
+        "category": "Attempted Recon",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-1d93de25a1ca"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Discovery",
+        "mitre_technique": "T1046 - Network Service Scanning",
+        "nist_ref": "NIST SP 800-94 - Guide to Intrusion Detection and Prevention Systems"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.515401+00:00",
+      "action_id": "cddabfb2-8810-48bf-a3f7-e32a5477d90d",
+      "rule_id": "SOAR-007",
+      "attack_type": "lateral_movement_suspicion",
+      "source_ip": "192.168.100.99",
+      "source_port": 45400,
+      "destination_ip": "10.0.0.7",
+      "destination_port": 39,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.78,
+      "risk_score": 32.3,
+      "recommended_mitigation": "Isolate the source host immediately for investigation. Audit Active Directory for credential compromise (check for suspicious logons). Enable network micro-segmentation to prevent further spread. Review EDR telemetry on the source host for process injection or credential dumping.",
+      "reasons": [
+        "Source 192.168.100.99 contacted 7 unique hosts (threshold: 5) in 5 min."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:31.012Z",
+        "signature": "ET SCAN Suspicious Rapid Port Scan",
+        "signature_id": 2009582,
+        "category": "Attempted Recon",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-1d93de25a1ca"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Lateral Movement",
+        "mitre_technique": "T1021 - Remote Services / T1550 - Use Alternate Authentication Material",
+        "nist_ref": "NIST SP 800-207 - Zero Trust Architecture"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.515401+00:00",
+      "action_id": "3581d710-f195-40fd-b288-4f3206319584",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 45400,
+      "destination_ip": "10.0.0.7",
+      "destination_port": 39,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.75,
+      "risk_score": 32.3,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 2 (threshold \u2264 2) \u2014 high-priority alert.",
+        "Signature: \"ET SCAN Suspicious Rapid Port Scan\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:31.012Z",
+        "signature": "ET SCAN Suspicious Rapid Port Scan",
+        "signature_id": 2009582,
+        "category": "Attempted Recon",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-1d93de25a1ca"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.515401+00:00",
+      "action_id": "881e95e3-f4bc-4e32-bde1-45f9b9f327b5",
+      "rule_id": "SOAR-001",
+      "attack_type": "port_scan",
+      "source_ip": "192.168.100.99",
+      "source_port": 63067,
+      "destination_ip": "10.0.0.2",
+      "destination_port": 40,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.9,
+      "risk_score": 44.7,
+      "recommended_mitigation": "Block outbound connections from this source IP at the perimeter firewall. Review whether this IP belongs to an authorised scanner. Capture full packet headers for forensic analysis.",
+      "reasons": [
+        "Source scanned 20 unique destination ports (threshold: 15) in the last 60 s.",
+        "Source generated 20 alerts (threshold: 20) in the last 60 s."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:31.512Z",
+        "signature": "ET SCAN NMAP -sV Version Scan",
+        "signature_id": 2000545,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-790322ad50de"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Discovery",
+        "mitre_technique": "T1046 - Network Service Scanning",
+        "nist_ref": "NIST SP 800-94 - Guide to Intrusion Detection and Prevention Systems"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.515401+00:00",
+      "action_id": "74eef3fd-0cfa-45fd-986e-f24c964a97d8",
+      "rule_id": "SOAR-007",
+      "attack_type": "lateral_movement_suspicion",
+      "source_ip": "192.168.100.99",
+      "source_port": 63067,
+      "destination_ip": "10.0.0.2",
+      "destination_port": 40,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.78,
+      "risk_score": 44.7,
+      "recommended_mitigation": "Isolate the source host immediately for investigation. Audit Active Directory for credential compromise (check for suspicious logons). Enable network micro-segmentation to prevent further spread. Review EDR telemetry on the source host for process injection or credential dumping.",
+      "reasons": [
+        "Source 192.168.100.99 contacted 7 unique hosts (threshold: 5) in 5 min."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:31.512Z",
+        "signature": "ET SCAN NMAP -sV Version Scan",
+        "signature_id": 2000545,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-790322ad50de"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Lateral Movement",
+        "mitre_technique": "T1021 - Remote Services / T1550 - Use Alternate Authentication Material",
+        "nist_ref": "NIST SP 800-207 - Zero Trust Architecture"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.515401+00:00",
+      "action_id": "ce5c5934-1717-466a-87b3-9ac4689816ab",
+      "rule_id": "SOAR-001",
+      "attack_type": "port_scan",
+      "source_ip": "192.168.100.99",
+      "source_port": 17121,
+      "destination_ip": "10.0.0.2",
+      "destination_port": 41,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.9,
+      "risk_score": 45.9,
+      "recommended_mitigation": "Block outbound connections from this source IP at the perimeter firewall. Review whether this IP belongs to an authorised scanner. Capture full packet headers for forensic analysis.",
+      "reasons": [
+        "Source scanned 21 unique destination ports (threshold: 15) in the last 60 s.",
+        "Source generated 21 alerts (threshold: 20) in the last 60 s."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:32.012Z",
+        "signature": "ET SCAN Nmap SYN Scan",
+        "signature_id": 2000537,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-8c8daa0d0535"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Discovery",
+        "mitre_technique": "T1046 - Network Service Scanning",
+        "nist_ref": "NIST SP 800-94 - Guide to Intrusion Detection and Prevention Systems"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.515401+00:00",
+      "action_id": "be2b6626-e5d1-4c25-96d0-7e50b4214611",
+      "rule_id": "SOAR-007",
+      "attack_type": "lateral_movement_suspicion",
+      "source_ip": "192.168.100.99",
+      "source_port": 17121,
+      "destination_ip": "10.0.0.2",
+      "destination_port": 41,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.78,
+      "risk_score": 45.9,
+      "recommended_mitigation": "Isolate the source host immediately for investigation. Audit Active Directory for credential compromise (check for suspicious logons). Enable network micro-segmentation to prevent further spread. Review EDR telemetry on the source host for process injection or credential dumping.",
+      "reasons": [
+        "Source 192.168.100.99 contacted 7 unique hosts (threshold: 5) in 5 min."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:32.012Z",
+        "signature": "ET SCAN Nmap SYN Scan",
+        "signature_id": 2000537,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-8c8daa0d0535"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Lateral Movement",
+        "mitre_technique": "T1021 - Remote Services / T1550 - Use Alternate Authentication Material",
+        "nist_ref": "NIST SP 800-207 - Zero Trust Architecture"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.515401+00:00",
+      "action_id": "d3db3aaa-fa1a-4bae-b812-c0d633b834a5",
+      "rule_id": "SOAR-001",
+      "attack_type": "port_scan",
+      "source_ip": "192.168.100.99",
+      "source_port": 28554,
+      "destination_ip": "10.0.0.6",
+      "destination_port": 42,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.9,
+      "risk_score": 53.7,
+      "recommended_mitigation": "Block outbound connections from this source IP at the perimeter firewall. Review whether this IP belongs to an authorised scanner. Capture full packet headers for forensic analysis.",
+      "reasons": [
+        "Source scanned 22 unique destination ports (threshold: 15) in the last 60 s.",
+        "Source generated 22 alerts (threshold: 20) in the last 60 s."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:32.512Z",
+        "signature": "ET SCAN Nmap OS Detection",
+        "signature_id": 2000538,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-dd7cdf51fed3"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Discovery",
+        "mitre_technique": "T1046 - Network Service Scanning",
+        "nist_ref": "NIST SP 800-94 - Guide to Intrusion Detection and Prevention Systems"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.515401+00:00",
+      "action_id": "99f87010-0209-4d49-8820-b98f6f494b89",
+      "rule_id": "SOAR-007",
+      "attack_type": "lateral_movement_suspicion",
+      "source_ip": "192.168.100.99",
+      "source_port": 28554,
+      "destination_ip": "10.0.0.6",
+      "destination_port": 42,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.78,
+      "risk_score": 53.7,
+      "recommended_mitigation": "Isolate the source host immediately for investigation. Audit Active Directory for credential compromise (check for suspicious logons). Enable network micro-segmentation to prevent further spread. Review EDR telemetry on the source host for process injection or credential dumping.",
+      "reasons": [
+        "Source 192.168.100.99 contacted 7 unique hosts (threshold: 5) in 5 min."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:32.512Z",
+        "signature": "ET SCAN Nmap OS Detection",
+        "signature_id": 2000538,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-dd7cdf51fed3"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Lateral Movement",
+        "mitre_technique": "T1021 - Remote Services / T1550 - Use Alternate Authentication Material",
+        "nist_ref": "NIST SP 800-207 - Zero Trust Architecture"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.515401+00:00",
+      "action_id": "c650217a-ac78-4359-a3a7-57f08502b41a",
+      "rule_id": "SOAR-001",
+      "attack_type": "port_scan",
+      "source_ip": "192.168.100.99",
+      "source_port": 16510,
+      "destination_ip": "10.0.0.1",
+      "destination_port": 43,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.9,
+      "risk_score": 41.6,
+      "recommended_mitigation": "Block outbound connections from this source IP at the perimeter firewall. Review whether this IP belongs to an authorised scanner. Capture full packet headers for forensic analysis.",
+      "reasons": [
+        "Source scanned 23 unique destination ports (threshold: 15) in the last 60 s.",
+        "Source generated 23 alerts (threshold: 20) in the last 60 s."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:33.012Z",
+        "signature": "ET SCAN Suspicious Rapid Port Scan",
+        "signature_id": 2009582,
+        "category": "Attempted Recon",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-14fba76edde4"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Discovery",
+        "mitre_technique": "T1046 - Network Service Scanning",
+        "nist_ref": "NIST SP 800-94 - Guide to Intrusion Detection and Prevention Systems"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.515401+00:00",
+      "action_id": "a10004f5-9800-4015-99bb-a73c25467134",
+      "rule_id": "SOAR-007",
+      "attack_type": "lateral_movement_suspicion",
+      "source_ip": "192.168.100.99",
+      "source_port": 16510,
+      "destination_ip": "10.0.0.1",
+      "destination_port": 43,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.78,
+      "risk_score": 41.6,
+      "recommended_mitigation": "Isolate the source host immediately for investigation. Audit Active Directory for credential compromise (check for suspicious logons). Enable network micro-segmentation to prevent further spread. Review EDR telemetry on the source host for process injection or credential dumping.",
+      "reasons": [
+        "Source 192.168.100.99 contacted 7 unique hosts (threshold: 5) in 5 min."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:33.012Z",
+        "signature": "ET SCAN Suspicious Rapid Port Scan",
+        "signature_id": 2009582,
+        "category": "Attempted Recon",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-14fba76edde4"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Lateral Movement",
+        "mitre_technique": "T1021 - Remote Services / T1550 - Use Alternate Authentication Material",
+        "nist_ref": "NIST SP 800-207 - Zero Trust Architecture"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.515401+00:00",
+      "action_id": "77176f11-39d8-4f6f-8e60-5f1c832689bd",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 16510,
+      "destination_ip": "10.0.0.1",
+      "destination_port": 43,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.75,
+      "risk_score": 41.6,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 2 (threshold \u2264 2) \u2014 high-priority alert.",
+        "Signature: \"ET SCAN Suspicious Rapid Port Scan\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:33.012Z",
+        "signature": "ET SCAN Suspicious Rapid Port Scan",
+        "signature_id": 2009582,
+        "category": "Attempted Recon",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-14fba76edde4"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.515401+00:00",
+      "action_id": "40f29be6-a9dd-4e36-9ee9-ed182d0af96b",
+      "rule_id": "SOAR-001",
+      "attack_type": "port_scan",
+      "source_ip": "192.168.100.99",
+      "source_port": 60686,
+      "destination_ip": "10.0.0.1",
+      "destination_port": 44,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.9,
+      "risk_score": 49.1,
+      "recommended_mitigation": "Block outbound connections from this source IP at the perimeter firewall. Review whether this IP belongs to an authorised scanner. Capture full packet headers for forensic analysis.",
+      "reasons": [
+        "Source scanned 24 unique destination ports (threshold: 15) in the last 60 s.",
+        "Source generated 24 alerts (threshold: 20) in the last 60 s."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:33.512Z",
+        "signature": "ET SCAN Nmap SYN Scan",
+        "signature_id": 2000537,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-2872ca54e788"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Discovery",
+        "mitre_technique": "T1046 - Network Service Scanning",
+        "nist_ref": "NIST SP 800-94 - Guide to Intrusion Detection and Prevention Systems"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.515401+00:00",
+      "action_id": "a3ef34ba-88ec-4762-ac4d-e539e9fdd095",
+      "rule_id": "SOAR-007",
+      "attack_type": "lateral_movement_suspicion",
+      "source_ip": "192.168.100.99",
+      "source_port": 60686,
+      "destination_ip": "10.0.0.1",
+      "destination_port": 44,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.78,
+      "risk_score": 49.1,
+      "recommended_mitigation": "Isolate the source host immediately for investigation. Audit Active Directory for credential compromise (check for suspicious logons). Enable network micro-segmentation to prevent further spread. Review EDR telemetry on the source host for process injection or credential dumping.",
+      "reasons": [
+        "Source 192.168.100.99 contacted 7 unique hosts (threshold: 5) in 5 min."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:33.512Z",
+        "signature": "ET SCAN Nmap SYN Scan",
+        "signature_id": 2000537,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-2872ca54e788"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Lateral Movement",
+        "mitre_technique": "T1021 - Remote Services / T1550 - Use Alternate Authentication Material",
+        "nist_ref": "NIST SP 800-207 - Zero Trust Architecture"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.515401+00:00",
+      "action_id": "ab4e8438-a7cb-4667-b725-1abceef1fc7c",
+      "rule_id": "SOAR-001",
+      "attack_type": "port_scan",
+      "source_ip": "192.168.100.99",
+      "source_port": 39812,
+      "destination_ip": "10.0.0.1",
+      "destination_port": 45,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.9,
+      "risk_score": 37.4,
+      "recommended_mitigation": "Block outbound connections from this source IP at the perimeter firewall. Review whether this IP belongs to an authorised scanner. Capture full packet headers for forensic analysis.",
+      "reasons": [
+        "Source scanned 25 unique destination ports (threshold: 15) in the last 60 s.",
+        "Source generated 25 alerts (threshold: 20) in the last 60 s."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:34.012Z",
+        "signature": "ET SCAN Nmap OS Detection",
+        "signature_id": 2000538,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-d61f67082336"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Discovery",
+        "mitre_technique": "T1046 - Network Service Scanning",
+        "nist_ref": "NIST SP 800-94 - Guide to Intrusion Detection and Prevention Systems"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.515401+00:00",
+      "action_id": "56a77358-d29f-4d67-8ce3-3152f8fa174d",
+      "rule_id": "SOAR-007",
+      "attack_type": "lateral_movement_suspicion",
+      "source_ip": "192.168.100.99",
+      "source_port": 39812,
+      "destination_ip": "10.0.0.1",
+      "destination_port": 45,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.78,
+      "risk_score": 37.4,
+      "recommended_mitigation": "Isolate the source host immediately for investigation. Audit Active Directory for credential compromise (check for suspicious logons). Enable network micro-segmentation to prevent further spread. Review EDR telemetry on the source host for process injection or credential dumping.",
+      "reasons": [
+        "Source 192.168.100.99 contacted 7 unique hosts (threshold: 5) in 5 min."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:34.012Z",
+        "signature": "ET SCAN Nmap OS Detection",
+        "signature_id": 2000538,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-d61f67082336"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Lateral Movement",
+        "mitre_technique": "T1021 - Remote Services / T1550 - Use Alternate Authentication Material",
+        "nist_ref": "NIST SP 800-207 - Zero Trust Architecture"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.516448+00:00",
+      "action_id": "cf7af64c-d34c-4ccb-83ed-b77844e3a81d",
+      "rule_id": "SOAR-001",
+      "attack_type": "port_scan",
+      "source_ip": "192.168.100.99",
+      "source_port": 39270,
+      "destination_ip": "10.0.0.4",
+      "destination_port": 46,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.9,
+      "risk_score": 32.5,
+      "recommended_mitigation": "Block outbound connections from this source IP at the perimeter firewall. Review whether this IP belongs to an authorised scanner. Capture full packet headers for forensic analysis.",
+      "reasons": [
+        "Source scanned 26 unique destination ports (threshold: 15) in the last 60 s.",
+        "Source generated 26 alerts (threshold: 20) in the last 60 s."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:34.512Z",
+        "signature": "ET SCAN Suspicious Rapid Port Scan",
+        "signature_id": 2009582,
+        "category": "Attempted Recon",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-ff5fbe636ebd"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Discovery",
+        "mitre_technique": "T1046 - Network Service Scanning",
+        "nist_ref": "NIST SP 800-94 - Guide to Intrusion Detection and Prevention Systems"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.516448+00:00",
+      "action_id": "9f54e759-04ef-445d-bf48-bc517c497be7",
+      "rule_id": "SOAR-007",
+      "attack_type": "lateral_movement_suspicion",
+      "source_ip": "192.168.100.99",
+      "source_port": 39270,
+      "destination_ip": "10.0.0.4",
+      "destination_port": 46,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.78,
+      "risk_score": 32.5,
+      "recommended_mitigation": "Isolate the source host immediately for investigation. Audit Active Directory for credential compromise (check for suspicious logons). Enable network micro-segmentation to prevent further spread. Review EDR telemetry on the source host for process injection or credential dumping.",
+      "reasons": [
+        "Source 192.168.100.99 contacted 8 unique hosts (threshold: 5) in 5 min."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:34.512Z",
+        "signature": "ET SCAN Suspicious Rapid Port Scan",
+        "signature_id": 2009582,
+        "category": "Attempted Recon",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-ff5fbe636ebd"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Lateral Movement",
+        "mitre_technique": "T1021 - Remote Services / T1550 - Use Alternate Authentication Material",
+        "nist_ref": "NIST SP 800-207 - Zero Trust Architecture"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.516448+00:00",
+      "action_id": "37daea59-3760-4511-8d1f-150d0f44d309",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 39270,
+      "destination_ip": "10.0.0.4",
+      "destination_port": 46,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.75,
+      "risk_score": 32.5,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 2 (threshold \u2264 2) \u2014 high-priority alert.",
+        "Signature: \"ET SCAN Suspicious Rapid Port Scan\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:34.512Z",
+        "signature": "ET SCAN Suspicious Rapid Port Scan",
+        "signature_id": 2009582,
+        "category": "Attempted Recon",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-ff5fbe636ebd"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.516448+00:00",
+      "action_id": "201d5b4d-0c53-465b-953d-603b9cd355fb",
+      "rule_id": "SOAR-001",
+      "attack_type": "port_scan",
+      "source_ip": "192.168.100.99",
+      "source_port": 54024,
+      "destination_ip": "10.0.0.1",
+      "destination_port": 47,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.9,
+      "risk_score": 46.7,
+      "recommended_mitigation": "Block outbound connections from this source IP at the perimeter firewall. Review whether this IP belongs to an authorised scanner. Capture full packet headers for forensic analysis.",
+      "reasons": [
+        "Source scanned 27 unique destination ports (threshold: 15) in the last 60 s.",
+        "Source generated 27 alerts (threshold: 20) in the last 60 s."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:35.012Z",
+        "signature": "ET SCAN Nmap SYN Scan",
+        "signature_id": 2000537,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-73746eb78b2e"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Discovery",
+        "mitre_technique": "T1046 - Network Service Scanning",
+        "nist_ref": "NIST SP 800-94 - Guide to Intrusion Detection and Prevention Systems"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.516448+00:00",
+      "action_id": "95c2025b-f8f8-4174-904a-976b1ef4afd2",
+      "rule_id": "SOAR-007",
+      "attack_type": "lateral_movement_suspicion",
+      "source_ip": "192.168.100.99",
+      "source_port": 54024,
+      "destination_ip": "10.0.0.1",
+      "destination_port": 47,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.78,
+      "risk_score": 46.7,
+      "recommended_mitigation": "Isolate the source host immediately for investigation. Audit Active Directory for credential compromise (check for suspicious logons). Enable network micro-segmentation to prevent further spread. Review EDR telemetry on the source host for process injection or credential dumping.",
+      "reasons": [
+        "Source 192.168.100.99 contacted 8 unique hosts (threshold: 5) in 5 min."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:35.012Z",
+        "signature": "ET SCAN Nmap SYN Scan",
+        "signature_id": 2000537,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-73746eb78b2e"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Lateral Movement",
+        "mitre_technique": "T1021 - Remote Services / T1550 - Use Alternate Authentication Material",
+        "nist_ref": "NIST SP 800-207 - Zero Trust Architecture"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.516448+00:00",
+      "action_id": "4ba5fb93-e85c-44fb-9b8b-2815ac816e9d",
+      "rule_id": "SOAR-001",
+      "attack_type": "port_scan",
+      "source_ip": "192.168.100.99",
+      "source_port": 31888,
+      "destination_ip": "10.0.0.1",
+      "destination_port": 48,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.9,
+      "risk_score": 51.5,
+      "recommended_mitigation": "Block outbound connections from this source IP at the perimeter firewall. Review whether this IP belongs to an authorised scanner. Capture full packet headers for forensic analysis.",
+      "reasons": [
+        "Source scanned 28 unique destination ports (threshold: 15) in the last 60 s.",
+        "Source generated 28 alerts (threshold: 20) in the last 60 s."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:35.512Z",
+        "signature": "ET SCAN Nmap OS Detection",
+        "signature_id": 2000538,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-2040adfcd675"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Discovery",
+        "mitre_technique": "T1046 - Network Service Scanning",
+        "nist_ref": "NIST SP 800-94 - Guide to Intrusion Detection and Prevention Systems"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.516448+00:00",
+      "action_id": "aa3e9c7a-276d-4aea-bc73-e40faf89ab0b",
+      "rule_id": "SOAR-007",
+      "attack_type": "lateral_movement_suspicion",
+      "source_ip": "192.168.100.99",
+      "source_port": 31888,
+      "destination_ip": "10.0.0.1",
+      "destination_port": 48,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.78,
+      "risk_score": 51.5,
+      "recommended_mitigation": "Isolate the source host immediately for investigation. Audit Active Directory for credential compromise (check for suspicious logons). Enable network micro-segmentation to prevent further spread. Review EDR telemetry on the source host for process injection or credential dumping.",
+      "reasons": [
+        "Source 192.168.100.99 contacted 8 unique hosts (threshold: 5) in 5 min."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:35.512Z",
+        "signature": "ET SCAN Nmap OS Detection",
+        "signature_id": 2000538,
+        "category": "Port Scan",
+        "severity": 3,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-2040adfcd675"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Lateral Movement",
+        "mitre_technique": "T1021 - Remote Services / T1550 - Use Alternate Authentication Material",
+        "nist_ref": "NIST SP 800-207 - Zero Trust Architecture"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.516448+00:00",
+      "action_id": "badc29bd-bf3c-4fc7-92c6-2bb42c27dcf3",
+      "rule_id": "SOAR-001",
+      "attack_type": "port_scan",
+      "source_ip": "192.168.100.99",
+      "source_port": 27759,
+      "destination_ip": "10.0.0.8",
+      "destination_port": 49,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.9,
+      "risk_score": 30.3,
+      "recommended_mitigation": "Block outbound connections from this source IP at the perimeter firewall. Review whether this IP belongs to an authorised scanner. Capture full packet headers for forensic analysis.",
+      "reasons": [
+        "Source scanned 29 unique destination ports (threshold: 15) in the last 60 s.",
+        "Source generated 29 alerts (threshold: 20) in the last 60 s."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:36.012Z",
+        "signature": "ET SCAN Suspicious Rapid Port Scan",
+        "signature_id": 2009582,
+        "category": "Attempted Recon",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-a3dc34e1ff12"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Discovery",
+        "mitre_technique": "T1046 - Network Service Scanning",
+        "nist_ref": "NIST SP 800-94 - Guide to Intrusion Detection and Prevention Systems"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.516448+00:00",
+      "action_id": "895baa5d-8eb0-46c7-9fa0-3e9cdbb61c2a",
+      "rule_id": "SOAR-007",
+      "attack_type": "lateral_movement_suspicion",
+      "source_ip": "192.168.100.99",
+      "source_port": 27759,
+      "destination_ip": "10.0.0.8",
+      "destination_port": 49,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.78,
+      "risk_score": 30.3,
+      "recommended_mitigation": "Isolate the source host immediately for investigation. Audit Active Directory for credential compromise (check for suspicious logons). Enable network micro-segmentation to prevent further spread. Review EDR telemetry on the source host for process injection or credential dumping.",
+      "reasons": [
+        "Source 192.168.100.99 contacted 8 unique hosts (threshold: 5) in 5 min."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:36.012Z",
+        "signature": "ET SCAN Suspicious Rapid Port Scan",
+        "signature_id": 2009582,
+        "category": "Attempted Recon",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-a3dc34e1ff12"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Lateral Movement",
+        "mitre_technique": "T1021 - Remote Services / T1550 - Use Alternate Authentication Material",
+        "nist_ref": "NIST SP 800-207 - Zero Trust Architecture"
+      }
+    },
+    {
+      "@timestamp": "2026-03-07T23:34:21.516448+00:00",
+      "action_id": "40a73ab2-f0f0-426b-88a8-6fa0ef29ff68",
+      "rule_id": "SOAR-008",
+      "attack_type": "generic_high_risk_alert",
+      "source_ip": "192.168.100.99",
+      "source_port": 27759,
+      "destination_ip": "10.0.0.8",
+      "destination_port": 49,
+      "protocol": "tcp",
+      "priority": "HIGH",
+      "confidence": 0.75,
+      "risk_score": 30.3,
+      "recommended_mitigation": "Review this alert immediately in Kibana. Correlate with other events from the same source IP. Apply contextual threat intelligence to determine if escalation is warranted.",
+      "reasons": [
+        "Suricata severity 2 (threshold \u2264 2) \u2014 high-priority alert.",
+        "Signature: \"ET SCAN Suspicious Rapid Port Scan\"."
+      ],
+      "original_event": {
+        "timestamp": "2026-03-07T23:33:36.012Z",
+        "signature": "ET SCAN Suspicious Rapid Port Scan",
+        "signature_id": 2009582,
+        "category": "Attempted Recon",
+        "severity": 2,
+        "hostname": "sim-sensor-01",
+        "es_index": "soar-simulation",
+        "es_id": "sim-port_scan-a3dc34e1ff12"
+      },
+      "framework_mapping": {
+        "mitre_tactic": "Multiple",
+        "mitre_technique": "Multiple",
+        "owasp_ref": "OWASP Top 10 - Multiple Categories",
+        "nist_ref": "NIST SP 800-53 Rev 5 - Security and Privacy Controls"
+      }
+    }
+  ]
+}

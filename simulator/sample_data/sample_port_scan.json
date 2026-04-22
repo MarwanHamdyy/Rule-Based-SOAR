@@ -1,0 +1,152 @@
+[
+    {
+        "@timestamp": "2024-06-01T10:00:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ps-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.10",
+                "src_port": 54000,
+                "dest_ip": "10.0.0.1",
+                "dest_port": 21,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN Nmap SYN Scan",
+                    "signature_id": 2000537,
+                    "category": "Port Scan",
+                    "severity": 3
+                },
+                "timestamp": "2024-06-01T10:00:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 35.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T10:00:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ps-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.10",
+                "src_port": 54001,
+                "dest_ip": "10.0.0.2",
+                "dest_port": 22,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN Nmap SYN Scan",
+                    "signature_id": 2000537,
+                    "category": "Port Scan",
+                    "severity": 3
+                },
+                "timestamp": "2024-06-01T10:00:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 35.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T10:00:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ps-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.10",
+                "src_port": 54002,
+                "dest_ip": "10.0.0.3",
+                "dest_port": 23,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN Nmap OS Detection",
+                    "signature_id": 2000538,
+                    "category": "Port Scan",
+                    "severity": 3
+                },
+                "timestamp": "2024-06-01T10:00:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 40.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T10:00:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ps-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.10",
+                "src_port": 54003,
+                "dest_ip": "10.0.0.4",
+                "dest_port": 25,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN Nmap SYN Scan",
+                    "signature_id": 2000537,
+                    "category": "Port Scan",
+                    "severity": 3
+                },
+                "timestamp": "2024-06-01T10:00:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 38.0,
+        "_sim_scenario": "port_scan"
+    },
+    {
+        "@timestamp": "2024-06-01T10:00:02.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-ps-005",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.168.100.10",
+                "src_port": 54004,
+                "dest_ip": "10.0.0.5",
+                "dest_port": 80,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET SCAN Suspicious Rapid Port Scan",
+                    "signature_id": 2009582,
+                    "category": "Attempted Recon",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T10:00:02.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 50.0,
+        "_sim_scenario": "port_scan"
+    }
+]

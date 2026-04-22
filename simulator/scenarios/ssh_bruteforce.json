@@ -1,0 +1,8 @@
+{
+    "scenario": "ssh_bruteforce",
+    "description": "Simulates a credential-stuffing attack against SSH (port 22) with repeated failed authentication alerts from one attacker.",
+    "src_ip": "203.0.113.100",
+    "count": 25,
+    "rate_per_second": 5,
+    "notes": "Triggers SOAR-002 (SSHBruteForceRule) – requires event_count_threshold=8 within the short (30 s) window."
+}

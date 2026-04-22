@@ -1,0 +1,122 @@
+[
+    {
+        "@timestamp": "2024-06-01T11:30:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dmz-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "172.16.0.10",
+                "src_port": 47000,
+                "dest_ip": "10.0.0.50",
+                "dest_port": 22,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY DMZ Host Initiating SSH Connection to Internal Network",
+                    "signature_id": 2019400,
+                    "category": "Potentially Bad Traffic",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:30:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-dmz"
+        },
+        "risk_score": 80.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    },
+    {
+        "@timestamp": "2024-06-01T11:30:00.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dmz-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "172.16.0.10",
+                "src_port": 47001,
+                "dest_ip": "10.0.0.51",
+                "dest_port": 445,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY DMZ Server Accessing Internal SMB Share",
+                    "signature_id": 2019401,
+                    "category": "Potentially Bad Traffic",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:30:00.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-dmz"
+        },
+        "risk_score": 85.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    },
+    {
+        "@timestamp": "2024-06-01T11:30:01.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dmz-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "172.16.0.11",
+                "src_port": 47002,
+                "dest_ip": "10.0.0.52",
+                "dest_port": 3306,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY DMZ Host Direct Database Connection to Internal MySQL Server",
+                    "signature_id": 2019402,
+                    "category": "Potentially Bad Traffic",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T11:30:01.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-dmz"
+        },
+        "risk_score": 88.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    },
+    {
+        "@timestamp": "2024-06-01T11:30:01.500Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dmz-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "172.16.0.10",
+                "src_port": 47003,
+                "dest_ip": "10.0.0.53",
+                "dest_port": 5432,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET POLICY Anomalous DMZ to Internal Traffic on Non-Standard Port",
+                    "signature_id": 2019403,
+                    "category": "Potentially Bad Traffic",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T11:30:01.500Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-dmz"
+        },
+        "risk_score": 75.0,
+        "_sim_scenario": "lateral_movement_suspicion"
+    }
+]

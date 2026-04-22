@@ -1,0 +1,152 @@
+[
+    {
+        "@timestamp": "2024-06-01T10:25:00.000Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dos-001",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.0.2.200",
+                "src_port": 0,
+                "dest_ip": "10.0.0.5",
+                "dest_port": 80,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET DOS Possible TCP SYN Flood Attack",
+                    "signature_id": 2002992,
+                    "category": "Denial of Service Attack",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T10:25:00.000Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 70.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T10:25:00.200Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dos-002",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.0.2.200",
+                "src_port": 0,
+                "dest_ip": "10.0.0.5",
+                "dest_port": 80,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET DOS Possible TCP SYN Flood Attack",
+                    "signature_id": 2002992,
+                    "category": "Denial of Service Attack",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T10:25:00.200Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 72.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T10:25:00.400Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dos-003",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.0.2.200",
+                "src_port": 12345,
+                "dest_ip": "10.0.0.100",
+                "dest_port": 53,
+                "proto": "udp",
+                "alert": {
+                    "signature": "ET DOS Possible UDP Flood",
+                    "signature_id": 2002994,
+                    "category": "Denial of Service Attack",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T10:25:00.400Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 68.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T10:25:00.600Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dos-004",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.0.2.200",
+                "src_port": 0,
+                "dest_ip": "10.0.0.5",
+                "dest_port": 443,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET DOS Excessive HTTP Requests Indicating Possible DDoS",
+                    "signature_id": 2012134,
+                    "category": "Denial of Service Attack",
+                    "severity": 1
+                },
+                "timestamp": "2024-06-01T10:25:00.600Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 78.0,
+        "_sim_scenario": "dos_or_flood"
+    },
+    {
+        "@timestamp": "2024-06-01T10:25:00.800Z",
+        "_es_index": "soar-simulation",
+        "_es_id": "sample-dos-005",
+        "event": {
+            "type": "alert",
+            "kind": "alert"
+        },
+        "suricata": {
+            "eve": {
+                "src_ip": "192.0.2.200",
+                "src_port": 0,
+                "dest_ip": "10.0.0.5",
+                "dest_port": 80,
+                "proto": "tcp",
+                "alert": {
+                    "signature": "ET DOS Possible TCP SYN Flood Attack",
+                    "signature_id": 2002992,
+                    "category": "Denial of Service Attack",
+                    "severity": 2
+                },
+                "timestamp": "2024-06-01T10:25:00.800Z"
+            }
+        },
+        "host": {
+            "name": "sim-sensor-01"
+        },
+        "risk_score": 75.0,
+        "_sim_scenario": "dos_or_flood"
+    }
+]
