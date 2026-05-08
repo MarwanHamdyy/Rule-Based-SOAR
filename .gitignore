@@ -38,3 +38,9 @@ coverage.xml
 # OS
 .DS_Store
 Thumbs.db
+dashboard/node_modules/
+__pycache__/
+.venv/
+dashboard/node_modules/
+__pycache__/
+.venv/

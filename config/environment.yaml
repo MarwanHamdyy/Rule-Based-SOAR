@@ -1,0 +1,89 @@
+# ============================================================
+# config/environment.yaml
+# ============================================================
+# Describes the EVE-NG emulated lab topology.
+# All values can be overridden with environment variables.
+# ============================================================
+
+docker:
+  # Docker host connection — use unix socket when SOAR runs on same host as containers,
+  # or tcp://HOST:2375 when SOAR runs on a separate VM.
+  host: "${DOCKER_HOST:unix:///var/run/docker.sock}"
+
+  # Quarantine network — containers are moved here when isolated.
+  quarantine_network: "${QUARANTINE_NET:quarantine_net}"
+
+  # DMZ network — normal IoT operating network.
+  dmz_network: "${DMZ_NET:dmz_net}"
+
+  # IoT container definitions.
+  # Update container names to match your actual docker ps output.
+  iot_containers:
+    - id: "iot-device-1"
+      label: "IoT Device 1 (Debian)"
+      services:
+        - name: "ssh"
+          port: 22
+        - name: "vsftpd"
+          port: 21
+        - name: "apache2"
+          port: 80
+        - name: "mosquitto"
+          port: 1883
+    - id: "iot-device-2"
+      label: "IoT Device 2 (BusyBox)"
+      services:
+        - name: "ssh"
+          port: 22
+        - name: "mariadb"
+          port: 3306
+        - name: "redis-server"
+          port: 6379
+
+elk:
+  # Elasticsearch host reachable from the SOAR engine.
+  host: "${ELK_HOST:http://localhost:9200}"
+
+  # Indices produced by the self-healing agents via Logstash.
+  security_alerts_index:  "${SEC_ALERTS_INDEX:security-alerts-*}"
+  iot_logs_index:         "${IOT_LOGS_INDEX:iot-logs-*}"
+  critical_alerts_index:  "${CRIT_ALERTS_INDEX:critical-alerts-*}"
+  failed_logins_index:    "${FAIL_LOGIN_INDEX:failed-logins-*}"
+
+  # Separate checkpoint for the IoT event collector.
+  iot_checkpoint_file: "${IOT_CHECKPOINT:./data/iot_checkpoint.json}"
+
+  # Poll interval for IoT event collector (seconds).
+  iot_poll_interval: 15
+
+mqtt:
+  # Mosquitto broker — container id where it runs.
+  broker_container: "${MQTT_CONTAINER:iot-device-1}"
+  broker_port: 1883
+  # ACL file path inside the container.
+  acl_file: "/etc/mosquitto/acl"
+  # Safe-state command published to actuator topics on compromise.
+  safe_state_topic: "actuators/control"
+  safe_state_payload: "OFF"
+
+playbook_engine:
+  # Whether scripts actually execute commands (false = log only, no side-effects).
+  dry_run: "${PLAYBOOK_DRY_RUN:false}"
+  # Seconds between playbook engine polls.
+  poll_interval: 15
+  # Max retries per playbook step before escalating.
+  max_retries: 2
+  # Output index for playbook execution results.
+  results_index_prefix: "soar-playbook-results"
+
+action_executor:
+  # Path to the action catalog JSON.
+  catalog_path: "simulator/sample_data/action_catalog.json"
+  # Default timeout per action (seconds) — overridden by each action's TIMEOUT_SECONDS.
+  default_timeout: 30
+  # Thread pool size for concurrent action execution.
+  max_workers: 4
+  # Structured JSON telemetry log path (for Filebeat → ELK ingestion).
+  telemetry_log: "logs/action_telemetry.jsonl"
+  # Pull credentials from environment variables, never hardcode.
+  credentials_from_env: true
